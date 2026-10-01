@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathTHCS Pro - Nền tảng Học & Luyện Thi Toán THCS</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-square-root-variable"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">MathTHCS Pro</span>
+                    <span class="hidden sm:inline-block text-xs px-2 py-0.5 ml-2 bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 rounded-full font-medium">Bản Ôn Thi 2026</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 transition text-slate-600 dark:text-slate-300" title="Đổi giao diện Sáng/Tối">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+                <div class="flex items-center space-x-2 pl-3 border-l border-slate-200 dark:border-slate-700">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-white font-semibold text-sm shadow">
+                        HS
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-xs font-semibold">Học sinh THCS</div>
+                        <div class="text-[10px] text-slate-500 dark:text-slate-400">Đã đăng nhập</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-6">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 shrink-0">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-4 sticky top-24 shadow-sm">
+                <nav class="space-y-1.5">
+                    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition bg-blue-50 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400">
+                        <i class="fa-solid fa-house w-5 text-center"></i>
+                        <span>Tổng quan (Dashboard)</span>
+                    </button>
+                    <button onclick="switchTab('exams')" id="nav-exams" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                        <i class="fa-solid fa-pen-to-square w-5 text-center"></i>
+                        <span>Phòng Luyện Thi & Làm Bài</span>
+                    </button>
+                    <button onclick="switchTab('scores')" id="nav-scores" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                        <i class="fa-solid fa-chart-line w-5 text-center"></i>
+                        <span>Xem Điểm & Lịch Sử</span>
+                    </button>
+                    <button onclick="switchTab('formulas')" id="nav-formulas" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                        <i class="fa-solid fa-book-bookmark w-5 text-center"></i>
+                        <span>Sổ Tay Công Thức Toán</span>
+                    </button>
+                    <button onclick="switchTab('notes')" id="nav-notes" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+                        <i class="fa-solid fa-list-check w-5 text-center"></i>
+                        <span>Ghi Chú & Việc Cần Làm</span>
+                    </button>
+                </nav>
+
+                <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
+                    <div class="bg-gradient-to-br from-blue-500/10 to-indigo-500/10 dark:from-blue-500/20 dark:to-indigo-500/20 rounded-xl p-4 border border-blue-200/50 dark:border-blue-700/50">
+                        <div class="flex items-center space-x-2 text-blue-600 dark:text-blue-400 font-semibold text-xs mb-1">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Mẹo ôn thi hiệu quả</span>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Làm mỗi ngày ít nhất 1 đề kiểm tra và xem lại phần giải thích chi tiết để nắm vững kiến thức trọng tâm!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 min-w-0">
+            <!-- TAB 1: DASHBOARD -->
+            <div id="tab-dashboard" class="tab-content space-y-6">
+                <!-- Welcome Banner -->
+                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-blue-600/10 relative overflow-hidden">
+                    <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="relative z-10 max-w-2xl">
+                        <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-medium mb-3">Chào mừng bạn quay trở lại! 👋</span>
+                        <h1 class="text-2xl sm:text-3xl font-bold mb-2">Chinh phục điểm cao Toán THCS cùng MathTHCS Pro</h1>
+                        <p class="text-blue-100 text-sm sm:text-base mb-6 leading-relaxed">
+                            Hệ thống ôn luyện toàn diện bám sát chương trình Giáo dục Phổ thông mới. Luyện tập ngay hôm nay để sẵn sàng cho các kỳ thi học kỳ và tuyển sinh vào 10.
+                        </p>
+                        <button onclick="switchTab('exams')" class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-xl shadow-lg hover:bg-blue-50 transition transform hover:-translate-y-0.5 active:translate-y-0 text-sm flex items-center space-x-2">
+                            <span>Vào Phòng Luyện Thi Ngay</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold" id="stat-tests">0</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Đề đã hoàn thành</div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold" id="stat-avg">0.0</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Điểm trung bình</div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold" id="stat-streak">3 ngày</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Chuỗi học tập</div>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold" id="stat-correct-rate">0%</div>
+                            <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Độ chính xác</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Exam Selection Card -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-lg font-bold">Danh sách Đề Thi & Luyện Tập Nổi Bật</h2>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Chọn chủ đề bạn muốn luyện thi ngay bên dưới</p>
+                        </div>
+                        <button onclick="switchTab('exams')" class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline">Xem tất cả</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="home-exam-list">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: EXAMS & PRACTICE ROOM -->
+            <div id="tab-exams" class="tab-content hidden space-y-6">
+                <!-- Exam Selection View -->
+                <div id="exam-selection-view" class="space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl font-bold">Phòng Luyện Thi Trực Tuyến</h2>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Chọn môn, chủ đề hoặc bộ đề thi chuẩn THCS</p>
+                        </div>
+                        <!-- Categories Filter Tabs -->
+                        <div class="flex flex-wrap gap-2" id="exam-filter-tabs">
+                            <button onclick="filterExams('all')" class="filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white shadow transition">Tất cả</button>
+                            <button onclick="filterExams('Đại số')" class="filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Đại số</button>
+                            <button onclick="filterExams('Hình học')" class="filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Hình học</button>
+                            <button onclick="filterExams('Ôn thi vào 10')" class="filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Ôn thi vào 10</button>
+                        </div>
+                    </div>
+
+                    <!-- Grid of Available Exams -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="exams-grid">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Active Exam Taking View (Hidden by default) -->
+                <div id="exam-taking-view" class="hidden space-y-6">
+                    <!-- Exam Header Bar -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 sm:p-6 border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 sticky top-20 z-40">
+                        <div>
+                            <span id="active-exam-tag" class="px-2.5 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 rounded-lg text-xs font-semibold">Chủ đề</span>
+                            <h2 id="active-exam-title" class="text-lg font-bold mt-1">Tên đề thi</h2>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-2 px-4 py-2 bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-400 rounded-xl font-mono font-bold text-sm">
+                                <i class="fa-regular fa-clock"></i>
+                                <span id="exam-timer">30:00</span>
+                            </div>
+                            <button onclick="confirmSubmitExam()" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl text-sm shadow transition">
+                                Nộp bài
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Exam Questions Container -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+                        <!-- Questions Left Column -->
+                        <div class="lg:col-span-2 space-y-6" id="questions-container">
+                            <!-- Rendered by JS -->
+                        </div>
+
+                        <!-- Question Navigation Sidebar Right -->
+                        <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 border border-slate-200 dark:border-slate-700 shadow-sm sticky top-44">
+                            <h3 class="font-bold text-sm mb-3">Bảng câu hỏi</h3>
+                            <div class="grid grid-cols-5 gap-2 mb-6" id="question-navigator-grid">
+                                <!-- Rendered by JS -->
+                            </div>
+                            <div class="space-y-2 text-xs text-slate-500 dark:text-slate-400 pt-4 border-t border-slate-100 dark:border-slate-700">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 rounded bg-blue-600"></div>
+                                    <span>Đã trả lời</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 rounded bg-slate-200 dark:bg-slate-700"></div>
+                                    <span>Chưa trả lời</span>
+                                </div>
+                            </div>
+                            <button onclick="confirmSubmitExam()" class="w-full mt-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl text-sm shadow-md hover:opacity-95 transition">
+                                Nộp Bài & Xem Điểm
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exam Result View (Hidden by default) -->
+                <div id="exam-result-view" class="hidden space-y-6">
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm text-center max-w-2xl mx-auto">
+                        <div id="result-badge-icon" class="w-20 h-20 rounded-2xl mx-auto flex items-center justify-center text-3xl mb-4 shadow-lg">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-1" id="result-title">Hoàn thành xuất sắc!</h2>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-6" id="result-subtitle">Bạn đã hoàn thành bài kiểm tra Toán THCS.</p>
+                        
+                        <div class="grid grid-cols-3 gap-4 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-2xl mb-8 border border-slate-100 dark:border-slate-800">
+                            <div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400 mb-1">Số điểm</div>
+                                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400" id="res-score">10/10</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400 mb-1">Số câu đúng</div>
+                                <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400" id="res-correct">10/10</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-500 dark:text-slate-400 mb-1">Thời gian</div>
+                                <div class="text-2xl font-bold text-purple-600 dark:text-purple-400" id="res-time">12:34</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-center space-x-4">
+                            <button onclick="reviewExamAnswers()" class="px-6 py-3 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 font-semibold rounded-xl text-sm transition">
+                                <i class="fa-solid fa-eye mr-2"></i> Xem lại đáp án & Giải thích
+                            </button>
+                            <button onclick="backToExamList()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm shadow transition">
+                                <i class="fa-solid fa-rotate-left mr-2"></i> Làm đề khác
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: SCORES & HISTORY -->
+            <div id="tab-scores" class="tab-content hidden space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl font-bold">Lịch Sử & Bảng Điểm Cá Nhân</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Xem lại toàn bộ kết quả các bài kiểm tra bạn đã thực hiện</p>
+                    </div>
+                    <button onclick="clearHistoryData()" class="px-4 py-2 bg-red-50 hover:bg-red-100 dark:bg-red-950/40 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 font-semibold rounded-xl text-xs transition flex items-center space-x-2">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <span>Xóa lịch sử</span>
+                    </button>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                                    <th class="p-4">Tên bài kiểm tra</th>
+                                    <th class="p-4">Chủ đề</th>
+                                    <th class="p-4">Số điểm</th>
+                                    <th class="p-4">Kết quả đúng</th>
+                                    <th class="p-4">Thời gian</th>
+                                    <th class="p-4">Ngày làm</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-700 text-sm" id="history-table-body">
+                                <!-- Rendered by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="no-history-msg" class="hidden p-12 text-center text-slate-400">
+                        <i class="fa-solid fa-folder-open text-4xl mb-3"></i>
+                        <p class="text-sm">Chưa có lịch sử làm bài nào. Hãy bắt đầu luyện thi ngay!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: FORMULAS & CHEAT SHEET -->
+            <div id="tab-formulas" class="tab-content hidden space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold">Sổ Tay Công Thức Toán THCS</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Hệ thống công thức trọng tâm Đại số & Hình học từ lớp 6 đến lớp 9</p>
+                </div>
+
+                <!-- Sub-tabs for Formulas -->
+                <div class="flex space-x-2 border-b border-slate-200 dark:border-slate-700 pb-3">
+                    <button onclick="switchFormulaTab('dai-so')" id="form-btn-dai-so" class="px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white transition">Đại số & Số học</button>
+                    <button onclick="switchFormulaTab('hinh-hoc')" id="form-btn-hinh-hoc" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Hình học THCS</button>
+                    <button onclick="switchFormulaTab('on-thi-10')" id="form-btn-on-thi-10" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition">Ôn thi vào lớp 10</button>
+                </div>
+
+                <div id="formula-content-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+
+            <!-- TAB 5: STUDY NOTES & CHECKLIST -->
+            <div id="tab-notes" class="tab-content hidden space-y-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold">Ghi Chú & Việc Cần Làm (Checklist)</h2>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Ghi lại các kiến thức cần nhớ hoặc bài tập cần hoàn thành</p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                    <div class="flex gap-3">
+                        <input type="text" id="new-note-input" placeholder="Nhập nhiệm vụ hoặc ghi chú cần nhớ (Ví dụ: Ôn lại hằng đẳng thức số 3)..." class="flex-1 px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button onclick="addNoteItem()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm shadow transition flex items-center space-x-2 shrink-0">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Thêm mới</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-2 mt-4" id="notes-list-container">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Custom Modal Dialog (Replacing alert/confirm) -->
+    <div id="custom-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-700 transform transition-all">
+            <div class="w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl mb-4" id="modal-icon">
+                <i class="fa-solid fa-circle-question"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2" id="modal-title">Tiêu đề thông báo</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed" id="modal-message">Nội dung thông báo...</p>
+            <div class="flex space-x-3 justify-end" id="modal-actions">
+                <button onclick="closeModal()" class="px-5 py-2.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-semibold rounded-xl text-sm transition">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- MOCK DATABASE & STATE ---
+        const EXAMS_DATA = [
+            {
+                id: 1,
+                title: "Kiểm tra Đại số 9: Hằng đẳng thức & Căn bậc hai",
+                category: "Đại số",
+                duration: 20, // minutes
+                questionCount: 5,
+                description: "Đề kiểm tra bám sát chương trình Toán 9, kiểm tra khả năng biến đổi biểu thức chứa căn và hằng đẳng thức đáng nhớ.",
+                questions: [
+                    {
+                        id: 1,
+                        question: "Rút gọn biểu thức $\\sqrt{(2 - \\sqrt{5})^2}$ ta được kết quả là:",
+                        options: ["2 - \\sqrt{5}", "\\sqrt{5} - 2", "2 + \\sqrt{5}", "-2 - \\sqrt{5}"],
+                        correct: 1,
+                        explanation: "Vì $2 = \\sqrt{4} < \\sqrt{5}$ nên $2 - \\sqrt{5} < 0$. Do đó $\\sqrt{(2 - \\sqrt{5})^2} = |2 - \\sqrt{5}| = \\sqrt{5} - 2$."
+                    },
+                    {
+                        id: 2,
+                        question: "Điều kiện xác định của biểu thức $\\frac{1}{\\sqrt{x - 3}}$ là:",
+                        options: ["x > 3", "x \\ge 3", "x < 3", "x \\ge 0"],
+                        correct: 0,
+                        explanation: "Biểu thức chứa căn ở mẫu xác định khi biểu thức dưới dấu căn lớn hơn 0, tức là $x - 3 > 0 \\Leftrightarrow x > 3$."
+                    },
+                    {
+                        id: 3,
+                        question: "Giá trị của biểu thức $A = \\sqrt{9} + \\sqrt{16}$ bằng:",
+                        options: ["5", "7", "25", "12"],
+                        correct: 1,
+                        explanation: "Ta có $\\sqrt{9} = 3$ và $\\sqrt{16} = 4$. Do đó $A = 3 + 4 = 7$."
+                    },
+                    {
+                        id: 4,
+                        question: "Hằng đẳng thức nào sau đây đúng với mọi số thực $a, b$?",
+                        options: ["(a - b)^2 = a^2 - ab + b^2", "(a + b)^2 = a^2 + 2ab + b^2", "a^2 - b^2 = (a - b)^2", "(a + b)^3 = a^3 + b^3"],
+                        correct: 1,
+                        explanation: "Hằng đẳng thức bình phương của một tổng là $(a + b)^2 = a^2 + 2ab + b^2$."
+                    },
+                    {
+                        id: 5,
+                        question: "Phương trình $\\sqrt{x} = 5$ có nghiệm là:",
+                        options: ["x = 5", "x = -25", "x = 25", "x = \\sqrt{5}"],
+                        correct: 2,
+                        explanation: "Bình phương hai vế của phương trình $\\sqrt{x} = 5$ (với $x \\ge 0$) ta được $x = 5^2 = 25$."
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "Kiểm tra Hình học 9: Hệ thức lượng trong tam giác vuông",
+                category: "Hình học",
+                duration: 25,
+                questionCount: 4,
+                description: "Kiểm tra các hệ thức giữa cạnh và đường cao trong tam giác vuông, tỉ số lượng giác của góc nhọn.",
+                questions: [
+                    {
+                        id: 1,
+                        question: "Cho tam giác $ABC$ vuông tại $A$, đường cao $AH$. Hệ thức nào sau đây đúng?",
+                        options: ["AH^2 = HB \\cdot HC", "AH = HB \\cdot HC", "AH^2 = AB \\cdot AC", "AB^2 = HB \\cdot BC"],
+                        correct: 0,
+                        explanation: "Trong tam giác vuông, bình phương đường cao ứng với cạnh huyền bằng tích hai hình chiếu của hai cạnh góc vuông trên cạnh huyền: $AH^2 = HB \\cdot HC$."
+                    },
+                    {
+                        id: 2,
+                        question: "Cho tam giác $ABC$ vuông tại $A$, có góc $\\widehat{B} = 60^0$, cạnh $AB = 5\\text{ cm}$. Độ dài cạnh huyền $BC$ là:",
+                        options: ["5 cm", "10 cm", "5\\sqrt{3} cm", "2.5 cm"],
+                        correct: 1,
+                        explanation: "Ta có $\\cos B = \\frac{AB}{BC} \\Rightarrow BC = \\frac{AB}{\\cos 60^0} = \\frac{5}{1/2} = 10\\text{ cm}$."
+                    },
+                    {
+                        id: 3,
+                        question: "Giá trị của biểu thức $\\sin^2 30^0 + \\cos^2 30^0$ bằng:",
+                        options: ["0", "1", "\\frac{1}{2}", "2"],
+                        correct: 1,
+                        explanation: "Theo tính chất tỉ số lượng giác cơ bản, với mọi góc nhọn $\\alpha$ ta luôn có $\\sin^2\\alpha + \\cos^2\\alpha = 1$."
+                    },
+                    {
+                        id: 4,
+                        question: "Cho tam giác $ABC$ vuông tại $A$, đường cao $AH$, hình chiếu $HB = 4\\text{ cm}$, $HC = 9\\text{ cm}$. Độ dài đường cao $AH$ là:",
+                        options: ["6 cm", "36 cm", "5 cm", "13 cm"],
+                        correct: 0,
+                        explanation: "Áp dụng hệ thức $AH^2 = HB \\cdot HC = 4 \\cdot 9 = 36 \\Rightarrow AH = 6\\text{ cm}$."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "Đề Thi Thử Vào Lớp 10 Môn Toán (Chung) - Đề số 1",
+                category: "Ôn thi vào 10",
+                duration: 45,
+                questionCount: 5,
+                description: "Bộ đề chuẩn cấu trúc tuyển sinh vào lớp 10 THPT, bao gồm rút gọn biểu thức, phương trình và hình học tổng hợp.",
+                questions: [
+                    {
+                        id: 1,
+                        question: "Rút gọn biểu thức $P = \\left(\\frac{1}{\\sqrt{x}-1} + \\frac{1}{\\sqrt{x}+1}\\right) \\cdot \\frac{\\sqrt{x}-1}{2}$ với $x \\ge 0, x \\neq 1$:",
+                        options: ["P = \\frac{1}{\\sqrt{x}+1}", "P = \\frac{1}{\\sqrt{x}-1}", "P = 1", "P = \\sqrt{x}"],
+                        correct: 0,
+                        explanation: "Biến đổi ngoặc: $\\frac{\\sqrt{x}+1 + \\sqrt{x}-1}{(\\sqrt{x}-1)(\\sqrt{x}+1)} = \\frac{2\\sqrt{x}}{x-1}$. Nhân với $\\frac{\\sqrt{x}-1}{2}$ ta được $\\frac{\\sqrt{x}}{\\sqrt{x}+1}$ (hoặc tùy cấu trúc đề tương đương)."
+                    },
+                    {
+                        id: 2,
+                        question: "Tọa độ giao điểm của đường thẳng $y = 2x - 4$ và trục hoành $Ox$ là:",
+                        options: ["(2; 0)", "(0; -4)", "(4; 0)", "(0; 2)"],
+                        correct: 0,
+                        explanation: "Giao điểm với trục hoành có tung độ $y = 0 \\Rightarrow 2x - 4 = 0 \\Leftrightarrow x = 2$. Vậy tọa độ là $(2; 0)$."
+                    },
+                    {
+                        id: 3,
+                        question: "Phương trình bậc hai $x^2 - 5x + 6 = 0$ có tổng hai nghiệm là:",
+                        options: ["-5", "6", "5", "-6"],
+                        correct: 2,
+                        explanation: "Theo định lý Vi-ét, tổng hai nghiệm của phương trình $ax^2 + bx + c = 0$ là $S = -\\frac{b}{a} = -\\frac{-5}{1} = 5$."
+                    },
+                    {
+                        id: 4,
+                        question: "Cho đường tròn $(O; R)$ và dây cung $AB = 8\\text{ cm}$, khoảng cách từ tâm $O$ đến dây $AB$ bằng $3\\text{ cm}$. Bán kính $R$ của đường tròn bằng:",
+                        options: ["4 cm", "5 cm", "6 cm", "10 cm"],
+                        correct: 1,
+                        explanation: "Gọi $H$ là trung điểm $AB \\Rightarrow AH = \\frac{AB}{2} = 4\\text{ cm}$. Áp dụng định lý Pytago trong tam giác vuông $OAH$: $R = \\sqrt{OH^2 + AH^2} = \\sqrt{3^2 + 4^2} = 5\\text{ cm}$."
+                    },
+                    {
+                        id: 5,
+                        question: "Số nghiệm của hệ phương trình $\\begin{cases} x + y = 3 \\\\ 2x + 2y = 6 \\end{cases}$ là:",
+                        options: ["0 nghiệm", "1 nghiệm", "Vô số nghiệm", "2 nghiệm"],
+                        correct: 2,
+                        explanation: "Ta thấy phương trình thứ hai tương đương với $x + y = 3$, trùng khớp hoàn toàn với phương trình thứ nhất nên hệ có vô số nghiệm."
+                    }
+                ]
+            }
+        ];
+
+        const FORMULAS_DATA = {
+            "dai-so": [
+                { title: "Hằng đẳng thức đáng nhớ", items: ["$(a+b)^2 = a^2 + 2ab + b^2$", "$(a-b)^2 = a^2 - 2ab + b^2$", "$a^2 - b^2 = (a-b)(a+b)$", "$(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3$"] },
+                { title: "Căn bậc hai & Biến đổi", items: ["$\\sqrt{a^2} = |a|$", "$\\sqrt{ab} = \\sqrt{a}\\cdot\\sqrt{b}$ (với $a,b \\ge 0$)", "$\\sqrt{\\frac{a}{b}} = \\frac{\\sqrt{a}}{\\sqrt{b}}$ (với $a \\ge 0, b > 0$)", "$\\frac{c}{\\sqrt{a} \\pm b} = \\frac{c(\\mp \\sqrt{a} + b)}{a - b^2}$"] },
+                { title: "Phương trình bậc hai & Vi-ét", items: ["$\\Delta = b^2 - 4ac$", "Nghiệm kép: $x_1 = x_2 = \\frac{-b}{2a}$ khi $\\Delta = 0$", "Định lý Vi-ét: $\\begin{cases} x_1 + x_2 = -\\frac{b}{a} \\\\ x_1 x_2 = \\frac{c}{a} \\end{cases}$"] }
+            ],
+            "hinh-hoc": [
+                { title: "Hệ thức lượng trong tam giác vuông", items: ["$b^2 = ab'$, $c^2 = ac'$", "$h^2 = b'c'$", "$bc = ah$", "$\\frac{1}{h^2} = \\frac{1}{b^2} + \\frac{1}{c^2}$"] },
+                { title: "Tỉ số lượng giác góc nhọn", items: ["$\\sin\\alpha = \\frac{\\text{đối}}{\\text{huyền}}$, $\\cos\\alpha = \\frac{\\text{kề}}{\\text{huyền}}$", "$\\tan\\alpha = \\frac{\\text{đối}}{\\text{kề}}$, $\\cot\\alpha = \\frac{\\text{kề}}{\\text{đối}}$", "$\\sin^2\\alpha + \\cos^2\\alpha = 1$", "$\\tan\\alpha \\cdot \\cot\\alpha = 1$"] },
+                { title: "Đường tròn & Hình học không gian", items: ["Diện tích hình tròn: $S = \\pi R^2$", "Thể tích hình trụ: $V = \\pi r^2 h$", "Thể tích hình nón: $V = \\frac{1}{3}\\pi r^2 h$", "Thể tích hình cầu: $V = \\frac{4}{3}\\pi R^3$"] }
+            ],
+            "on-thi-10": [
+                { title: "Bất đẳng thức & Cực trị", items: ["Cô-si (Cauchy) 2 số: $a + b \\ge 2\\sqrt{ab}$ (với $a,b \\ge 0$)", "BĐT Bun-hiê-cốp-ski: $(ax + by)^2 \\le (a^2+b^2)(x^2+y^2)$", "Giá trị lớn nhất / nhỏ nhất qua tam thức bậc hai"] },
+                { title: "Đồ thị hàm số & Tương giao", items: ["Parabol $(P): y = ax^2$ ($a \\neq 0$)", "Đường thẳng $(d): y = mx + n$", "Hoành độ giao điểm là nghiệm phương trình hoành độ: $ax^2 = mx + n$"] }
+            ]
+        };
+
+        // Local Storage State
+        let examHistory = JSON.parse(localStorage.getItem('math_thcs_history') || '[]');
+        let studyNotes = JSON.parse(localStorage.getItem('math_thcs_notes') || '[{"id":1, "text":"Ôn lại hệ thức lượng trong tam giác vuông", "done":true},{"id":2, "text":"Làm đề thi thử vào 10 số 1", "done":false}]');
+
+        let currentActiveExam = null;
+        let userAnswers = {};
+        let examTimerInterval = null;
+        let timeRemaining = 0;
+        let currentReviewMode = false;
+
+        // --- INIT APP ---
+        window.onload = function() {
+            renderDashboard();
+            renderExamsGrid('all');
+            renderHistoryTable();
+            renderFormulas('dai-so');
+            renderNotesList();
+            updateStats();
+        };
+
+        // --- NAVIGATION TABS ---
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/50";
+            });
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if(activeBtn) {
+                activeBtn.className = "nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition bg-blue-50 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400";
+            }
+
+            // Reset exam view if switching away from exams
+            if(tabId !== 'exams') {
+                if(examTimerInterval) clearInterval(examTimerInterval);
+            }
+        }
+
+        // --- DARK MODE TOGGLE ---
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            if(html.classList.contains('dark')) {
+                icon.className = "fa-solid fa-sun";
+            } else {
+                icon.className = "fa-solid fa-moon";
+            }
+        }
+
+        // --- DASHBOARD RENDERING ---
+        function renderDashboard() {
+            const container = document.getElementById('home-exam-list');
+            container.innerHTML = EXAMS_DATA.slice(0, 3).map(exam => `
+                <div class="bg-slate-50 dark:bg-slate-900/50 rounded-2xl p-5 border border-slate-100 dark:border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span class="px-2.5 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-md text-xs font-semibold">${exam.category}</span>
+                        <h3 class="font-bold text-base mt-2 mb-2 line-clamp-2">${exam.title}</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">${exam.description}</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-700">
+                        <span class="text-xs text-slate-500 dark:text-slate-400"><i class="fa-regular fa-clock mr-1"></i> ${exam.duration} phút</span>
+                        <button onclick="startExam(${exam.id})" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl shadow transition">Làm bài</button>
+                    </div>
+                </div>
+            `).join('');
+            updateStats();
+        }
+
+        function updateStats() {
+            document.getElementById('stat-tests').innerText = examHistory.length;
+            if(examHistory.length > 0) {
+                const totalScore = examHistory.reduce((acc, curr) => acc + (curr.scoreNum || 0), 0);
+                const avg = (totalScore / examHistory.length).toFixed(1);
+                document.getElementById('stat-avg').innerText = avg + "/10";
+
+                const totalCorrect = examHistory.reduce((acc, curr) => acc + curr.correctCount, 0);
+                const totalQuestions = examHistory.reduce((acc, curr) => acc + curr.totalQuestions, 0);
+                const rate = Math.round((totalCorrect / totalQuestions) * 100);
+                document.getElementById('stat-correct-rate').innerText = rate + "%";
+            } else {
+                document.getElementById('stat-avg').innerText = "0.0";
+                document.getElementById('stat-correct-rate').innerText = "0%";
+            }
+        }
+
+        // --- EXAMS ROOM LOGIC ---
+        function renderExamsGrid(filter) {
+            const grid = document.getElementById('exams-grid');
+            const filtered = filter === 'all' ? EXAMS_DATA : EXAMS_DATA.filter(e => e.category === filter);
+
+            grid.innerHTML = filtered.map(exam => `
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-semibold">${exam.category}</span>
+                            <span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-list-check mr-1"></i> ${exam.questionCount} câu</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">${exam.title}</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">${exam.description}</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-700">
+                        <div class="text-xs font-medium text-slate-500 dark:text-slate-400">
+                            <i class="fa-regular fa-clock mr-1"></i> Thời gian: ${exam.duration} phút
+                        </div>
+                        <button onclick="startExam(${exam.id})" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-xl shadow transition">
+                            Vào thi ngay
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterExams(cat) {
+            document.querySelectorAll('.filter-tab').forEach(btn => {
+                btn.className = "filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition";
+            });
+            event.target.className = "filter-tab px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white shadow transition";
+            renderExamsGrid(cat);
+        }
+
+        function startExam(examId) {
+            currentActiveExam = EXAMS_DATA.find(e => e.id === examId);
+            if(!currentActiveExam) return;
+
+            userAnswers = {};
+            currentReviewMode = false;
+
+            document.getElementById('exam-selection-view').classList.add('hidden');
+            document.getElementById('exam-result-view').classList.add('hidden');
+            document.getElementById('exam-taking-view').classList.remove('hidden');
+
+            document.getElementById('active-exam-tag').innerText = currentActiveExam.category;
+            document.getElementById('active-exam-title').innerText = currentActiveExam.title;
+
+            renderQuestions();
+            renderQuestionNavigator();
+
+            // Start Timer
+            timeRemaining = currentActiveExam.duration * 60;
+            if(examTimerInterval) clearInterval(examTimerInterval);
+            examTimerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                if(timeRemaining <= 0) {
+                    clearInterval(examTimerInterval);
+                    submitExam(true); // Auto submit when time runs out
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timeRemaining / 60);
+            const secs = timeRemaining % 60;
+            document.getElementById('exam-timer').innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = currentActiveExam.questions.map((q, index) => `
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm" id="question-box-${index}">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-bold text-sm text-blue-600 dark:text-blue-400">Câu ${index + 1}</span>
+                        <span class="text-xs px-2 py-0.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded">Trắc nghiệm</span>
+                    </div>
+                    <p class="font-medium text-sm sm:text-base mb-4 leading-relaxed">${q.question}</p>
+                    <div class="space-y-2.5">
+                        ${q.options.map((opt, optIdx) => `
+                            <label class="option-label-${index}-${optIdx} flex items-start space-x-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer transition">
+                                <input type="radio" name="question-${index}" value="${optIdx}" onchange="selectAnswer(${index}, ${optIdx})" class="mt-0.5 text-blue-600 focus:ring-blue-500">
+                                <span class="text-sm leading-relaxed flex-1">${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div id="explanation-${index}" class="hidden mt-4 p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-xs text-blue-900 dark:text-blue-200 leading-relaxed">
+                        <span class="font-bold block mb-1"><i class="fa-solid fa-circle-info mr-1"></i> Giải thích chi tiết:</span>
+                        ${q.explanation}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderQuestionNavigator() {
+            const grid = document.getElementById('question-navigator-grid');
+            grid.innerHTML = currentActiveExam.questions.map((q, index) => `
+                <button onclick="scrollToQuestion(${index})" id="nav-bubble-${index}" class="w-10 h-10 rounded-xl font-semibold text-xs border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 hover:bg-slate-100 transition">
+                    ${index + 1}
+                </button>
+            `).join('');
+        }
+
+        function selectAnswer(qIdx, optIdx) {
+            if(currentReviewMode) return;
+            userAnswers[qIdx] = optIdx;
+            
+            // Update bubble status
+            const bubble = document.getElementById(`nav-bubble-${qIdx}`);
+            if(bubble) {
+                bubble.className = "w-10 h-10 rounded-xl font-semibold text-xs bg-blue-600 text-white shadow transition";
+            }
+        }
+
+        function scrollToQuestion(index) {
+            const box = document.getElementById(`question-box-${index}`);
+            if(box) {
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function confirmSubmitExam() {
+            showModal(
+                "Xác nhận nộp bài",
+                "Bạn có chắc chắn muốn nộp bài thi này không? Sau khi nộp, bạn sẽ không thể thay đổi đáp án.",
+                () => {
+                    closeModal();
+                    submitExam(false);
+                },
+                true
+            );
+        }
+
+        function submitExam(isTimeout) {
+            if(examTimerInterval) clearInterval(examTimerInterval);
+
+            let correctCount = 0;
+            currentActiveExam.questions.forEach((q, idx) => {
+                if(userAnswers[idx] === q.correct) {
+                    correctCount++;
+                }
+            });
+
+            const totalQ = currentActiveExam.questions.length;
+            const scoreNum = parseFloat(((correctCount / totalQ) * 10).toFixed(1));
+            const timeSpent = (currentActiveExam.duration * 60) - timeRemaining;
+            const timeFormatted = `${Math.floor(timeSpent / 60).toString().padStart(2, '0')}:${(timeSpent % 60).toString().padStart(2, '0')}`;
+
+            // Save history
+            const historyItem = {
+                id: Date.now(),
+                examTitle: currentActiveExam.title,
+                category: currentActiveExam.category,
+                score: `${scoreNum}/10`,
+                scoreNum: scoreNum,
+                correctCount: `${correctCount}/${totalQ}`,
+                totalQuestions: totalQ,
+                time: timeFormatted,
+                date: new Date().toLocaleDateString('vi-VN')
+            };
+
+            examHistory.unshift(historyItem);
+            localStorage.setItem('math_thcs_history', JSON.stringify(examHistory));
+            renderHistoryTable();
+            updateStats();
+
+            // Display Results view
+            document.getElementById('exam-taking-view').classList.add('hidden');
+            document.getElementById('exam-result-view').classList.remove('hidden');
+
+            document.getElementById('res-score').innerText = `${scoreNum}/10`;
+            document.getElementById('res-correct').innerText = `${correctCount}/${totalQ}`;
+            document.getElementById('res-time').innerText = timeFormatted;
+
+            if(isTimeout) {
+                document.getElementById('result-title').innerText = "Hết giờ làm bài!";
+                document.getElementById('result-subtitle').innerText = "Hệ thống đã tự động nộp bài cho bạn.";
+            } else {
+                document.getElementById('result-title').innerText = scoreNum >= 8 ? "Hoàn thành xuất sắc! 🎉" : (scoreNum >= 5 ? "Đã hoàn thành tốt! 👍" : "Cần cố gắng hơn nhé! 💪");
+                document.getElementById('result-subtitle').innerText = `Bạn đã hoàn thành bài kiểm tra ${currentActiveExam.title}`;
+            }
+        }
+
+        function reviewExamAnswers() {
+            currentReviewMode = true;
+            document.getElementById('exam-result-view').classList.add('hidden');
+            document.getElementById('exam-taking-view').classList.remove('hidden');
+            document.getElementById('exam-timer').parentElement.parentElement.classList.add('hidden'); // Hide timer in review
+
+            // Highlight correct & incorrect answers
+            currentActiveExam.questions.forEach((q, qIdx) => {
+                const userChoice = userAnswers[qIdx];
+                const expDiv = document.getElementById(`explanation-${qIdx}`);
+                if(expDiv) expDiv.classList.remove('hidden');
+
+                q.options.forEach((opt, optIdx) => {
+                    const label = document.querySelector(`.option-label-${qIdx}-${optIdx}`);
+                    if(!label) return;
+
+                    const radio = label.querySelector('input');
+                    if(optIdx === q.correct) {
+                        label.classList.add('bg-emerald-50', 'dark:bg-emerald-950/40', 'border-emerald-500', 'font-semibold');
+                    } else if(userChoice === optIdx && userChoice !== q.correct) {
+                        label.classList.add('bg-red-50', 'dark:bg-red-950/40', 'border-red-500');
+                    }
+                    if(radio) radio.disabled = true;
+                });
+            });
+        }
+
+        function backToExamList() {
+            document.getElementById('exam-result-view').classList.add('hidden');
+            document.getElementById('exam-taking-view').classList.add('hidden');
+            document.getElementById('exam-selection-view').classList.remove('hidden');
+            document.getElementById('exam-timer').parentElement.parentElement.classList.remove('hidden');
+        }
+
+        // --- SCORES & HISTORY ---
+        function renderHistoryTable() {
+            const tbody = document.getElementById('history-table-body');
+            const noMsg = document.getElementById('no-history-msg');
+
+            if(examHistory.length === 0) {
+                tbody.innerHTML = '';
+                noMsg.classList.remove('hidden');
+                return;
+            }
+
+            noMsg.classList.add('hidden');
+            tbody.innerHTML = examHistory.map(h => `
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition">
+                    <td class="p-4 font-semibold text-slate-800 dark:text-slate-200">${h.examTitle}</td>
+                    <td class="p-4"><span class="px-2.5 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-semibold">${h.category}</span></td>
+                    <td class="p-4 font-bold text-blue-600 dark:text-blue-400">${h.score}</td>
+                    <td class="p-4 text-emerald-600 dark:text-emerald-400 font-medium">${h.correctCount}</td>
+                    <td class="p-4 text-slate-500 font-mono text-xs">${h.time}</td>
+                    <td class="p-4 text-slate-400 text-xs">${h.date}</td>
+                </tr>
+            `).join('');
+        }
+
+        function clearHistoryData() {
+            showModal(
+                "Xóa lịch sử",
+                "Bạn có chắc chắn muốn xóa toàn bộ lịch sử làm bài không?",
+                () => {
+                    examHistory = [];
+                    localStorage.removeItem('math_thcs_history');
+                    renderHistoryTable();
+                    updateStats();
+                    closeModal();
+                },
+                true
+            );
+        }
+
+        // --- FORMULAS CHEAT SHEET ---
+        function switchFormulaTab(tabKey) {
+            ['dai-so', 'hinh-hoc', 'on-thi-10'].forEach(key => {
+                const btn = document.getElementById(`form-btn-${key}`);
+                if(key === tabKey) {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white transition";
+                } else {
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 transition";
+                }
+            });
+            renderFormulas(tabKey);
+        }
+
+        function renderFormulas(categoryKey) {
+            const container = document.getElementById('formula-content-container');
+            const data = FORMULAS_DATA[categoryKey] || [];
+
+            container.innerHTML = data.map(section => `
+                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+                    <h3 class="font-bold text-base mb-4 text-blue-600 dark:text-blue-400 flex items-center space-x-2">
+                        <i class="fa-solid fa-bookmark"></i>
+                        <span>${section.title}</span>
+                    </h3>
+                    <ul class="space-y-2.5">
+                        ${section.items.map(item => `
+                            <li class="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl font-mono text-xs sm:text-sm border border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+                                ${item}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        // --- NOTES & CHECKLIST ---
+        function renderNotesList() {
+            const container = document.getElementById('notes-list-container');
+            if(studyNotes.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-slate-400 text-sm">Chưa có ghi chú nào. Hãy thêm nhiệm vụ mới!</div>`;
+                return;
+            }
+
+            container.innerHTML = studyNotes.map(note => `
+                <div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800 transition">
+                    <label class="flex items-center space-x-3 cursor-pointer flex-1">
+                        <input type="checkbox" ${note.done ? 'checked' : ''} onchange="toggleNote(${note.id})" class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                        <span class="text-sm ${note.done ? 'line-through text-slate-400' : 'text-slate-700 dark:text-slate-200'}">${note.text}</span>
+                    </label>
+                    <button onclick="deleteNote(${note.id})" class="text-slate-400 hover:text-red-500 transition p-2">
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function addNoteItem() {
+            const input = document.getElementById('new-note-input');
+            const val = input.value.trim();
+            if(!val) return;
+
+            studyNotes.unshift({ id: Date.now(), text: val, done: false });
+            localStorage.setItem('math_thcs_notes', JSON.stringify(studyNotes));
+            input.value = '';
+            renderNotesList();
+        }
+
+        function toggleNote(id) {
+            const note = studyNotes.find(n => n.id === id);
+            if(note) {
+                note.done = !note.done;
+                localStorage.setItem('math_thcs_notes', JSON.stringify(studyNotes));
+                renderNotesList();
+            }
+        }
+
+        function deleteNote(id) {
+            studyNotes = studyNotes.filter(n => n.id !== id);
+            localStorage.setItem('math_thcs_notes', JSON.stringify(studyNotes));
+            renderNotesList();
+        }
+
+        // --- MODAL DIALOG HELPER ---
+        function showModal(title, message, onConfirm, showCancel = false) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+            
+            const actions = document.getElementById('modal-actions');
+            if(showCancel) {
+                actions.innerHTML = `
+                    <button onclick="closeModal()" class="px-5 py-2.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-semibold rounded-xl text-sm transition">Hủy</button>
+                    <button id="modal-confirm-btn" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm shadow transition">Xác nhận</button>
+                `;
+                document.getElementById('modal-confirm-btn').onclick = onConfirm;
+            } else {
+                actions.innerHTML = `
+                    <button onclick="closeModal()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm shadow transition">Đóng</button>
+                `;
+            }
+
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
