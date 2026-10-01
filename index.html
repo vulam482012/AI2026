@@ -11,10 +11,7 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#4f46e5',
-                        secondary: '#06b6d4',
-                    }
+                    colors: { primary: '#4f46e5', secondary: '#06b6d4' }
                 }
             }
         }
@@ -38,14 +35,14 @@
                 
                 <!-- Nav Links -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <button onclick="switchTab('home')" class="nav-btn text-indigo-600 font-medium transition hover:text-indigo-600 px-2 py-1">Trang chủ</button>
-                    <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Bài giảng</button>
-                    <button onclick="switchTab('exam')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Thi thử</button>
-                    <button onclick="switchTab('scores')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Bảng điểm</button>
-                    <button onclick="switchTab('formulas')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Sổ tay</button>
-                    <button onclick="switchTab('notes')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Ghi chú</button>
+                    <button onclick="switchTab('home')" class="nav-btn text-indigo-600 font-medium transition px-2 py-1">Trang chủ</button>
+                    <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Bài giảng</button>
+                    <button onclick="switchTab('exam')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Thi thử</button>
+                    <button onclick="switchTab('scores')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Bảng điểm</button>
+                    <button onclick="switchTab('formulas')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Sổ tay</button>
+                    <button onclick="switchTab('notes')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Bảng thông báo / Ghi chú</button>
                     <div id="teacherNavContainer" class="hidden">
-                        <button onclick="switchTab('teacher')" class="nav-btn text-rose-600 font-bold transition hover:text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg border border-rose-200">
+                        <button onclick="switchTab('teacher')" class="nav-btn text-rose-600 font-bold transition bg-rose-50 px-3 py-1.5 rounded-lg border border-rose-200">
                             <i class="fa-solid fa-chalkboard-user mr-1"></i> Quản lý GV
                         </button>
                     </div>
@@ -71,42 +68,32 @@
         <!-- 1. HOME TAB -->
         <div id="tab-home" class="tab-content space-y-8">
             <div class="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
-                <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-10 translate-y-10">
-                    <i class="fa-solid fa-square-root-variable text-[250px]"></i>
-                </div>
                 <div class="max-w-2xl relative z-10">
                     <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Ôn thi Vào 10 & Học sinh giỏi</span>
                     <h1 class="text-3xl md:text-5xl font-extrabold mt-4 mb-4 leading-tight">Chinh phục Toán học THCS dễ dàng cùng MathOnline</h1>
-                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng học tập thông minh cung cấp video bài giảng, đề thi thử, sổ tay công thức và quản lý điểm chi tiết.</p>
+                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng học tập thông minh cung cấp video bài giảng, phòng thi chống gian lận, sổ tay công thức và quản lý điểm chi tiết.</p>
                     <div class="flex flex-wrap gap-4">
-                        <button onclick="switchTab('lectures')" class="bg-white text-indigo-600 font-bold px-6 py-3 rounded-xl shadow hover:bg-indigo-50 transition">Xem bài giảng ngay</button>
+                        <button onclick="switchTab('lectures')" class="bg-white text-indigo-600 font-bold px-6 py-3 rounded-xl shadow hover:bg-indigo-50 transition">Xem bài giảng</button>
                         <button onclick="switchTab('exam')" class="border border-white/40 text-white font-medium px-6 py-3 rounded-xl hover:bg-white/10 transition">Vào phòng thi thử</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Features Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('lectures')">
-                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-video"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-video"></i></div>
                     <h3 class="font-bold text-lg mb-2">Bài giảng trực tuyến</h3>
-                    <p class="text-slate-600 text-sm">Kho video bài giảng và tài liệu học tập chi tiết từng chuyên đề Đại số & Hình học THCS do giáo viên biên soạn.</p>
+                    <p class="text-slate-600 text-sm">Kho video bài giảng và tài liệu học tập chi tiết từng chuyên đề Đại số & Hình học THCS.</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('exam')">
-                    <div class="w-12 h-12 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2">Đề thi thử thông minh</h3>
-                    <p class="text-slate-600 text-sm">Hệ thống trắc nghiệm phong phú bám sát chương trình lớp 9 và cấu trúc thi vào 10 chuyên.</p>
+                    <div class="w-12 h-12 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3 class="font-bold text-lg mb-2">Phòng thi chống gian lận</h3>
+                    <p class="text-slate-600 text-sm">Chế độ toàn màn hình, tự động nộp bài khi chuyển tab hoặc thoát màn hình.</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('scores')">
-                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-chart-line"></i></div>
                     <h3 class="font-bold text-lg mb-2">Theo dõi bảng điểm</h3>
-                    <p class="text-slate-600 text-sm">Lưu trữ lịch sử làm bài, chấm điểm tự động và xem lại lời giải chi tiết cho từng câu hỏi.</p>
+                    <p class="text-slate-600 text-sm">Lưu trữ lịch sử làm bài, chấm điểm tự động và xem lại lời giải chi tiết.</p>
                 </div>
             </div>
         </div>
@@ -116,13 +103,10 @@
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 class="text-2xl font-bold text-slate-800"><i class="fa-solid fa-video text-indigo-600 mr-2"></i> Kho Bài Giảng & Tài Liệu Toán THCS</h2>
-                    <p class="text-slate-500 text-sm mt-1">Chọn chuyên đề bài giảng để bắt đầu học tập và ôn luyện.</p>
+                    <p class="text-slate-500 text-sm mt-1">Chọn chuyên đề bài giảng để bắt đầu học tập.</p>
                 </div>
-                <div class="w-full md:w-auto">
-                    <input type="text" id="searchLectureInput" oninput="renderLectures()" placeholder="Tìm kiếm bài giảng..." class="w-full md:w-64 border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                </div>
+                <input type="text" id="searchLectureInput" oninput="renderLectures()" placeholder="Tìm kiếm bài giảng..." class="w-full md:w-64 border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
             </div>
-            
             <div id="lecturesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
 
@@ -134,18 +118,15 @@
             <div id="lectureDetailContent" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6"></div>
         </div>
 
-        <!-- 4. EXAM TAB -->
+        <!-- 4. EXAM TAB (Phòng thi Fullscreen & Chống thoát) -->
         <div id="tab-exam" class="tab-content hidden space-y-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <div>
                     <h2 class="text-2xl font-bold text-slate-800">Phòng Thi Trực Tuyến Toán THCS</h2>
-                    <p class="text-slate-500 text-sm mt-1">Chọn đề thi phù hợp và bắt đầu làm bài. Hệ thống sẽ đếm ngược thời gian.</p>
+                    <p class="text-slate-500 text-sm mt-1">Lưu ý: Khi bắt đầu thi, hệ thống sẽ chuyển sang chế độ toàn màn hình. Thoát màn hình hoặc chuyển tab sẽ tự động nộp bài!</p>
                 </div>
                 <div class="mt-4 md:mt-0 flex gap-2">
-                    <select id="examSelect" class="border border-slate-300 rounded-xl px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        <option value="1">Đề số 1: Ôn tập Đại số & Hình học lớp 9 (15 phút)</option>
-                        <option value="2">Đề số 2: Luyện thi tuyển sinh 10 Chuyên Toán (20 phút)</option>
-                    </select>
+                    <select id="examSelect" class="border border-slate-300 rounded-xl px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></select>
                     <button onclick="startExam()" class="bg-indigo-600 text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-indigo-700 transition shadow-sm">Bắt đầu thi</button>
                 </div>
             </div>
@@ -156,16 +137,14 @@
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm sticky top-24 text-center">
                         <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Thời gian còn lại</span>
                         <div id="timerDisplay" class="text-3xl font-extrabold text-rose-600 my-2">15:00</div>
-                        <p class="text-xs text-slate-500 mb-6">Hãy hoàn thành trước khi hết giờ nhé!</p>
+                        <p class="text-xs text-rose-500 mb-6 font-medium">⚠️ Đang trong chế độ giám sát thi nghiêm ngặt</p>
                         <button onclick="submitExam()" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold hover:bg-emerald-700 transition shadow-sm">Nộp bài thi</button>
                     </div>
                 </div>
             </div>
             
             <div id="examResultBox" class="hidden bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center max-w-xl mx-auto space-y-4">
-                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto">
-                    <i class="fa-solid fa-check"></i>
-                </div>
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto"><i class="fa-solid fa-check"></i></div>
                 <h3 class="text-2xl font-bold">Nộp bài thành công!</h3>
                 <p id="scoreSummaryText" class="text-lg text-slate-600 font-medium"></p>
                 <div class="pt-4 flex justify-center gap-3">
@@ -231,37 +210,75 @@
             </div>
         </div>
 
-        <!-- 7. NOTES TAB -->
+        <!-- 7. NOTES TAB (Học sinh chỉ xem, GV thêm sửa xóa) -->
         <div id="tab-notes" class="tab-content hidden space-y-6">
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-800">Ghi Chú & Dạng Bài Cần Nhớ</h2>
-                    <p class="text-slate-500 text-sm mt-1">Lưu lại các bài tập khó hoặc mẹo làm bài thi.</p>
+                    <h2 class="text-2xl font-bold text-slate-800">Bảng Thông Báo & Sổ Ghi Chú Học Tập</h2>
+                    <p class="text-slate-500 text-sm mt-1">Các lưu ý, thông báo và mẹo làm bài thi từ giáo viên.</p>
                 </div>
-                <button onclick="openNoteModal()" class="bg-indigo-600 text-white px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-indigo-700 transition shadow-sm">
-                    <i class="fa-solid fa-plus mr-1"></i> Thêm ghi chú mới
-                </button>
+                <div id="teacherNoteActionContainer" class="hidden">
+                    <button onclick="openNoteModal()" class="bg-indigo-600 text-white px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-indigo-700 transition shadow-sm">
+                        <i class="fa-solid fa-plus mr-1"></i> Thêm thông báo mới (GV)
+                    </button>
+                </div>
             </div>
             <div id="notesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 8. TEACHER DASHBOARD TAB -->
+        <!-- 8. TEACHER DASHBOARD TAB (Quản lý GV: Bài giảng, Đề thi, Điểm) -->
         <div id="tab-teacher" class="tab-content hidden space-y-8">
             <div class="bg-rose-50 border border-rose-200 p-6 rounded-2xl flex justify-between items-center">
                 <div>
                     <h2 class="text-2xl font-bold text-rose-800"><i class="fa-solid fa-chalkboard-user mr-2"></i> Trang Quản Lý Dành Cho Giáo Viên</h2>
-                    <p class="text-rose-600 text-sm mt-1">Quản lý bài giảng, tài liệu và theo dõi kết quả thi của học sinh.</p>
+                    <p class="text-rose-600 text-sm mt-1">Tạo đề thi, bài giảng và theo dõi kết quả học sinh.</p>
                 </div>
                 <span class="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Quyền Giáo Viên</span>
             </div>
 
-            <!-- Thêm bài giảng mới -->
+            <!-- TẠO ĐỀ THI TRỰC TUYẾN MỚI -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h3 class="font-bold text-lg text-slate-800"><i class="fa-solid fa-file-circle-plus text-rose-600 mr-2"></i> Tạo Phòng / Đề Thi Trực Tuyến Mới</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Tên Đề Thi</label>
+                        <input type="text" id="newExamTitle" placeholder="Ví dụ: Đề kiểm tra 15 phút chương Đại số" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Thời gian làm bài (Phút)</label>
+                        <input type="number" id="newExamTime" value="15" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                    </div>
+                </div>
+                
+                <div class="border-t pt-4 space-y-3">
+                    <h4 class="font-bold text-sm text-slate-700">Soạn câu hỏi trắc nghiệm:</h4>
+                    <div id="builderQuestionsContainer" class="space-y-4">
+                        <div class="builder-q-item bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                            <input type="text" placeholder="Nội dung câu hỏi..." class="bq-text w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <input type="text" placeholder="Đáp án A" class="bq-opt bq-opt-0 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
+                                <input type="text" placeholder="Đáp án B" class="bq-opt bq-opt-1 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
+                                <input type="text" placeholder="Đáp án C" class="bq-opt bq-opt-2 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
+                                <input type="text" placeholder="Đáp án D" class="bq-opt bq-opt-3 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
+                            </div>
+                            <div class="flex justify-between items-center text-xs">
+                                <span>Đáp án đúng (0:A, 1:B, 2:C, 3:D): <input type="number" min="0" max="3" value="0" class="bq-ans w-12 border rounded px-1 py-0.5 text-center font-bold"></span>
+                                <input type="text" placeholder="Giải thích chi tiết..." class="bq-explain w-1/2 border border-slate-300 rounded px-2 py-1 bg-white">
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="addQuestionBuilderBox()" class="text-indigo-600 text-sm font-semibold hover:underline">+ Thêm câu hỏi</button>
+                </div>
+                <button onclick="saveNewExam()" class="w-full bg-rose-600 text-white py-2.5 rounded-xl font-bold hover:bg-rose-700 transition shadow-sm">Lưu & Phát hành đề thi</button>
+            </div>
+
+            <!-- Đăng tải Bài giảng mới -->
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                 <h3 class="font-bold text-lg text-slate-800"><i class="fa-solid fa-plus-circle text-rose-600 mr-2"></i> Đăng tải Bài giảng mới</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Tiêu đề bài giảng</label>
-                        <input type="text" id="lecTitle" placeholder="Ví dụ: Chuyên đề Hằng đẳng thức đáng nhớ" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                        <input type="text" id="lecTitle" placeholder="Ví dụ: Chuyên đề Hằng đẳng thức" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Môn / Khối lớp</label>
@@ -274,18 +291,12 @@
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Nội dung / Tóm tắt lý thuyết</label>
-                    <textarea id="lecContent" rows="4" placeholder="Nhập tóm tắt công thức, bài tập ví dụ..." class="w-full border border-slate-300 rounded-xl p-4 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none"></textarea>
+                    <textarea id="lecContent" rows="3" placeholder="Nhập lý thuyết..." class="w-full border border-slate-300 rounded-xl p-4 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none"></textarea>
                 </div>
                 <button onclick="addNewLecture()" class="bg-rose-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-rose-700 transition shadow-sm">Xuất bản bài giảng</button>
             </div>
 
-            <!-- Danh sách bài giảng hiện có (Cho phép GV quản lý/xóa) -->
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-                <h3 class="font-bold text-lg text-slate-800"><i class="fa-solid fa-list text-rose-600 mr-2"></i> Danh sách bài giảng hiện tại</h3>
-                <div id="teacherLecturesList" class="space-y-3"></div>
-            </div>
-
-            <!-- Quản lý điểm học sinh -->
+            <!-- Báo cáo kết quả học sinh -->
             <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden p-6 space-y-4">
                 <h3 class="font-bold text-lg text-slate-800"><i class="fa-solid fa-chart-bar text-rose-600 mr-2"></i> Báo cáo kết quả luyện thi của học sinh</h3>
                 <table class="w-full text-left border-collapse">
@@ -308,14 +319,11 @@
     <!-- AUTH MODAL -->
     <div id="authModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
         <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6">
-            <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
+            <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
             <div class="text-center">
                 <h3 class="text-2xl font-bold text-slate-800">Đăng Nhập Hệ Thống</h3>
                 <p class="text-sm text-slate-500 mt-1">Chọn phân quyền học sinh hoặc giáo viên</p>
             </div>
-            
             <div class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Vai trò tài khoản</label>
@@ -333,22 +341,20 @@
         </div>
     </div>
 
-    <!-- NOTE MODAL -->
+    <!-- NOTE MODAL (Chỉ dành cho GV) -->
     <div id="noteModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
         <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-4">
-            <button onclick="closeNoteModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <h3 class="text-xl font-bold text-slate-800">Thêm ghi chú cá nhân</h3>
+            <button onclick="closeNoteModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <h3 class="text-xl font-bold text-slate-800">Thêm Thông Báo / Ghi Chú (Giáo viên)</h3>
             <div>
                 <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Tiêu đề</label>
-                <input type="text" id="noteTitleInput" placeholder="Tiêu đề ghi chú..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                <input type="text" id="noteTitleInput" placeholder="Tiêu đề..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
             </div>
             <div>
-                <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Nội dung chi tiết</label>
-                <textarea id="noteContentInput" rows="4" placeholder="Nội dung..." class="w-full border border-slate-300 rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
+                <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Nội dung</label>
+                <textarea id="noteContentInput" rows="4" placeholder="Nội dung thông báo..." class="w-full border border-slate-300 rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
             </div>
-            <button onclick="saveNote()" class="w-full bg-indigo-600 text-white py-2.5 rounded-xl font-bold hover:bg-indigo-700 transition">Lưu ghi chú</button>
+            <button onclick="saveNote()" class="w-full bg-indigo-600 text-white py-2.5 rounded-xl font-bold hover:bg-indigo-700 transition">Phát hành thông báo</button>
         </div>
     </div>
 
@@ -359,7 +365,7 @@
             { name: "Nguyễn Vũ Lâm (HS)", exam: "Đề số 1: Ôn tập Đại số & Hình học", correct: "4/5", score: "8.0", time: "2026-06-05 15:30" }
         ];
         let notes = JSON.parse(localStorage.getItem('math_notes')) || [
-            { title: "Mẹo giải nhanh HĐT", content: "Luôn kiểm tra các hệ số trước khi phân tích đa thức thành nhân tử." }
+            { title: "Lịch thi học kì sắp tới", content: "Các em học sinh chuẩn bị ôn tập kỹ các chuyên đề căn thức và hệ thức lượng trong tam giác vuông." }
         ];
         let lectures = JSON.parse(localStorage.getItem('math_lectures')) || [
             { 
@@ -367,36 +373,27 @@
                 title: "Chuyên đề 1: Căn bậc hai & Biểu thức hữu tỉ", 
                 category: "Toán Đại số 9", 
                 video: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
-                content: "1. Điều kiện xác định của căn thức √A là A ≥ 0.<br>2. Hằng đẳng thức √A² = |A|.<br>3. Các kỹ năng trục căn thức ở mẫu cơ bản." 
-            },
-            { 
-                id: 2, 
-                title: "Chuyên đề 2: Hệ thức lượng trong tam giác vuông", 
-                category: "Toán Hình học 9", 
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
-                content: "1. Định lý Pythagore đảo và thuận.<br>2. Các hệ thức về cạnh và đường cao trong tam giác vuông.<br>3. Tỷ số lượng giác của góc nhọn." 
+                content: "1. Điều kiện xác định của căn thức √A là A >= 0.<br>2. Hằng đẳng thức √(A²) = |A|.<br>3. Các kỹ năng trục căn thức ở mẫu cơ bản." 
             }
         ];
 
+        let examData = JSON.parse(localStorage.getItem('math_exams')) || {
+            "1": {
+                title: "Đề số 1: Ôn tập Đại số & Hình học lớp 9 (15 phút)",
+                time: 15,
+                questions: [
+                    { q: "Rút gọn biểu thức √16 + √9 ta được kết quả là:", opts: ["5", "7", "4", "25"], ans: 1, explain: "Vì √16 = 4 và √9 = 3. Do đó 4 + 3 = 7." },
+                    { q: "Hàm số nào sau đây là hàm số bậc nhất?", opts: ["y = 2x² + 1", "y = 1/x - 3", "y = -3x + 5", "y = 2"], ans: 2, explain: "Hàm số bậc nhất có dạng y = ax + b với a khác 0." },
+                    { q: "Nghiệm của phương trình 2x - 4 = 0 là:", opts: ["x = 2", "x = -2", "x = 4", "x = 0"], ans: 0, explain: "2x = 4 => x = 2." },
+                    { q: "Cho tam giác ABC vuông tại A có AB = 3cm, AC = 4cm. Độ dài cạnh huyền BC là:", opts: ["5cm", "7cm", "6cm", "25cm"], ans: 0, explain: "Theo định lý Pythagore: BC = √(3² + 4²) = 5cm." },
+                    { q: "Giá trị của biểu thức sin²(30°) + cos²(30°) bằng:", opts: ["0", "1", "1/2", "2"], ans: 1, explain: "Theo hằng đẳng thức lượng giác: sin²α + cos²α = 1." }
+                ]
+            }
+        };
+
         let examTimer = null;
         let timeLeft = 900;
-
-        const examData = {
-            "1": [
-                { q: "Rút gọn biểu thức √16 + √9 ta được kết quả là:", opts: ["5", "7", "4", "25"], ans: 1, explain: "Vì √16 = 4 và √9 = 3. Do đó 4 + 3 = 7." },
-                { q: "Hàm số nào sau đây là hàm số bậc nhất?", opts: ["y = 2x² + 1", "y = 1/x - 3", "y = -3x + 5", "y = 2"], ans: 2, explain: "Hàm số bậc nhất có dạng y = ax + b với a ≠ 0." },
-                { q: "Nghiệm của phương trình 2x - 4 = 0 là:", opts: ["x = 2", "x = -2", "x = 4", "x = 0"], ans: 0, explain: "2x = 4 => x = 2." },
-                { q: "Cho tam giác ABC vuông tại A có AB = 3cm, AC = 4cm. Độ dài cạnh huyền BC là:", opts: ["5cm", "7cm", "6cm", "25cm"], ans: 0, explain: "Theo định lý Pythagore: BC = √(3² + 4²) = 5cm." },
-                { q: "Giá trị của biểu thức sin² 30° + cos² 30° bằng:", opts: ["0", "1", "1/2", "2"], ans: 1, explain: "Theo hằng đẳng thức lượng giác: sin²α + cos²α = 1." }
-            ],
-            "2": [
-                { q: "Cho biểu thức P = √x / (√x + 1). Giá trị của P khi x = 4 là:", opts: ["2/3", "1/2", "3/4", "2"], ans: 0, explain: "Thay x = 4 vào ta được P = 2 / (2 + 1) = 2/3." },
-                { q: "Đồ thị hàm số y = (m - 1)x + 2 song song với đường thẳng y = 3x - 1 khi:", opts: ["m = 4", "m = 3", "m = 2", "m = -3"], ans: 0, explain: "Điều kiện song song: m - 1 = 3 => m = 4." },
-                { q: "Phương trình x² - 5x + 6 = 0 có tập nghiệm là:", opts: ["{2; 3}", "{1; 6}", "{-2; -3}", "{5; 6}"], ans: 0, explain: "Phân tích thành (x - 2)(x - 3) = 0 => x = 2 hoặc x = 3." },
-                { q: "Cho đường tròn (O; R) có dây cung AB = 8cm cách tâm O một khoảng bằng 3cm. Bán kính R bằng:", opts: ["5cm", "4cm", "6cm", "10cm"], ans: 0, explain: "R = √(3² + 4²) = 5cm." },
-                { q: "Tổng các nghiệm của phương trình |x - 2| = 3 là:", opts: ["4", "2", "5", "0"], ans: 0, explain: "x = 5 hoặc x = -1. Tổng là 4." }
-            ]
-        };
+        let isExamining = false;
 
         window.onload = function() {
             updateAuthUI();
@@ -404,10 +401,14 @@
             renderNotes();
             renderScores();
             renderTeacherScores();
-            renderTeacherLecturesList();
+            renderExamSelect();
         };
 
         function switchTab(tabId) {
+            if(isExamining && tabId !== 'exam') {
+                alert('⚠️ Bạn đang trong phòng thi! Chuyển tab sẽ bị tính là nộp bài.');
+                return;
+            }
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -418,24 +419,16 @@
             const icon = document.getElementById('darkModeIcon');
             body.classList.toggle('dark');
             if(body.classList.contains('dark')) {
-                body.style.backgroundColor = '#0f172a';
-                body.style.color = '#f8fafc';
+                body.style.backgroundColor = '#0f172a'; body.style.color = '#f8fafc';
                 icon.className = "fa-solid fa-sun text-lg text-amber-400";
             } else {
-                body.style.backgroundColor = '#f8fafc';
-                body.style.color = '#1e293b';
+                body.style.backgroundColor = '#f8fafc'; body.style.color = '#1e293b';
                 icon.className = "fa-solid fa-moon text-lg";
             }
         }
 
-        function openAuthModal() {
-            document.getElementById('authModal').classList.remove('hidden');
-            document.getElementById('authModal').classList.add('flex');
-        }
-        function closeAuthModal() {
-            document.getElementById('authModal').classList.remove('flex');
-            document.getElementById('authModal').classList.add('hidden');
-        }
+        function openAuthModal() { document.getElementById('authModal').classList.remove('hidden'); document.getElementById('authModal').classList.add('flex'); }
+        function closeAuthModal() { document.getElementById('authModal').classList.remove('flex'); document.getElementById('authModal').classList.add('hidden'); }
 
         function handleAuth() {
             const role = document.getElementById('authRole').value;
@@ -459,6 +452,7 @@
         function updateAuthUI() {
             const authArea = document.getElementById('authArea');
             const teacherContainer = document.getElementById('teacherNavContainer');
+            const teacherNoteContainer = document.getElementById('teacherNoteActionContainer');
             
             if(currentUser) {
                 authArea.innerHTML = `
@@ -471,28 +465,39 @@
                 `;
                 if(currentUser.role === 'teacher') {
                     teacherContainer.classList.remove('hidden');
+                    if(teacherNoteContainer) teacherNoteContainer.classList.remove('hidden');
                 } else {
                     teacherContainer.classList.add('hidden');
+                    if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
                 }
             } else {
                 authArea.innerHTML = `<button onclick="openAuthModal()" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-indigo-700 shadow-sm transition">Đăng nhập</button>`;
                 teacherContainer.classList.add('hidden');
+                if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
             }
         }
 
-        // LECTURES LOGIC
+        // EXAM SELECT RENDER
+        function renderExamSelect() {
+            const select = document.getElementById('examSelect');
+            let html = '';
+            for(let key in examData) {
+                html += `<option value="${key}">${examData[key].title} (${examData[key].time} phút)</option>`;
+            }
+            select.innerHTML = html;
+        }
+
+        // LECTURES
         function renderLectures() {
             const keyword = document.getElementById('searchLectureInput').value.toLowerCase();
             const container = document.getElementById('lecturesContainer');
             let html = '';
-            
             const filtered = lectures.filter(l => l.title.toLowerCase().includes(keyword) || l.category.toLowerCase().includes(keyword));
             
             if(filtered.length === 0) {
                 container.innerHTML = `<div class="col-span-3 text-center text-slate-400 py-10">Không tìm thấy bài giảng phù hợp.</div>`;
                 return;
             }
-
             filtered.forEach(lec => {
                 html += `
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition flex flex-col justify-between">
@@ -518,16 +523,13 @@
         function viewLectureDetail(id) {
             const lec = lectures.find(l => l.id === id);
             if(!lec) return;
-
             let html = `
                 <div class="space-y-4">
                     <span class="bg-indigo-50 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase">${lec.category}</span>
                     <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800">${lec.title}</h1>
-                    
                     <div class="aspect-video w-full bg-slate-900 rounded-2xl overflow-hidden shadow-lg">
                         <iframe src="${lec.video}" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
                     </div>
-
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
                         <h3 class="font-bold text-lg text-slate-800">Nội dung bài học & Lý thuyết chi tiết:</h3>
                         <div class="text-slate-700 leading-relaxed text-sm space-y-2">${lec.content}</div>
@@ -543,72 +545,30 @@
             const category = document.getElementById('lecCategory').value.trim();
             let video = document.getElementById('lecVideo').value.trim();
             const content = document.getElementById('lecContent').value.trim();
+            if(!title || !category || !content) { alert('Vui lòng điền đủ thông tin bài giảng!'); return; }
+            if(video.includes('watch?v=')) video = video.replace('watch?v=', 'embed/');
+            else if(!video) video = "https://www.youtube.com/embed/dQw4w9WgXcQ";
 
-            if(!title || !category || !content) {
-                alert('Vui lòng điền đầy đủ tiêu đề, phân loại và nội dung bài giảng!');
-                return;
-            }
-
-            if(video.includes('watch?v=')) {
-                video = video.replace('watch?v=', 'embed/');
-            } else if(!video) {
-                video = "https://www.youtube.com/embed/dQw4w9WgXcQ";
-            }
-
-            const newLec = {
-                id: Date.now(),
-                title,
-                category,
-                video,
-                content: content.replace(/\n/g, '<br>')
-            };
-
-            lectures.unshift(newLec);
+            lectures.unshift({ id: Date.now(), title, category, video, content: content.replace(/\n/g, '<br>') });
             localStorage.setItem('math_lectures', JSON.stringify(lectures));
             renderLectures();
-            renderTeacherLecturesList();
-
-            document.getElementById('lecTitle').value = '';
-            document.getElementById('lecCategory').value = '';
-            document.getElementById('lecVideo').value = '';
-            document.getElementById('lecContent').value = '';
-
-            alert('Đã xuất bản bài giảng mới thành công!');
+            alert('Đã thêm bài giảng thành công!');
         }
 
-        function renderTeacherLecturesList() {
-            const container = document.getElementById('teacherLecturesList');
-            if(!container) return;
-            let html = '';
-            lectures.forEach((lec, idx) => {
-                html += `
-                    <div class="flex justify-between items-center p-3 rounded-xl border border-slate-200 bg-slate-50">
-                        <div>
-                            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">${lec.category}</span>
-                            <h4 class="font-bold text-sm text-slate-800 mt-1">${lec.title}</h4>
-                        </div>
-                        <button onclick="deleteLecture(${lec.id})" class="text-slate-400 hover:text-rose-600 p-2"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        function deleteLecture(id) {
-            if(confirm('Bạn có chắc chắn muốn xóa bài giảng này không?')) {
-                lectures = lectures.filter(l => l.id !== id);
-                localStorage.setItem('math_lectures', JSON.stringify(lectures));
-                renderLectures();
-                renderTeacherLecturesList();
-            }
-        }
-
-        // EXAM LOGIC
+        // EXAM LOGIC (Full screen & Anti-cheat)
+        let currentExamKey = "1";
         let currentQuestions = [];
         function startExam() {
-            const examId = document.getElementById('examSelect').value;
-            currentQuestions = examData[examId];
+            currentExamKey = document.getElementById('examSelect').value;
+            const selectedExam = examData[currentExamKey];
+            currentQuestions = selectedExam.questions;
             
+            // Ép full màn hình chống gian lận
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
+            }
+
+            isExamining = true;
             document.getElementById('examWorkspace').classList.remove('hidden');
             document.getElementById('examResultBox').classList.add('hidden');
             
@@ -632,7 +592,7 @@
             document.getElementById('questionsContainer').innerHTML = html;
 
             clearInterval(examTimer);
-            timeLeft = 900;
+            timeLeft = selectedExam.time * 60;
             updateTimerDisplay();
             examTimer = setInterval(() => {
                 timeLeft--;
@@ -641,6 +601,21 @@
             }, 1000);
         }
 
+        // Lắng nghe sự kiện thoát full màn hình hoặc rời tab -> Tự động nộp bài
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden && isExamining) {
+                alert("⚠️ Phát hiện bạn rời khỏi màn hình thi! Hệ thống sẽ tự động nộp bài.");
+                submitExam();
+            }
+        });
+
+        document.addEventListener("fullscreenchange", function() {
+            if (!document.fullscreenElement && isExamining) {
+                alert("⚠️ Bạn đã thoát chế độ toàn màn hình! Bài thi được tự động nộp.");
+                submitExam();
+            }
+        });
+
         function updateTimerDisplay() {
             let m = Math.floor(timeLeft / 60);
             let s = timeLeft % 60;
@@ -648,7 +623,14 @@
         }
 
         function submitExam() {
+            if(!isExamining) return;
+            isExamining = false;
             clearInterval(examTimer);
+
+            if (document.fullscreenElement) {
+                document.exitFullscreen().catch(err => console.log(err));
+            }
+
             let correctCount = 0;
             currentQuestions.forEach((item, idx) => {
                 const selected = document.querySelector(`input[name="q_${idx}"]:checked`);
@@ -657,16 +639,15 @@
 
             let finalScore = ((correctCount / currentQuestions.length) * 10).toFixed(1);
             let studentName = currentUser ? currentUser.name : "Học sinh tự do";
-            let examName = document.getElementById('examSelect').selectedOptions[0].text;
+            let examName = examData[currentExamKey].title;
 
-            let newRecord = {
+            scores.unshift({
                 name: studentName,
                 exam: examName,
                 correct: `${correctCount}/${currentQuestions.length}`,
                 score: finalScore,
                 time: new Date().toISOString().replace('T', ' ').substring(0, 16)
-            };
-            scores.unshift(newRecord);
+            });
             localStorage.setItem('math_scores', JSON.stringify(scores));
             renderScores();
             renderTeacherScores();
@@ -678,39 +659,78 @@
 
         function resetExamUI() { document.getElementById('examResultBox').classList.add('hidden'); }
 
+        // EXAM BUILDER FOR TEACHER
+        function addQuestionBuilderBox() {
+            const container = document.getElementById('builderQuestionsContainer');
+            const div = document.createElement('div');
+            div.className = "builder-q-item bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3";
+            div.innerHTML = `
+                <input type="text" placeholder="Nội dung câu hỏi..." class="bq-text w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <input type="text" placeholder="Đáp án A" class="bq-opt bq-opt-0 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
+                    <input type="text" placeholder="Đáp án B" class="bq-opt bq-opt-1 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
+                    <input type="text" placeholder="Đáp án C" class="bq-opt bq-opt-2 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
+                    <input type="text" placeholder="Đáp án D" class="bq-opt bq-opt-3 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                    <span>Đáp án đúng (0:A, 1:B, 2:C, 3:D): <input type="number" min="0" max="3" value="0" class="bq-ans w-12 border rounded px-1 py-0.5 text-center font-bold"></span>
+                    <input type="text" placeholder="Giải thích chi tiết..." class="bq-explain w-1/2 border border-slate-300 rounded px-2 py-1 bg-white">
+                </div>
+            `;
+            container.appendChild(div);
+        }
+
+        function saveNewExam() {
+            const title = document.getElementById('newExamTitle').value.trim();
+            const time = parseInt(document.getElementById('newExamTime').value) || 15;
+            if(!title) { alert('Vui lòng nhập tên đề thi!'); return; }
+
+            const qBoxes = document.querySelectorAll('.builder-q-item');
+            let questions = [];
+            qBoxes.forEach(box => {
+                const q = box.querySelector('.bq-text').value.trim();
+                const opts = [
+                    box.querySelector('.bq-opt-0').value.trim(),
+                    box.querySelector('.bq-opt-1').value.trim(),
+                    box.querySelector('.bq-opt-2').value.trim(),
+                    box.querySelector('.bq-opt-3').value.trim()
+                ];
+                const ans = parseInt(box.querySelector('.bq-ans').value) || 0;
+                const explain = box.querySelector('.bq-explain').value.trim();
+                if(q && opts[0]) {
+                    questions.push({ q, opts, ans, explain });
+                }
+            });
+
+            if(questions.length === 0) { alert('Vui lòng soạn ít nhất 1 câu hỏi hợp lệ!'); return; }
+
+            const newKey = 'exam_' + Date.now();
+            examData[newKey] = { title, time, questions };
+            localStorage.setItem('math_exams', JSON.stringify(examData));
+            renderExamSelect();
+            alert('Đã tạo và phát hành phòng thi trực tuyến thành công!');
+        }
+
+        // SCORES
         function renderScores() {
             let html = '';
-            if(scores.length === 0) {
-                html = `<tr><td colspan="5" class="p-6 text-center text-slate-400">Chưa có lịch sử làm bài.</td></tr>`;
-            } else {
-                scores.forEach(s => {
-                    html += `<tr class="hover:bg-slate-50 transition"><td class="p-4 font-semibold text-slate-800">${s.name}</td><td class="p-4 text-slate-600">${s.exam}</td><td class="p-4 font-medium">${s.correct}</td><td class="p-4 font-bold text-indigo-600">${s.score}</td><td class="p-4 text-xs text-slate-400">${s.time}</td></tr>`;
-                });
-            }
+            if(scores.length === 0) html = `<tr><td colspan="5" class="p-6 text-center text-slate-400">Chưa có lịch sử làm bài.</td></tr>`;
+            else scores.forEach(s => html += `<tr class="hover:bg-slate-50 transition"><td class="p-4 font-semibold text-slate-800">${s.name}</td><td class="p-4 text-slate-600">${s.exam}</td><td class="p-4 font-medium">${s.correct}</td><td class="p-4 font-bold text-indigo-600">${s.score}</td><td class="p-4 text-xs text-slate-400">${s.time}</td></tr>`);
             document.getElementById('scoresTableBody').innerHTML = html;
         }
 
         function renderTeacherScores() {
             let html = '';
-            if(scores.length === 0) {
-                html = `<tr><td colspan="5" class="p-6 text-center text-slate-400">Chưa có dữ liệu bài nộp.</td></tr>`;
-            } else {
-                scores.forEach(s => {
-                    html += `<tr class="hover:bg-slate-50 transition"><td class="p-4 font-semibold text-slate-800">${s.name}</td><td class="p-4 text-slate-600">${s.exam}</td><td class="p-4 font-medium">${s.correct}</td><td class="p-4 font-bold text-rose-600">${s.score}</td><td class="p-4 text-xs text-slate-400">${s.time}</td></tr>`;
-                });
-            }
+            if(scores.length === 0) html = `<tr><td colspan="5" class="p-6 text-center text-slate-400">Chưa có dữ liệu bài nộp.</td></tr>`;
+            else scores.forEach(s => html += `<tr class="hover:bg-slate-50 transition"><td class="p-4 font-semibold text-slate-800">${s.name}</td><td class="p-4 text-slate-600">${s.exam}</td><td class="p-4 font-medium">${s.correct}</td><td class="p-4 font-bold text-rose-600">${s.score}</td><td class="p-4 text-xs text-slate-400">${s.time}</td></tr>`);
             document.getElementById('teacherScoresBody').innerHTML = html;
         }
 
         function clearScores() {
-            if(confirm('Xóa toàn bộ lịch sử điểm?')) {
-                scores = [];
-                localStorage.removeItem('math_scores');
-                renderScores();
-                renderTeacherScores();
-            }
+            if(confirm('Xóa toàn bộ lịch sử điểm?')) { scores = []; localStorage.removeItem('math_scores'); renderScores(); renderTeacherScores(); }
         }
 
+        // NOTES (Chỉ GV mới tạo được)
         function openNoteModal() { document.getElementById('noteModal').classList.remove('hidden'); document.getElementById('noteModal').classList.add('flex'); }
         function closeNoteModal() { document.getElementById('noteModal').classList.remove('flex'); document.getElementById('noteModal').classList.add('hidden'); }
 
@@ -729,7 +749,8 @@
         function renderNotes() {
             let html = '';
             notes.forEach((n, idx) => {
-                html += `<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative space-y-2"><h4 class="font-bold text-slate-800">${n.title}</h4><p class="text-slate-600 text-sm whitespace-pre-line">${n.content}</p><button onclick="deleteNote(${idx})" class="absolute top-4 right-4 text-slate-300 hover:text-rose-600"><i class="fa-solid fa-trash-can"></i></button></div>`;
+                let deleteBtn = (currentUser && currentUser.role === 'teacher') ? `<button onclick="deleteNote(${idx})" class="absolute top-4 right-4 text-slate-300 hover:text-rose-600"><i class="fa-solid fa-trash-can"></i></button>` : '';
+                html += `<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative space-y-2"><h4 class="font-bold text-slate-800">${n.title}</h4><p class="text-slate-600 text-sm whitespace-pre-line">${n.content}</p>${deleteBtn}</div>`;
             });
             document.getElementById('notesContainer').innerHTML = html;
         }
