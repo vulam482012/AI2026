@@ -10,9 +10,7 @@
         tailwind.config = {
             darkMode: 'class',
             theme: {
-                extend: {
-                    colors: { primary: '#4f46e5', secondary: '#06b6d4' }
-                }
+                extend: { colors: { primary: '#4f46e5', secondary: '#06b6d4' } }
             }
         }
     </script>
@@ -34,15 +32,16 @@
                 </div>
                 
                 <!-- Nav Links -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <button onclick="switchTab('home')" class="nav-btn text-indigo-600 font-medium transition px-2 py-1">Trang chủ</button>
-                    <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Bài giảng</button>
-                    <button onclick="switchTab('exam')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Thi thử</button>
-                    <button onclick="switchTab('scores')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Bảng điểm</button>
-                    <button onclick="switchTab('formulas')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Sổ tay</button>
-                    <button onclick="switchTab('notes')" class="nav-btn text-slate-600 font-medium transition px-2 py-1">Bảng thông báo / Ghi chú</button>
+                <div class="hidden md:flex items-center space-x-3">
+                    <button onclick="switchTab('home')" class="nav-btn text-indigo-600 font-medium transition px-2 py-1 text-sm">Trang chủ</button>
+                    <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 font-medium transition px-2 py-1 text-sm">Bài giảng</button>
+                    <button onclick="switchTab('exam')" class="nav-btn text-slate-600 font-medium transition px-2 py-1 text-sm">Thi thử</button>
+                    <button onclick="switchTab('scores')" class="nav-btn text-slate-600 font-medium transition px-2 py-1 text-sm">Bảng điểm thi</button>
+                    <button onclick="switchTab('vnedu')" class="nav-btn text-emerald-600 font-bold transition px-2 py-1 text-sm bg-emerald-50 rounded-lg"><i class="fa-solid fa-book-journal-whills mr-1"></i> Sổ điểm VnEdu</button>
+                    <button onclick="switchTab('formulas')" class="nav-btn text-slate-600 font-medium transition px-2 py-1 text-sm">Sổ tay</button>
+                    <button onclick="switchTab('notes')" class="nav-btn text-slate-600 font-medium transition px-2 py-1 text-sm">Thông báo</button>
                     <div id="teacherNavContainer" class="hidden">
-                        <button onclick="switchTab('teacher')" class="nav-btn text-rose-600 font-bold transition bg-rose-50 px-3 py-1.5 rounded-lg border border-rose-200">
+                        <button onclick="switchTab('teacher')" class="nav-btn text-rose-600 font-bold transition bg-rose-50 px-3 py-1.5 rounded-lg border border-rose-200 text-sm">
                             <i class="fa-solid fa-chalkboard-user mr-1"></i> Quản lý GV
                         </button>
                     </div>
@@ -71,29 +70,11 @@
                 <div class="max-w-2xl relative z-10">
                     <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Ôn thi Vào 10 & Học sinh giỏi</span>
                     <h1 class="text-3xl md:text-5xl font-extrabold mt-4 mb-4 leading-tight">Chinh phục Toán học THCS dễ dàng cùng MathOnline</h1>
-                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng học tập thông minh cung cấp video bài giảng, phòng thi chống gian lận, sổ tay công thức và quản lý điểm chi tiết.</p>
+                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng học tập tích hợp sổ điểm điện tử VnEdu, phòng thi chống gian lận và kho bài giảng chất lượng cao.</p>
                     <div class="flex flex-wrap gap-4">
                         <button onclick="switchTab('lectures')" class="bg-white text-indigo-600 font-bold px-6 py-3 rounded-xl shadow hover:bg-indigo-50 transition">Xem bài giảng</button>
-                        <button onclick="switchTab('exam')" class="border border-white/40 text-white font-medium px-6 py-3 rounded-xl hover:bg-white/10 transition">Vào phòng thi thử</button>
+                        <button onclick="switchTab('vnedu')" class="bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl shadow hover:bg-emerald-600 transition">Xem sổ điểm VnEdu</button>
                     </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('lectures')">
-                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-video"></i></div>
-                    <h3 class="font-bold text-lg mb-2">Bài giảng trực tuyến</h3>
-                    <p class="text-slate-600 text-sm">Kho video bài giảng và tài liệu học tập chi tiết từng chuyên đề Đại số & Hình học THCS.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('exam')">
-                    <div class="w-12 h-12 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h3 class="font-bold text-lg mb-2">Phòng thi chống gian lận</h3>
-                    <p class="text-slate-600 text-sm">Chế độ toàn màn hình, tự động nộp bài khi chuyển tab hoặc thoát màn hình.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('scores')">
-                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-chart-line"></i></div>
-                    <h3 class="font-bold text-lg mb-2">Theo dõi bảng điểm</h3>
-                    <p class="text-slate-600 text-sm">Lưu trữ lịch sử làm bài, chấm điểm tự động và xem lại lời giải chi tiết.</p>
                 </div>
             </div>
         </div>
@@ -118,12 +99,12 @@
             <div id="lectureDetailContent" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6"></div>
         </div>
 
-        <!-- 4. EXAM TAB (Phòng thi Fullscreen & Chống thoát) -->
+        <!-- 4. EXAM TAB -->
         <div id="tab-exam" class="tab-content hidden space-y-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <div>
                     <h2 class="text-2xl font-bold text-slate-800">Phòng Thi Trực Tuyến Toán THCS</h2>
-                    <p class="text-slate-500 text-sm mt-1">Lưu ý: Khi bắt đầu thi, hệ thống sẽ chuyển sang chế độ toàn màn hình. Thoát màn hình hoặc chuyển tab sẽ tự động nộp bài!</p>
+                    <p class="text-slate-500 text-sm mt-1">⚠️ Chế độ chống gian lận: Thoát màn hình hoặc chuyển tab sẽ tự động nộp bài!</p>
                 </div>
                 <div class="mt-4 md:mt-0 flex gap-2">
                     <select id="examSelect" class="border border-slate-300 rounded-xl px-4 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></select>
@@ -137,8 +118,7 @@
                     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm sticky top-24 text-center">
                         <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Thời gian còn lại</span>
                         <div id="timerDisplay" class="text-3xl font-extrabold text-rose-600 my-2">15:00</div>
-                        <p class="text-xs text-rose-500 mb-6 font-medium">⚠️ Đang trong chế độ giám sát thi nghiêm ngặt</p>
-                        <button onclick="submitExam()" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold hover:bg-emerald-700 transition shadow-sm">Nộp bài thi</button>
+                        <button onclick="submitExam()" class="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold hover:bg-emerald-700 transition shadow-sm mt-4">Nộp bài thi</button>
                     </div>
                 </div>
             </div>
@@ -158,8 +138,8 @@
         <div id="tab-scores" class="tab-content hidden space-y-6">
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex justify-between items-center">
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-800">Lịch Sử & Bảng Điểm Cá Nhân</h2>
-                    <p class="text-slate-500 text-sm mt-1">Danh sách các bài thi bạn đã hoàn thành.</p>
+                    <h2 class="text-2xl font-bold text-slate-800">Lịch Sử & Bảng Điểm Thi Thử</h2>
+                    <p class="text-slate-500 text-sm mt-1">Danh sách các bài thi trắc nghiệm bạn đã hoàn thành.</p>
                 </div>
                 <button onclick="clearScores()" class="text-rose-600 text-sm font-medium hover:underline"><i class="fa-solid fa-trash mr-1"></i> Xóa lịch sử</button>
             </div>
@@ -179,43 +159,78 @@
             </div>
         </div>
 
+        <!-- 5.1 VNEDU ELECTRONIC GRADEBOOK TAB (Sổ điểm điện tử VnEdu) -->
+        <div id="tab-vnedu" class="tab-content hidden space-y-6">
+            <div class="bg-emerald-600 text-white p-6 rounded-2xl shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <span class="bg-white/20 text-xs uppercase px-2.5 py-1 rounded font-bold">Hệ thống VnEdu</span>
+                    <h2 class="text-2xl font-bold mt-2"><i class="fa-solid fa-book-journal-whills mr-2"></i> Sổ Điểm Điện Tử Môn Toán THCS</h2>
+                    <p class="text-emerald-100 text-sm mt-1">Bảng điểm tổng hợp ĐGTX, Giữa kỳ, Cuối kỳ và Trung bình môn theo chuẩn Bộ GD&ĐT.</p>
+                </div>
+                <div id="vneduTeacherNotice" class="text-xs bg-white/10 p-3 rounded-xl border border-white/20 hidden">
+                    💡 Giáo viên có thể bấm vào nút **"Quản lý GV"** để nhập hoặc chỉnh sửa điểm chi tiết cho học sinh.
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead>
+                        <tr class="bg-slate-100 border-b border-slate-200 text-xs font-bold text-slate-700 uppercase text-center">
+                            <th class="p-4 text-left border-r">Học sinh</th>
+                            <th class="p-3 border-r" colspan="3">Đánh giá thường xuyên (ĐGTX)</th>
+                            <th class="p-3 border-r" colspan="1">Giữa kỳ (ĐGK)</th>
+                            <th class="p-3 border-r" colspan="1">Cuối kỳ (ĐCK)</th>
+                            <th class="p-4 bg-emerald-50 text-emerald-800">ĐTB Môn</th>
+                        </tr>
+                        <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 text-center">
+                            <th class="p-2 border-r"></th>
+                            <th class="p-2 border-r">HS1</th>
+                            <th class="p-2 border-r">HS2</th>
+                            <th class="p-2 border-r">HS3</th>
+                            <th class="p-2 border-r">ĐGK (Hệ số 2)</th>
+                            <th class="p-2 border-r">ĐCK (Hệ số 3)</th>
+                            <th class="p-2 bg-emerald-50">Cả học kỳ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vneduTableBody" class="divide-y divide-slate-100 text-sm text-center"></tbody>
+                </table>
+            </div>
+        </div>
+
         <!-- 6. FORMULAS TAB -->
         <div id="tab-formulas" class="tab-content hidden space-y-6">
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <h2 class="text-2xl font-bold text-slate-800">Sổ Tay Công Thức Toán THCS</h2>
-                <p class="text-slate-500 text-sm mt-1">Tổng hợp các hằng đẳng thức, hình học và đại số cốt lõi.</p>
+                <p class="text-slate-500 text-sm mt-1">Tổng hợp các hằng đẳng thức và hình học cốt lõi.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <h3 class="font-bold text-indigo-600 text-lg border-b pb-2"><i class="fa-solid fa-square-root-variable mr-2"></i> 7 Hằng đẳng thức đáng nhớ</h3>
+                    <h3 class="font-bold text-indigo-600 text-lg border-b pb-2">7 Hằng đẳng thức đáng nhớ</h3>
                     <ul class="space-y-2 text-sm text-slate-700">
                         <li>1. (A + B)² = A² + 2AB + B²</li>
                         <li>2. (A - B)² = A² - 2AB + B²</li>
                         <li>3. A² - B² = (A - B)(A + B)</li>
                         <li>4. (A + B)³ = A³ + 3A²B + 3AB² + B³</li>
                         <li>5. (A - B)³ = A³ - 3A²B + 3AB² - B³</li>
-                        <li>6. A³ + B³ = (A + B)(A² - AB + B²)</li>
-                        <li>7. A³ - B³ = (A - B)(A² + AB + B²)</li>
                     </ul>
                 </div>
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                    <h3 class="font-bold text-cyan-600 text-lg border-b pb-2"><i class="fa-solid fa-shapes mr-2"></i> Hình học & Lượng giác THCS</h3>
+                    <h3 class="font-bold text-cyan-600 text-lg border-b pb-2">Hình học THCS</h3>
                     <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• <b>Định lý Pythagore:</b> BC² = AB² + AC²</li>
-                        <li>• <b>Hệ thức lượng trong tam giác vuông:</b> b² = a · b'</li>
-                        <li>• <b>Tỷ số lượng giác:</b> sin = Đối / Huyền, cos = Kề / Huyền</li>
-                        <li>• <b>Diện tích hình tròn:</b> S = πR²</li>
+                        <li>• Định lý Pythagore: BC² = AB² + AC²</li>
+                        <li>• Tỷ số lượng giác: sin = Đối / Huyền, cos = Kề / Huyền</li>
+                        <li>• Diện tích hình tròn: S = πR²</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- 7. NOTES TAB (Học sinh chỉ xem, GV thêm sửa xóa) -->
+        <!-- 7. NOTES TAB -->
         <div id="tab-notes" class="tab-content hidden space-y-6">
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 class="text-2xl font-bold text-slate-800">Bảng Thông Báo & Sổ Ghi Chú Học Tập</h2>
-                    <p class="text-slate-500 text-sm mt-1">Các lưu ý, thông báo và mẹo làm bài thi từ giáo viên.</p>
+                    <p class="text-slate-500 text-sm mt-1">Các thông báo từ giáo viên bộ môn.</p>
                 </div>
                 <div id="teacherNoteActionContainer" class="hidden">
                     <button onclick="openNoteModal()" class="bg-indigo-600 text-white px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-indigo-700 transition shadow-sm">
@@ -226,14 +241,47 @@
             <div id="notesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 8. TEACHER DASHBOARD TAB (Quản lý GV: Bài giảng, Đề thi, Điểm) -->
+        <!-- 8. TEACHER DASHBOARD TAB -->
         <div id="tab-teacher" class="tab-content hidden space-y-8">
             <div class="bg-rose-50 border border-rose-200 p-6 rounded-2xl flex justify-between items-center">
                 <div>
                     <h2 class="text-2xl font-bold text-rose-800"><i class="fa-solid fa-chalkboard-user mr-2"></i> Trang Quản Lý Dành Cho Giáo Viên</h2>
-                    <p class="text-rose-600 text-sm mt-1">Tạo đề thi, bài giảng và theo dõi kết quả học sinh.</p>
+                    <p class="text-rose-600 text-sm mt-1">Tạo đề thi, bài giảng, nhập điểm VnEdu và quản lý lớp học.</p>
                 </div>
                 <span class="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Quyền Giáo Viên</span>
+            </div>
+
+            <!-- NHẬP ĐIỂM VNEDU CHO HỌC SINH -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h3 class="font-bold text-lg text-slate-800"><i class="fa-solid fa-pen-to-square text-rose-600 mr-2"></i> Nhập / Cập nhật Điểm VnEdu Học Sinh</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Học sinh</label>
+                        <select id="v_student" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white">
+                            <option value="Nguyễn Vũ Lâm">Nguyễn Vũ Lâm</option>
+                            <option value="Lê Minh Quân">Lê Minh Quân</option>
+                            <option value="Trần Bảo Ngọc">Trần Bảo Ngọc</option>
+                            <option value="Hoàng Gia Huy">Hoàng Gia Huy</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Cột điểm</label>
+                        <select id="v_column" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white">
+                            <option value="hs1">ĐGTX 1 (HS1)</option>
+                            <option value="hs2">ĐGTX 2 (HS1)</option>
+                            <option value="hs3">ĐGTX 3 (HS1)</option>
+                            <option value="dgk">Giữa kỳ (ĐGK - Hạnh hệ số 2)</option>
+                            <option value="dck">Cuối kỳ (ĐCK - Hệ số 3)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Điểm số (0 - 10)</label>
+                        <input type="number" step="0.1" min="0" max="10" id="v_score" placeholder="Ví dụ: 8.5" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-sm">
+                    </div>
+                    <div class="flex items-end">
+                        <button onclick="updateVnEduScore()" class="w-full bg-emerald-600 text-white py-2 rounded-xl font-bold hover:bg-emerald-700 transition">Cập nhật điểm</button>
+                    </div>
+                </div>
             </div>
 
             <!-- TẠO ĐỀ THI TRỰC TUYẾN MỚI -->
@@ -242,14 +290,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Tên Đề Thi</label>
-                        <input type="text" id="newExamTitle" placeholder="Ví dụ: Đề kiểm tra 15 phút chương Đại số" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                        <input type="text" id="newExamTitle" placeholder="Ví dụ: Đề kiểm tra 15 phút" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Thời gian làm bài (Phút)</label>
-                        <input type="number" id="newExamTime" value="15" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                        <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Thời gian (Phút)</label>
+                        <input type="number" id="newExamTime" value="15" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm">
                     </div>
                 </div>
-                
                 <div class="border-t pt-4 space-y-3">
                     <h4 class="font-bold text-sm text-slate-700">Soạn câu hỏi trắc nghiệm:</h4>
                     <div id="builderQuestionsContainer" class="space-y-4">
@@ -262,14 +309,14 @@
                                 <input type="text" placeholder="Đáp án D" class="bq-opt bq-opt-3 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
                             </div>
                             <div class="flex justify-between items-center text-xs">
-                                <span>Đáp án đúng (0:A, 1:B, 2:C, 3:D): <input type="number" min="0" max="3" value="0" class="bq-ans w-12 border rounded px-1 py-0.5 text-center font-bold"></span>
-                                <input type="text" placeholder="Giải thích chi tiết..." class="bq-explain w-1/2 border border-slate-300 rounded px-2 py-1 bg-white">
+                                <span>Đáp án đúng (0-3): <input type="number" min="0" max="3" value="0" class="bq-ans w-12 border rounded px-1 py-0.5 text-center font-bold"></span>
+                                <input type="text" placeholder="Giải thích..." class="bq-explain w-1/2 border rounded px-2 py-1 bg-white">
                             </div>
                         </div>
                     </div>
                     <button onclick="addQuestionBuilderBox()" class="text-indigo-600 text-sm font-semibold hover:underline">+ Thêm câu hỏi</button>
                 </div>
-                <button onclick="saveNewExam()" class="w-full bg-rose-600 text-white py-2.5 rounded-xl font-bold hover:bg-rose-700 transition shadow-sm">Lưu & Phát hành đề thi</button>
+                <button onclick="saveNewExam()" class="w-full bg-rose-600 text-white py-2.5 rounded-xl font-bold hover:bg-rose-700 transition">Lưu & Phát hành đề thi</button>
             </div>
 
             <!-- Đăng tải Bài giảng mới -->
@@ -278,27 +325,27 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Tiêu đề bài giảng</label>
-                        <input type="text" id="lecTitle" placeholder="Ví dụ: Chuyên đề Hằng đẳng thức" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                        <input type="text" id="lecTitle" placeholder="Ví dụ: Chuyên đề..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Môn / Khối lớp</label>
-                        <input type="text" id="lecCategory" placeholder="Ví dụ: Toán Đại số 9" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                        <input type="text" id="lecCategory" placeholder="Ví dụ: Toán Đại số 9" class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm">
                     </div>
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Link Video YouTube</label>
-                    <input type="text" id="lecVideo" placeholder="Ví dụ: https://www.youtube.com/watch?v=..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                    <input type="text" id="lecVideo" placeholder="https://www.youtube.com/watch?v=..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Nội dung / Tóm tắt lý thuyết</label>
-                    <textarea id="lecContent" rows="3" placeholder="Nhập lý thuyết..." class="w-full border border-slate-300 rounded-xl p-4 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none"></textarea>
+                    <textarea id="lecContent" rows="3" placeholder="Nhập lý thuyết..." class="w-full border border-slate-300 rounded-xl p-4 text-sm"></textarea>
                 </div>
-                <button onclick="addNewLecture()" class="bg-rose-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-rose-700 transition shadow-sm">Xuất bản bài giảng</button>
+                <button onclick="addNewLecture()" class="bg-rose-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-rose-700 transition">Xuất bản bài giảng</button>
             </div>
 
             <!-- Báo cáo kết quả học sinh -->
             <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden p-6 space-y-4">
-                <h3 class="font-bold text-lg text-slate-800"><i class="fa-solid fa-chart-bar text-rose-600 mr-2"></i> Báo cáo kết quả luyện thi của học sinh</h3>
+                <h3 class="font-bold text-lg text-slate-800"><i class="fa-solid fa-chart-bar text-rose-600 mr-2"></i> Báo cáo kết quả bài thi trắc nghiệm</h3>
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase">
@@ -327,32 +374,32 @@
             <div class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Vai trò tài khoản</label>
-                    <select id="authRole" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    <select id="authRole" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm bg-white">
                         <option value="student">Học sinh</option>
                         <option value="teacher">Giáo viên</option>
                     </select>
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Họ và tên</label>
-                    <input type="text" id="authName" placeholder="Ví dụ: Nguyễn Vũ Lâm" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    <input type="text" id="authName" placeholder="Ví dụ: Nguyễn Vũ Lâm" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm">
                 </div>
-                <button onclick="handleAuth()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition shadow-sm">Xác nhận đăng nhập</button>
+                <button onclick="handleAuth()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition">Xác nhận đăng nhập</button>
             </div>
         </div>
     </div>
 
-    <!-- NOTE MODAL (Chỉ dành cho GV) -->
+    <!-- NOTE MODAL -->
     <div id="noteModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
         <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-4">
             <button onclick="closeNoteModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
-            <h3 class="text-xl font-bold text-slate-800">Thêm Thông Báo / Ghi Chú (Giáo viên)</h3>
+            <h3 class="text-xl font-bold text-slate-800">Thêm Thông Báo (Giáo viên)</h3>
             <div>
                 <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Tiêu đề</label>
-                <input type="text" id="noteTitleInput" placeholder="Tiêu đề..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                <input type="text" id="noteTitleInput" placeholder="Tiêu đề..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm">
             </div>
             <div>
                 <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Nội dung</label>
-                <textarea id="noteContentInput" rows="4" placeholder="Nội dung thông báo..." class="w-full border border-slate-300 rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
+                <textarea id="noteContentInput" rows="4" placeholder="Nội dung thông báo..." class="w-full border border-slate-300 rounded-xl p-4 text-sm"></textarea>
             </div>
             <button onclick="saveNote()" class="w-full bg-indigo-600 text-white py-2.5 rounded-xl font-bold hover:bg-indigo-700 transition">Phát hành thông báo</button>
         </div>
@@ -362,10 +409,10 @@
     <script>
         let currentUser = JSON.parse(localStorage.getItem('math_user')) || null;
         let scores = JSON.parse(localStorage.getItem('math_scores')) || [
-            { name: "Nguyễn Vũ Lâm (HS)", exam: "Đề số 1: Ôn tập Đại số & Hình học", correct: "4/5", score: "8.0", time: "2026-06-05 15:30" }
+            { name: "Nguyễn Vũ Lâm", exam: "Đề số 1: Ôn tập Đại số", correct: "4/5", score: "8.0", time: "2026-06-05 15:30" }
         ];
         let notes = JSON.parse(localStorage.getItem('math_notes')) || [
-            { title: "Lịch thi học kì sắp tới", content: "Các em học sinh chuẩn bị ôn tập kỹ các chuyên đề căn thức và hệ thức lượng trong tam giác vuông." }
+            { title: "Lịch thi học kì sắp tới", content: "Các em học sinh ôn tập kỹ chuyên đề căn thức và hệ thức lượng." }
         ];
         let lectures = JSON.parse(localStorage.getItem('math_lectures')) || [
             { 
@@ -373,9 +420,15 @@
                 title: "Chuyên đề 1: Căn bậc hai & Biểu thức hữu tỉ", 
                 category: "Toán Đại số 9", 
                 video: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
-                content: "1. Điều kiện xác định của căn thức √A là A >= 0.<br>2. Hằng đẳng thức √(A²) = |A|.<br>3. Các kỹ năng trục căn thức ở mẫu cơ bản." 
+                content: "1. Điều kiện xác định của căn thức √A là A >= 0.<br>2. Hằng đẳng thức √(A²) = |A|." 
             }
         ];
+        let vneduScores = JSON.parse(localStorage.getItem('math_vnedu')) || {
+            "Nguyễn Vũ Lâm": { hs1: "8.5", hs2: "9.0", hs3: "8.0", dgk: "8.5", dck: "9.0" },
+            "Lê Minh Quân": { hs1: "7.5", hs2: "8.0", hs3: "", dgk: "8.0", dck: "" },
+            "Trần Bảo Ngọc": { hs1: "9.0", hs2: "9.5", hs3: "9.0", dgk: "9.2", dck: "9.5" },
+            "Hoàng Gia Huy": { hs1: "6.5", hs2: "7.0", hs3: "6.0", dgk: "6.5", dck: "" }
+        };
 
         let examData = JSON.parse(localStorage.getItem('math_exams')) || {
             "1": {
@@ -383,10 +436,7 @@
                 time: 15,
                 questions: [
                     { q: "Rút gọn biểu thức √16 + √9 ta được kết quả là:", opts: ["5", "7", "4", "25"], ans: 1, explain: "Vì √16 = 4 và √9 = 3. Do đó 4 + 3 = 7." },
-                    { q: "Hàm số nào sau đây là hàm số bậc nhất?", opts: ["y = 2x² + 1", "y = 1/x - 3", "y = -3x + 5", "y = 2"], ans: 2, explain: "Hàm số bậc nhất có dạng y = ax + b với a khác 0." },
-                    { q: "Nghiệm của phương trình 2x - 4 = 0 là:", opts: ["x = 2", "x = -2", "x = 4", "x = 0"], ans: 0, explain: "2x = 4 => x = 2." },
-                    { q: "Cho tam giác ABC vuông tại A có AB = 3cm, AC = 4cm. Độ dài cạnh huyền BC là:", opts: ["5cm", "7cm", "6cm", "25cm"], ans: 0, explain: "Theo định lý Pythagore: BC = √(3² + 4²) = 5cm." },
-                    { q: "Giá trị của biểu thức sin²(30°) + cos²(30°) bằng:", opts: ["0", "1", "1/2", "2"], ans: 1, explain: "Theo hằng đẳng thức lượng giác: sin²α + cos²α = 1." }
+                    { q: "Hàm số nào sau đây là hàm số bậc nhất?", opts: ["y = 2x² + 1", "y = 1/x - 3", "y = -3x + 5", "y = 2"], ans: 2, explain: "Hàm số bậc nhất có dạng y = ax + b với a khác 0." }
                 ]
             }
         };
@@ -402,6 +452,7 @@
             renderScores();
             renderTeacherScores();
             renderExamSelect();
+            renderVnEduTable();
         };
 
         function switchTab(tabId) {
@@ -453,6 +504,7 @@
             const authArea = document.getElementById('authArea');
             const teacherContainer = document.getElementById('teacherNavContainer');
             const teacherNoteContainer = document.getElementById('teacherNoteActionContainer');
+            const vneduNotice = document.getElementById('vneduTeacherNotice');
             
             if(currentUser) {
                 authArea.innerHTML = `
@@ -466,25 +518,62 @@
                 if(currentUser.role === 'teacher') {
                     teacherContainer.classList.remove('hidden');
                     if(teacherNoteContainer) teacherNoteContainer.classList.remove('hidden');
+                    if(vneduNotice) vneduNotice.classList.remove('hidden');
                 } else {
                     teacherContainer.classList.add('hidden');
                     if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
+                    if(vneduNotice) vneduNotice.classList.add('hidden');
                 }
             } else {
-                authArea.innerHTML = `<button onclick="openAuthModal()" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-indigo-700 shadow-sm transition">Đăng nhập</button>`;
+                authArea.innerHTML = `<button onclick="openAuthModal()" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-indigo-700 transition">Đăng nhập</button>`;
                 teacherContainer.classList.add('hidden');
                 if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
+                if(vneduNotice) vneduNotice.classList.add('hidden');
             }
         }
 
-        // EXAM SELECT RENDER
-        function renderExamSelect() {
-            const select = document.getElementById('examSelect');
+        // VNEDU TABLE RENDER & CALCULATION
+        function renderVnEduTable() {
+            const tbody = document.getElementById('vneduTableBody');
             let html = '';
-            for(let key in examData) {
-                html += `<option value="${key}">${examData[key].title} (${examData[key].time} phút)</option>`;
+            for(let student in vneduScores) {
+                let d = vneduScores[student];
+                let s1 = parseFloat(d.hs1) || 0, s2 = parseFloat(d.hs2) || 0, s3 = parseFloat(d.hs3) || 0;
+                let dgk = parseFloat(d.dgk) || 0, dck = parseFloat(d.dck) || 0;
+                
+                // Tính ĐTBm theo hệ số: (ĐGTX trung bình + ĐGK*2 + ĐCK*3) / (số cột ĐGTX + 2 + 3)
+                let countTX = (d.hs1 !== "" ? 1 : 0) + (d.hs2 !== "" ? 1 : 0) + (d.hs3 !== "" ? 1 : 0);
+                let sumTX = s1 + s2 + s3;
+                let divisor = countTX + 2 + 3;
+                let dtb = divisor > 0 ? ((sumTX + dgk*2 + dck*3) / divisor).toFixed(1) : "—";
+                if(countTX === 0 && dgk === 0 && dck === 0) dtb = "—";
+
+                html += `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-4 font-semibold text-slate-800 border-r text-left">${student}</td>
+                        <td class="p-3 border-r">${d.hs1 !== "" ? d.hs1 : "—"}</td>
+                        <td class="p-3 border-r">${d.hs2 !== "" ? d.hs2 : "—"}</td>
+                        <td class="p-3 border-r">${d.hs3 !== "" ? d.hs3 : "—"}</td>
+                        <td class="p-3 border-r font-medium text-indigo-600">${d.dgk !== "" ? d.dgk : "—"}</td>
+                        <td class="p-3 border-r font-medium text-indigo-600">${d.dck !== "" ? d.dck : "—"}</td>
+                        <td class="p-4 bg-emerald-50 font-extrabold text-emerald-700 text-base">${dtb}</td>
+                    </tr>
+                `;
             }
-            select.innerHTML = html;
+            tbody.innerHTML = html;
+        }
+
+        function updateVnEduScore() {
+            const student = document.getElementById('v_student').value;
+            const col = document.getElementById('v_column').value;
+            const score = document.getElementById('v_score').value.trim();
+
+            if(!vneduScores[student]) vneduScores[student] = { hs1: "", hs2: "", hs3: "", dgk: "", dck: "" };
+            vneduScores[student][col] = score;
+            localStorage.setItem('math_vnedu', JSON.stringify(vneduScores));
+            renderVnEduTable();
+            alert(`Đã cập nhật điểm cho học sinh ${student} thành công!`);
+            document.getElementById('v_score').value = '';
         }
 
         // LECTURES
@@ -552,10 +641,25 @@
             lectures.unshift({ id: Date.now(), title, category, video, content: content.replace(/\n/g, '<br>') });
             localStorage.setItem('math_lectures', JSON.stringify(lectures));
             renderLectures();
-            alert('Đã thêm bài giảng thành công!');
+
+            document.getElementById('lecTitle').value = '';
+            document.getElementById('lecCategory').value = '';
+            document.getElementById('lecVideo').value = '';
+            document.getElementById('lecContent').value = '';
+
+            alert('Đã thêm bài giảng mới thành công!');
         }
 
-        // EXAM LOGIC (Full screen & Anti-cheat)
+        // EXAM LOGIC
+        function renderExamSelect() {
+            const select = document.getElementById('examSelect');
+            let html = '';
+            for(let key in examData) {
+                html += `<option value="${key}">${examData[key].title} (${examData[key].time} phút)</option>`;
+            }
+            select.innerHTML = html;
+        }
+
         let currentExamKey = "1";
         let currentQuestions = [];
         function startExam() {
@@ -563,7 +667,6 @@
             const selectedExam = examData[currentExamKey];
             currentQuestions = selectedExam.questions;
             
-            // Ép full màn hình chống gian lận
             if (document.documentElement.requestFullscreen) {
                 document.documentElement.requestFullscreen().catch(err => console.log(err));
             }
@@ -601,17 +704,16 @@
             }, 1000);
         }
 
-        // Lắng nghe sự kiện thoát full màn hình hoặc rời tab -> Tự động nộp bài
         document.addEventListener("visibilitychange", function() {
             if (document.hidden && isExamining) {
-                alert("⚠️ Phát hiện bạn rời khỏi màn hình thi! Hệ thống sẽ tự động nộp bài.");
+                alert("⚠️ Phát hiện rời màn hình thi! Hệ thống đã tự động nộp bài.");
                 submitExam();
             }
         });
 
         document.addEventListener("fullscreenchange", function() {
             if (!document.fullscreenElement && isExamining) {
-                alert("⚠️ Bạn đã thoát chế độ toàn màn hình! Bài thi được tự động nộp.");
+                alert("⚠️ Thoát chế độ toàn màn hình! Bài thi được tự động nộp.");
                 submitExam();
             }
         });
@@ -659,7 +761,7 @@
 
         function resetExamUI() { document.getElementById('examResultBox').classList.add('hidden'); }
 
-        // EXAM BUILDER FOR TEACHER
+        // EXAM BUILDER
         function addQuestionBuilderBox() {
             const container = document.getElementById('builderQuestionsContainer');
             const div = document.createElement('div');
@@ -673,8 +775,8 @@
                     <input type="text" placeholder="Đáp án D" class="bq-opt bq-opt-3 w-full border border-slate-300 rounded-lg px-3 py-1.5 text-sm bg-white">
                 </div>
                 <div class="flex justify-between items-center text-xs">
-                    <span>Đáp án đúng (0:A, 1:B, 2:C, 3:D): <input type="number" min="0" max="3" value="0" class="bq-ans w-12 border rounded px-1 py-0.5 text-center font-bold"></span>
-                    <input type="text" placeholder="Giải thích chi tiết..." class="bq-explain w-1/2 border border-slate-300 rounded px-2 py-1 bg-white">
+                    <span>Đáp án đúng (0-3): <input type="number" min="0" max="3" value="0" class="bq-ans w-12 border rounded px-1 py-0.5 text-center font-bold"></span>
+                    <input type="text" placeholder="Giải thích..." class="bq-explain w-1/2 border rounded px-2 py-1 bg-white">
                 </div>
             `;
             container.appendChild(div);
@@ -697,9 +799,7 @@
                 ];
                 const ans = parseInt(box.querySelector('.bq-ans').value) || 0;
                 const explain = box.querySelector('.bq-explain').value.trim();
-                if(q && opts[0]) {
-                    questions.push({ q, opts, ans, explain });
-                }
+                if(q && opts[0]) questions.push({ q, opts, ans, explain });
             });
 
             if(questions.length === 0) { alert('Vui lòng soạn ít nhất 1 câu hỏi hợp lệ!'); return; }
@@ -708,7 +808,7 @@
             examData[newKey] = { title, time, questions };
             localStorage.setItem('math_exams', JSON.stringify(examData));
             renderExamSelect();
-            alert('Đã tạo và phát hành phòng thi trực tuyến thành công!');
+            alert('Đã tạo và phát hành đề thi mới thành công!');
         }
 
         // SCORES
@@ -730,7 +830,7 @@
             if(confirm('Xóa toàn bộ lịch sử điểm?')) { scores = []; localStorage.removeItem('math_scores'); renderScores(); renderTeacherScores(); }
         }
 
-        // NOTES (Chỉ GV mới tạo được)
+        // NOTES
         function openNoteModal() { document.getElementById('noteModal').classList.remove('hidden'); document.getElementById('noteModal').classList.add('flex'); }
         function closeNoteModal() { document.getElementById('noteModal').classList.remove('flex'); document.getElementById('noteModal').classList.add('hidden'); }
 
