@@ -36,10 +36,14 @@
                     <button onclick="switchTab('home')" class="nav-btn text-indigo-600 dark:text-indigo-400 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Trang chủ</button>
                     <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Bài giảng</button>
                     <button onclick="switchTab('exam')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Thi thử</button>
-                    <button onclick="switchTab('vnedu')" class="nav-btn text-emerald-600 dark:text-emerald-400 font-bold transition px-3 py-1.5 text-sm bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 rounded-xl"><i class="fa-solid fa-book-journal-whills mr-1"></i> Sổ điểm VnEdu</button>
+                    
+                    <!-- NÚT SỔ ĐIỂM VNEDU NỔI BẬT -->
+                    <button onclick="switchTab('vnedu')" class="nav-btn text-emerald-700 dark:text-emerald-300 font-bold transition px-3 py-1.5 text-sm bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700 rounded-xl hover:bg-emerald-200"><i class="fa-solid fa-book-journal-whills mr-1 text-emerald-600"></i> Sổ điểm VnEdu</button>
+                    
                     <button onclick="switchTab('scores')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Lịch sử thi</button>
                     <button onclick="switchTab('formulas')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Sổ tay</button>
                     <button onclick="switchTab('notes')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Thông báo</button>
+                    
                     <div id="teacherNavContainer" class="hidden">
                         <button onclick="switchTab('teacher')" class="nav-btn text-rose-600 dark:text-rose-400 font-bold transition bg-rose-50 dark:bg-rose-950/50 px-3 py-1.5 rounded-xl border border-rose-200 dark:border-rose-800 text-sm">
                             <i class="fa-solid fa-chalkboard-user mr-1"></i> Quản lý GV
@@ -153,7 +157,7 @@
             </div>
         </div>
 
-        <!-- 5. VNEDU ELECTRONIC GRADEBOOK TAB (Sổ điểm điện tử VnEdu chuẩn GD&ĐT) -->
+        <!-- 5. SỔ ĐIỂM ĐIỆN TỬ VNEDU CHUẨN GD&ĐT -->
         <div id="tab-vnedu" class="tab-content hidden space-y-6">
             <div class="bg-emerald-600 text-white p-6 rounded-2xl shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
@@ -191,7 +195,7 @@
             </div>
         </div>
 
-        <!-- 6. SCORES TAB (Lịch sử làm bài thi thử) -->
+        <!-- 6. SCORES TAB -->
         <div id="tab-scores" class="tab-content hidden space-y-6">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
                 <div>
@@ -244,7 +248,7 @@
             </div>
         </div>
 
-        <!-- 8. NOTES TAB (CHỈ GV MỚI THÊM/XÓA ĐƯỢC) -->
+        <!-- 8. NOTES TAB -->
         <div id="tab-notes" class="tab-content hidden space-y-6">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
@@ -390,7 +394,7 @@
         </div>
     </div>
 
-    <!-- NOTE MODAL (CHỈ DÀNH CHO GV) -->
+    <!-- NOTE MODAL -->
     <div id="noteModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-4">
             <button onclick="closeNoteModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"><i class="fa-solid fa-xmark text-xl"></i></button>
@@ -471,7 +475,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // DARK MODE TOGGLE FIX
         function toggleDarkMode() {
             const html = document.documentElement;
             const icon = document.getElementById('darkModeIcon');
@@ -849,7 +852,7 @@
             if(confirm('Xóa toàn bộ lịch sử điểm?')) { scores = []; localStorage.removeItem('math_scores'); renderScores(); renderTeacherScores(); }
         }
 
-        // NOTES (CHỈ GV MỚI ĐƯỢC TẠO & XÓA)
+        // NOTES
         function openNoteModal() {
             if(!currentUser || currentUser.role !== 'teacher') {
                 alert('⚠️ Chỉ giáo viên mới có quyền thêm thông báo!');
@@ -887,7 +890,7 @@
 
         function deleteNote(idx) {
             if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️️ Chỉ giáo viên mới có quyền xóa thông báo!');
+                alert('⚠️ Chỉ giáo viên mới có quyền xóa thông báo!');
                 return;
             }
             notes.splice(idx, 1);
