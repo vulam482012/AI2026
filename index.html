@@ -37,13 +37,13 @@
                 </div>
                 
                 <!-- Nav Links -->
-                <div class="hidden md:flex items-center space-x-5">
-                    <button onclick="switchTab('home')" class="nav-btn text-indigo-600 font-medium transition hover:text-indigo-600">Trang chủ</button>
-                    <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600">Bài giảng</button>
-                    <button onclick="switchTab('exam')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600">Phòng thi thử</button>
-                    <button onclick="switchTab('scores')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600">Bảng điểm</button>
-                    <button onclick="switchTab('formulas')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600">Sổ tay</button>
-                    <button onclick="switchTab('notes')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600">Ghi chú</button>
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="switchTab('home')" class="nav-btn text-indigo-600 font-medium transition hover:text-indigo-600 px-2 py-1">Trang chủ</button>
+                    <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Bài giảng</button>
+                    <button onclick="switchTab('exam')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Thi thử</button>
+                    <button onclick="switchTab('scores')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Bảng điểm</button>
+                    <button onclick="switchTab('formulas')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Sổ tay</button>
+                    <button onclick="switchTab('notes')" class="nav-btn text-slate-600 font-medium transition hover:text-indigo-600 px-2 py-1">Ghi chú</button>
                     <div id="teacherNavContainer" class="hidden">
                         <button onclick="switchTab('teacher')" class="nav-btn text-rose-600 font-bold transition hover:text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg border border-rose-200">
                             <i class="fa-solid fa-chalkboard-user mr-1"></i> Quản lý GV
@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <!-- 2. LECTURES TAB (Học sinh xem bài giảng) -->
+        <!-- 2. LECTURES TAB -->
         <div id="tab-lectures" class="tab-content hidden space-y-6">
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
@@ -123,19 +123,15 @@
                 </div>
             </div>
             
-            <div id="lecturesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Dynamic Lectures -->
-            </div>
+            <div id="lecturesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 3. VIEW LECTURE DETAIL MODAL / VIEW -->
+        <!-- 3. VIEW LECTURE DETAIL -->
         <div id="tab-lecture-detail" class="tab-content hidden space-y-6">
             <button onclick="switchTab('lectures')" class="text-indigo-600 font-semibold text-sm hover:underline flex items-center">
                 <i class="fa-solid fa-arrow-left mr-2"></i> Quay lại danh sách bài giảng
             </button>
-            <div id="lectureDetailContent" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
-                <!-- Populated dynamically -->
-            </div>
+            <div id="lectureDetailContent" class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6"></div>
         </div>
 
         <!-- 4. EXAM TAB -->
@@ -154,7 +150,6 @@
                 </div>
             </div>
 
-            <!-- Exam Workspace -->
             <div id="examWorkspace" class="hidden grid grid-cols-1 lg:grid-cols-4 gap-6">
                 <div class="lg:col-span-3 space-y-6" id="questionsContainer"></div>
                 <div class="space-y-6">
@@ -167,7 +162,6 @@
                 </div>
             </div>
             
-            <!-- Exam Result Box -->
             <div id="examResultBox" class="hidden bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center max-w-xl mx-auto space-y-4">
                 <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto">
                     <i class="fa-solid fa-check"></i>
@@ -216,22 +210,22 @@
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                     <h3 class="font-bold text-indigo-600 text-lg border-b pb-2"><i class="fa-solid fa-square-root-variable mr-2"></i> 7 Hằng đẳng thức đáng nhớ</h3>
                     <ul class="space-y-2 text-sm text-slate-700">
-                        <li>1. $(A + B)^2 = A^2 + 2AB + B^2$</li>
-                        <li>2. $(A - B)^2 = A^2 - 2AB + B^2$</li>
-                        <li>3. $A^2 - B^2 = (A - B)(A + B)$</li>
-                        <li>4. $(A + B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$</li>
-                        <li>5. $(A - B)^3 = A^3 - 3A^2B + 3AB^2 - B^3$</li>
-                        <li>6. $A^3 + B^3 = (A + B)(A^2 - AB + B^2)$</li>
-                        <li>7. $A^3 - B^3 = (A - B)(A^2 + AB + B^2)$</li>
+                        <li>1. (A + B)² = A² + 2AB + B²</li>
+                        <li>2. (A - B)² = A² - 2AB + B²</li>
+                        <li>3. A² - B² = (A - B)(A + B)</li>
+                        <li>4. (A + B)³ = A³ + 3A²B + 3AB² + B³</li>
+                        <li>5. (A - B)³ = A³ - 3A²B + 3AB² - B³</li>
+                        <li>6. A³ + B³ = (A + B)(A² - AB + B²)</li>
+                        <li>7. A³ - B³ = (A - B)(A² + AB + B²)</li>
                     </ul>
                 </div>
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
                     <h3 class="font-bold text-cyan-600 text-lg border-b pb-2"><i class="fa-solid fa-shapes mr-2"></i> Hình học & Lượng giác THCS</h3>
                     <ul class="space-y-2 text-sm text-slate-700">
-                        <li>• <b>Định lý Pythagore:</b> $BC^2 = AB^2 + AC^2$.</li>
-                        <li>• <b>Hệ thức lượng trong tam giác vuông:</b> $b^2 = a \cdot b'$, $h^2 = b' \cdot c'$.</li>
-                        <li>• <b>Tỷ số lượng giác:</b> $\sin = \frac{\text{Đối}}{\text{Huyền}}$, $\cos = \frac{\text{Kề}}{\text{Huyền}}$, $\tan = \frac{\text{Đối}}{\text{Kề}}$.</li>
-                        <li>• <b>Diện tích hình tròn:</b> $S = \pi R^2$.</li>
+                        <li>• <b>Định lý Pythagore:</b> BC² = AB² + AC²</li>
+                        <li>• <b>Hệ thức lượng trong tam giác vuông:</b> b² = a · b'</li>
+                        <li>• <b>Tỷ số lượng giác:</b> sin = Đối / Huyền, cos = Kề / Huyền</li>
+                        <li>• <b>Diện tích hình tròn:</b> S = πR²</li>
                     </ul>
                 </div>
             </div>
@@ -251,7 +245,7 @@
             <div id="notesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 8. TEACHER DASHBOARD TAB (Quản lý GV: Thêm bài giảng & Xem điểm) -->
+        <!-- 8. TEACHER DASHBOARD TAB -->
         <div id="tab-teacher" class="tab-content hidden space-y-8">
             <div class="bg-rose-50 border border-rose-200 p-6 rounded-2xl flex justify-between items-center">
                 <div>
@@ -275,14 +269,20 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Link Video (YouTube Embed hoặc Link học)</label>
-                    <input type="text" id="lecVideo" placeholder="Ví dụ: https://www.youtube.com/embed/..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                    <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Link Video YouTube</label>
+                    <input type="text" id="lecVideo" placeholder="Ví dụ: https://www.youtube.com/watch?v=..." class="w-full border border-slate-300 rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Nội dung / Tóm tắt lý thuyết chi tiết</label>
+                    <label class="block text-xs font-semibold uppercase text-slate-500 mb-1">Nội dung / Tóm tắt lý thuyết</label>
                     <textarea id="lecContent" rows="4" placeholder="Nhập tóm tắt công thức, bài tập ví dụ..." class="w-full border border-slate-300 rounded-xl p-4 text-sm focus:ring-2 focus:ring-rose-500 focus:outline-none"></textarea>
                 </div>
                 <button onclick="addNewLecture()" class="bg-rose-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-rose-700 transition shadow-sm">Xuất bản bài giảng</button>
+            </div>
+
+            <!-- Danh sách bài giảng hiện có (Cho phép GV quản lý/xóa) -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h3 class="font-bold text-lg text-slate-800"><i class="fa-solid fa-list text-rose-600 mr-2"></i> Danh sách bài giảng hiện tại</h3>
+                <div id="teacherLecturesList" class="space-y-3"></div>
             </div>
 
             <!-- Quản lý điểm học sinh -->
@@ -367,14 +367,14 @@
                 title: "Chuyên đề 1: Căn bậc hai & Biểu thức hữu tỉ", 
                 category: "Toán Đại số 9", 
                 video: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
-                content: "1. Điều kiện xác định của căn thức $\\sqrt{A}$ là $A \\geq 0$.<br>2. Hằng đẳng thức $\\sqrt{A^2} = |A|$.<br>3. Các kỹ năng trục căn thức ở mẫu cơ bản." 
+                content: "1. Điều kiện xác định của căn thức √A là A ≥ 0.<br>2. Hằng đẳng thức √A² = |A|.<br>3. Các kỹ năng trục căn thức ở mẫu cơ bản." 
             },
             { 
                 id: 2, 
                 title: "Chuyên đề 2: Hệ thức lượng trong tam giác vuông", 
                 category: "Toán Hình học 9", 
                 video: "https://www.youtube.com/embed/dQw4w9WgXcQ", 
-                content: "1. Định lý Pythagore đảo và thuận.<br>2. Các hệ thức về cạnh và đường cao trong tam giác vuông ($b^2 = ab'$...).<br>3. Tỷ số lượng giác của góc nhọn." 
+                content: "1. Định lý Pythagore đảo và thuận.<br>2. Các hệ thức về cạnh và đường cao trong tam giác vuông.<br>3. Tỷ số lượng giác của góc nhọn." 
             }
         ];
 
@@ -383,18 +383,18 @@
 
         const examData = {
             "1": [
-                { q: "Rút gọn biểu thức $\\sqrt{16} + \\sqrt{9}$ ta được kết quả là:", opts: ["5", "7", "4", "25"], ans: 1, explain: "Vì $\\sqrt{16} = 4$ và $\\sqrt{9} = 3$. Do đó $4 + 3 = 7$." },
-                { q: "Hàm số nào sau đây là hàm số bậc nhất?", opts: ["$y = 2x^2 + 1$", "$y = \\frac{1}{x} - 3$", "$y = -3x + 5$", "$y = 2$"], ans: 2, explain: "Hàm số bậc nhất có dạng $y = ax + b$ với $a \\neq 0$." },
-                { q: "Nghiệm của phương trình $2x - 4 = 0$ là:", opts: ["$x = 2$", "$x = -2$", "$x = 4$", "$x = 0$"], ans: 0, explain: "$2x = 4 \\Rightarrow x = 2$." },
-                { q: "Cho tam giác ABC vuông tại A có $AB = 3cm$, $AC = 4cm$. Độ dài cạnh huyền BC là:", opts: ["$5cm$", "$7cm$", "$6cm$", "$25cm$"], ans: 0, explain: "Theo định lý Pythagore: $BC = \\sqrt{AB^2 + AC^2} = 5cm$." },
-                { q: "Giá trị của biểu thức $\\sin^2 30^0 + \\cos^2 30^0$ bằng:", opts: ["$0$", "$1$", "$\\frac{1}{2}$", "$2$"], ans: 1, explain: "Theo hằng đẳng thức lượng giác: $\\sin^2\\alpha + \\cos^2\\alpha = 1$." }
+                { q: "Rút gọn biểu thức √16 + √9 ta được kết quả là:", opts: ["5", "7", "4", "25"], ans: 1, explain: "Vì √16 = 4 và √9 = 3. Do đó 4 + 3 = 7." },
+                { q: "Hàm số nào sau đây là hàm số bậc nhất?", opts: ["y = 2x² + 1", "y = 1/x - 3", "y = -3x + 5", "y = 2"], ans: 2, explain: "Hàm số bậc nhất có dạng y = ax + b với a ≠ 0." },
+                { q: "Nghiệm của phương trình 2x - 4 = 0 là:", opts: ["x = 2", "x = -2", "x = 4", "x = 0"], ans: 0, explain: "2x = 4 => x = 2." },
+                { q: "Cho tam giác ABC vuông tại A có AB = 3cm, AC = 4cm. Độ dài cạnh huyền BC là:", opts: ["5cm", "7cm", "6cm", "25cm"], ans: 0, explain: "Theo định lý Pythagore: BC = √(3² + 4²) = 5cm." },
+                { q: "Giá trị của biểu thức sin² 30° + cos² 30° bằng:", opts: ["0", "1", "1/2", "2"], ans: 1, explain: "Theo hằng đẳng thức lượng giác: sin²α + cos²α = 1." }
             ],
             "2": [
-                { q: "Cho biểu thức $P = \\frac{\\sqrt{x}}{\\sqrt{x} + 1}$. Giá trị của P khi $x = 4$ là:", opts: ["$\\frac{2}{3}$", "$\\frac{1}{2}$", "$\\frac{3}{4}$", "$2$"], ans: 0, explain: "Thay $x = 4$ vào ta được $P = \\frac{2}{2 + 1} = \\frac{2}{3}$." },
-                { q: "Đồ thị hàm số $y = (m - 1)x + 2$ song song với đường thẳng $y = 3x - 1$ khi:", opts: ["$m = 4$", "$m = 3$", "$m = 2$", "$m = -3$"], ans: 0, explain: "Điều kiện song song: $m - 1 = 3 \\Rightarrow m = 4$." },
-                { q: "Phương trình $x^2 - 5x + 6 = 0$ có tập nghiệm là:", opts: ["$\\{2; 3\\}$", "$\\{1; 6\\}$", "$\\{-2; -3\\}$", "$\\{5; 6\\}$"], ans: 0, explain: "Phân tích thành $(x - 2)(x - 3) = 0 \\Rightarrow x = 2$ hoặc $x = 3$." },
-                { q: "Cho đường tròn $(O; R)$ có dây cung $AB = 8cm$ cách tâm $O$ một khoảng bằng $3cm$. Bán kính $R$ bằng:", opts: ["$5cm$", "$4cm$", "$6cm$", "$10cm$"], ans: 0, explain: "$R = \\sqrt{3^2 + 4^2} = 5cm$." },
-                { q: "Tổng các nghiệm của phương trình $|x - 2| = 3$ là:", opts: ["$4$", "$2$", "$5$", "$0$"], ans: 0, explain: "$x = 5$ hoặc $x = -1$. Tổng là $4$." }
+                { q: "Cho biểu thức P = √x / (√x + 1). Giá trị của P khi x = 4 là:", opts: ["2/3", "1/2", "3/4", "2"], ans: 0, explain: "Thay x = 4 vào ta được P = 2 / (2 + 1) = 2/3." },
+                { q: "Đồ thị hàm số y = (m - 1)x + 2 song song với đường thẳng y = 3x - 1 khi:", opts: ["m = 4", "m = 3", "m = 2", "m = -3"], ans: 0, explain: "Điều kiện song song: m - 1 = 3 => m = 4." },
+                { q: "Phương trình x² - 5x + 6 = 0 có tập nghiệm là:", opts: ["{2; 3}", "{1; 6}", "{-2; -3}", "{5; 6}"], ans: 0, explain: "Phân tích thành (x - 2)(x - 3) = 0 => x = 2 hoặc x = 3." },
+                { q: "Cho đường tròn (O; R) có dây cung AB = 8cm cách tâm O một khoảng bằng 3cm. Bán kính R bằng:", opts: ["5cm", "4cm", "6cm", "10cm"], ans: 0, explain: "R = √(3² + 4²) = 5cm." },
+                { q: "Tổng các nghiệm của phương trình |x - 2| = 3 là:", opts: ["4", "2", "5", "0"], ans: 0, explain: "x = 5 hoặc x = -1. Tổng là 4." }
             ]
         };
 
@@ -404,6 +404,7 @@
             renderNotes();
             renderScores();
             renderTeacherScores();
+            renderTeacherLecturesList();
         };
 
         function switchTab(tabId) {
@@ -445,6 +446,7 @@
             closeAuthModal();
             updateAuthUI();
             alert(`Đăng nhập thành công với tư cách ${role === 'teacher' ? 'Giáo viên' : 'Học sinh'}!`);
+            if(role === 'teacher') switchTab('teacher');
         }
 
         function logout() {
@@ -460,11 +462,11 @@
             
             if(currentUser) {
                 authArea.innerHTML = `
-                    <div class="flex items-center space-x-3">
+                    <div class="flex items-center space-x-2">
                         <span class="text-xs font-bold bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-xl border border-indigo-200">
                             ${currentUser.name} (${currentUser.role === 'teacher' ? 'GV' : 'HS'})
                         </span>
-                        <button onclick="logout()" class="text-slate-500 hover:text-rose-600 text-sm font-medium"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        <button onclick="logout()" class="text-slate-500 hover:text-rose-600 text-sm font-medium p-1"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                     </div>
                 `;
                 if(currentUser.role === 'teacher') {
@@ -547,7 +549,6 @@
                 return;
             }
 
-            // Chuyển link youtube thường sang embed nếu cần
             if(video.includes('watch?v=')) {
                 video = video.replace('watch?v=', 'embed/');
             } else if(!video) {
@@ -565,13 +566,41 @@
             lectures.unshift(newLec);
             localStorage.setItem('math_lectures', JSON.stringify(lectures));
             renderLectures();
+            renderTeacherLecturesList();
 
             document.getElementById('lecTitle').value = '';
             document.getElementById('lecCategory').value = '';
             document.getElementById('lecVideo').value = '';
             document.getElementById('lecContent').value = '';
 
-            alert('Đã thêm bài giảng mới thành công!');
+            alert('Đã xuất bản bài giảng mới thành công!');
+        }
+
+        function renderTeacherLecturesList() {
+            const container = document.getElementById('teacherLecturesList');
+            if(!container) return;
+            let html = '';
+            lectures.forEach((lec, idx) => {
+                html += `
+                    <div class="flex justify-between items-center p-3 rounded-xl border border-slate-200 bg-slate-50">
+                        <div>
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">${lec.category}</span>
+                            <h4 class="font-bold text-sm text-slate-800 mt-1">${lec.title}</h4>
+                        </div>
+                        <button onclick="deleteLecture(${lec.id})" class="text-slate-400 hover:text-rose-600 p-2"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function deleteLecture(id) {
+            if(confirm('Bạn có chắc chắn muốn xóa bài giảng này không?')) {
+                lectures = lectures.filter(l => l.id !== id);
+                localStorage.setItem('math_lectures', JSON.stringify(lectures));
+                renderLectures();
+                renderTeacherLecturesList();
+            }
         }
 
         // EXAM LOGIC
