@@ -458,6 +458,13 @@
 
     <!-- JavaScript Application Logic -->
     <script>
+        // BỘ ĐẾM PHIÊN BẢN - TỰ ĐỘNG LÀM SẠCH BỘ NHỚ CŨ NẾU CÓ CẬP NHẬT MỚI
+        const CURRENT_VERSION = "v4.0_auth_system";
+        if(localStorage.getItem('math_app_ver') !== CURRENT_VERSION) {
+            localStorage.clear();
+            localStorage.setItem('math_app_ver', CURRENT_VERSION);
+        }
+
         // TÀI KHOẢN NGƯỜI DÙNG BẢO MẬT
         let usersList = JSON.parse(localStorage.getItem('math_users')) || [
             { name: "Thầy Giáo Võ Văn A", username: "gv", password: "123", role: "teacher" },
@@ -613,7 +620,7 @@
             }
         }
 
-        // BẢNG SỔ ĐIỂM BẢO MẬT (SỬA HOÀN TOÀN LỖI ẨN TÊN HỌC SINH)
+        // BẢNG SỔ ĐIỂM BẢO MẬT (CĂN CHỈNH TÊN HỌC SINH RÕ RÀNG)
         function renderVnEduTable() {
             const tbody = document.getElementById('vneduTableBody');
             const noticeBox = document.getElementById('vneduNoticeBox');
@@ -643,7 +650,7 @@
                 let s1 = parseFloat(d.hs1) || 0, s2 = parseFloat(d.hs2) || 0, s3 = parseFloat(d.hs3) || 0;
                 let dgk = parseFloat(d.dgk) || 0, dck = parseFloat(d.dck) || 0;
                 
-                let countTX = (d.hs1 !== "" && d.hs1 !== "—" ? 1 : 0) + (d.hs2 !== "" && d.hs2 !== "—" ? 1 : 0) + (d.hs3 !== "" && d.hs3 !== "—" ? 1 : 0);
+                let countTX = (d.hs1 && d.hs1 !== "" && d.hs1 !== "—" ? 1 : 0) + (d.hs2 && d.hs2 !== "" && d.hs2 !== "—" ? 1 : 0) + (d.hs3 && d.hs3 !== "" && d.hs3 !== "—" ? 1 : 0);
                 let sumTX = s1 + s2 + s3;
                 let divisor = countTX + 2 + 3;
                 let dtb = (countTX > 0 || dgk > 0 || dck > 0) ? ((sumTX + dgk*2 + dck*3) / divisor).toFixed(1) : "—";
@@ -1044,7 +1051,7 @@
 
         function deleteNote(idx) {
             if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ giáo viên mới có quyền xóa thông báo!');
+                alert('⚠️️ Chỉ giáo viên mới có quyền xóa thông báo!');
                 return;
             }
             notes.splice(idx, 1);
