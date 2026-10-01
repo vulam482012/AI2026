@@ -37,8 +37,8 @@
                     <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Bài giảng</button>
                     <button onclick="switchTab('exam')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Thi thử</button>
                     
-                    <!-- NÚT SỔ ĐIỂM VNEDU NỔI BẬT -->
-                    <button onclick="switchTab('vnedu')" class="nav-btn text-emerald-700 dark:text-emerald-300 font-bold transition px-3 py-1.5 text-sm bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700 rounded-xl hover:bg-emerald-200"><i class="fa-solid fa-book-journal-whills mr-1 text-emerald-600"></i> Sổ điểm VnEdu</button>
+                    <!-- NÚT SỔ ĐIỂM -->
+                    <button onclick="switchTab('vnedu')" class="nav-btn text-emerald-700 dark:text-emerald-300 font-bold transition px-3 py-1.5 text-sm bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700 rounded-xl hover:bg-emerald-200"><i class="fa-solid fa-book-journal-whills mr-1 text-emerald-600"></i> Sổ điểm</button>
                     
                     <button onclick="switchTab('scores')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Lịch sử thi</button>
                     <button onclick="switchTab('formulas')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Sổ tay</button>
@@ -74,9 +74,9 @@
                 <div class="max-w-2xl relative z-10">
                     <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Ôn thi Vào 10 & Học sinh giỏi</span>
                     <h1 class="text-3xl md:text-5xl font-extrabold mt-4 mb-4 leading-tight">Chinh phục Toán học THCS dễ dàng cùng MathOnline</h1>
-                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng học tập tích hợp Sổ điểm điện tử VnEdu, Phòng thi chống gian lận và Kho bài giảng chất lượng cao.</p>
+                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng học tập tích hợp Sổ điểm cá nhân, Phòng thi chống gian lận và Kho bài giảng chất lượng cao.</p>
                     <div class="flex flex-wrap gap-4">
-                        <button onclick="switchTab('vnedu')" class="bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl shadow hover:bg-emerald-600 transition flex items-center"><i class="fa-solid fa-book-journal-whills mr-2"></i> Xem Sổ điểm VnEdu</button>
+                        <button onclick="switchTab('vnedu')" class="bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl shadow hover:bg-emerald-600 transition flex items-center"><i class="fa-solid fa-book-journal-whills mr-2"></i> Xem Sổ điểm</button>
                         <button onclick="switchTab('lectures')" class="bg-white text-indigo-600 font-bold px-6 py-3 rounded-xl shadow hover:bg-indigo-50 transition">Xem bài giảng ngay</button>
                         <button onclick="switchTab('exam')" class="border border-white/40 text-white font-medium px-6 py-3 rounded-xl hover:bg-white/10 transition">Vào phòng thi thử</button>
                     </div>
@@ -86,13 +86,13 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('vnedu')">
                     <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-book-journal-whills"></i></div>
-                    <h3 class="font-bold text-lg mb-2">Sổ điểm điện tử VnEdu</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Cập nhật điểm ĐGTX, Giữa kỳ, Cuối kỳ và tính ĐTBm tự động theo chuẩn Bộ GD&ĐT.</p>
+                    <h3 class="font-bold text-lg mb-2">Sổ điểm điện tử</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Xem điểm ĐGTX, Giữa kỳ, Cuối kỳ và Trung bình môn chuẩn xác.</p>
                 </div>
                 <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('lectures')">
                     <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-video"></i></div>
                     <h3 class="font-bold text-lg mb-2">Bài giảng trực tuyến</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Kho video bài giảng và tài liệu học tập chi tiết từng chuyên đề Đại số & Hình học THCS.</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Kho video bài giảng và tài liệu học tập chi tiết từng chuyên đề Toán THCS.</p>
                 </div>
                 <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('exam')">
                     <div class="w-12 h-12 bg-cyan-50 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-laptop-code"></i></div>
@@ -157,16 +157,13 @@
             </div>
         </div>
 
-        <!-- 5. SỔ ĐIỂM ĐIỆN TỬ VNEDU CHUẨN GD&ĐT -->
+        <!-- 5. TAB SỔ ĐIỂM CÁ NHÂN / LỚP HỌC -->
         <div id="tab-vnedu" class="tab-content hidden space-y-6">
             <div class="bg-emerald-600 text-white p-6 rounded-2xl shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
-                    <span class="bg-white/20 text-xs uppercase px-2.5 py-1 rounded font-bold">Cổng Thông Tin VNEDU</span>
-                    <h2 class="text-2xl font-bold mt-2"><i class="fa-solid fa-book-journal-whills mr-2"></i> Sổ Điểm Điện Tử Môn Toán THCS</h2>
-                    <p class="text-emerald-100 text-sm mt-1">Bảng điểm tổng hợp ĐGTX, Giữa kỳ, Cuối kỳ và Trung bình môn theo chuẩn Bộ GD&ĐT.</p>
-                </div>
-                <div id="vneduTeacherNotice" class="text-xs bg-white/10 p-3 rounded-xl border border-white/20 hidden">
-                    💡 **Giáo viên**: Bấm vào nút **"Quản lý GV"** trên menu để nhập/sửa điểm cho học sinh.
+                    <span class="bg-white/20 text-xs uppercase px-2.5 py-1 rounded font-bold">Sổ Điểm Học Tập</span>
+                    <h2 class="text-2xl font-bold mt-2"><i class="fa-solid fa-book-journal-whills mr-2"></i> Sổ Điểm Môn Toán THCS</h2>
+                    <p id="vneduNoticeBox" class="text-emerald-100 text-sm mt-1">Bảng điểm tổng hợp ĐGTX, Giữa kỳ, Cuối kỳ và Trung bình môn.</p>
                 </div>
             </div>
 
@@ -176,8 +173,8 @@
                         <tr class="bg-slate-100 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600 text-xs font-bold text-slate-700 dark:text-slate-200 uppercase text-center">
                             <th class="p-4 text-left border-r dark:border-slate-600">Học sinh</th>
                             <th class="p-3 border-r dark:border-slate-600" colspan="3">Đánh giá thường xuyên (ĐGTX)</th>
-                            <th class="p-3 border-r dark:border-slate-600" colspan="1">Giữa kỳ (ĐGK)</th>
-                            <th class="p-3 border-r dark:border-slate-600" colspan="1">Cuối kỳ (ĐCK)</th>
+                            <th class="p-3 border-r dark:border-slate-600" colspan="1">Giữa kỳ (Cố định)</th>
+                            <th class="p-3 border-r dark:border-slate-600" colspan="1">Cuối kỳ (Cố định)</th>
                             <th class="p-4 bg-emerald-50 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">ĐTB Môn</th>
                         </tr>
                         <tr class="bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-600 text-xs font-semibold text-slate-500 dark:text-slate-400 text-center">
@@ -200,7 +197,7 @@
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
                 <div>
                     <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Lịch Sử & Kết Quả Thi Thử Trực Tuyến</h2>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Danh sách các bài thi trắc nghiệm bạn đã hoàn thành.</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Danh sách các bài thi trắc nghiệm đã hoàn thành.</p>
                 </div>
                 <button onclick="clearScores()" class="text-rose-600 dark:text-rose-400 text-sm font-medium hover:underline"><i class="fa-solid fa-trash mr-1"></i> Xóa lịch sử</button>
             </div>
@@ -269,14 +266,15 @@
             <div class="bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 p-6 rounded-2xl flex justify-between items-center">
                 <div>
                     <h2 class="text-2xl font-bold text-rose-800 dark:text-rose-300"><i class="fa-solid fa-chalkboard-user mr-2"></i> Trang Quản Lý Dành Cho Giáo Viên</h2>
-                    <p class="text-rose-600 dark:text-rose-400 text-sm mt-1">Tạo đề thi, bài giảng, nhập điểm VnEdu và quản lý lớp học.</p>
+                    <p class="text-rose-600 dark:text-rose-400 text-sm mt-1">Tạo đề thi, bài giảng, nhập điểm ĐGTX và quản lý lớp học.</p>
                 </div>
                 <span class="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Quyền Giáo Viên</span>
             </div>
 
-            <!-- NHẬP ĐIỂM VNEDU CHO HỌC SINH -->
+            <!-- NHẬP ĐIỂM CHO HỌC SINH (CHỈ SỬA ĐƯỢC ĐGTX) -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-pen-to-square text-rose-600 dark:text-rose-400 mr-2"></i> Nhập / Cập nhật Điểm VnEdu Học Sinh</h3>
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-pen-to-square text-rose-600 dark:text-rose-400 mr-2"></i> Cập Nhật Điểm ĐGTX Cho Học Sinh</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">🔒 Lợi ý: Điểm Giữa kỳ và Cuối kỳ đã được khóa cố định theo quy định.</p>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Học sinh</label>
@@ -288,13 +286,11 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Cột điểm</label>
+                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Cột điểm ĐGTX</label>
                         <select id="v_column" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
-                            <option value="hs1">ĐGTX 1 (HS1)</option>
-                            <option value="hs2">ĐGTX 2 (HS1)</option>
-                            <option value="hs3">ĐGTX 3 (HS1)</option>
-                            <option value="dgk">Giữa kỳ (ĐGK - Hệ số 2)</option>
-                            <option value="dck">Cuối kỳ (ĐCK - Hệ số 3)</option>
+                            <option value="hs1">ĐGTX 1 (Hệ số 1)</option>
+                            <option value="hs2">ĐGTX 2 (Hệ số 1)</option>
+                            <option value="hs3">ĐGTX 3 (Hệ số 1)</option>
                         </select>
                     </div>
                     <div>
@@ -369,27 +365,40 @@
 
     </main>
 
-    <!-- AUTH MODAL -->
+    <!-- AUTH MODAL NÂNG CẤP DỄ DÀNG ĐĂNG NHẬP -->
     <div id="authModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-6">
             <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"><i class="fa-solid fa-xmark text-xl"></i></button>
             <div class="text-center">
-                <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Đăng Nhập Hệ Thống</h3>
-                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Chọn phân quyền học sinh hoặc giáo viên</p>
+                <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Đăng Nhập Tài Khoản</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Chọn vai trò Học sinh hoặc Giáo viên</p>
             </div>
+            
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Vai trò tài khoản</label>
-                    <select id="authRole" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">1. Chọn Vai trò</label>
+                    <select id="authRole" onchange="toggleAuthFields()" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
                         <option value="student">Học sinh</option>
                         <option value="teacher">Giáo viên</option>
                     </select>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Họ và tên</label>
-                    <input type="text" id="authName" placeholder="Ví dụ: Nguyễn Vũ Lâm" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+
+                <div id="studentSelectBox">
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">2. Chọn Tên Học Sinh</label>
+                    <select id="authStudentName" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                        <option value="Nguyễn Vũ Lâm">Nguyễn Vũ Lâm</option>
+                        <option value="Lê Minh Quân">Lê Minh Quân</option>
+                        <option value="Trần Bảo Ngọc">Trần Bảo Ngọc</option>
+                        <option value="Hoàng Gia Huy">Hoàng Gia Huy</option>
+                    </select>
                 </div>
-                <button onclick="handleAuth()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition">Xác nhận đăng nhập</button>
+
+                <div id="teacherInputBox" class="hidden">
+                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">2. Tên Giáo Viên</label>
+                    <input type="text" id="authTeacherName" value="hehehehe (GV)" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                </div>
+
+                <button onclick="handleAuth()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition">Đăng nhập ngay</button>
             </div>
         </div>
     </div>
@@ -429,11 +438,13 @@
                 content: "1. Điều kiện xác định của căn thức √A là A >= 0.<br>2. Hằng đẳng thức √(A²) = |A|." 
             }
         ];
+        
+        // DỮ LIỆU ĐIỂM (ĐGK & ĐCK LÀ CỐ ĐỊNH)
         let vneduScores = JSON.parse(localStorage.getItem('math_vnedu')) || {
             "Nguyễn Vũ Lâm": { hs1: "8.5", hs2: "9.0", hs3: "8.0", dgk: "8.5", dck: "9.0" },
-            "Lê Minh Quân": { hs1: "7.5", hs2: "8.0", hs3: "", dgk: "8.0", dck: "" },
+            "Lê Minh Quân": { hs1: "7.5", hs2: "8.0", hs3: "8.5", dgk: "8.0", dck: "8.0" },
             "Trần Bảo Ngọc": { hs1: "9.0", hs2: "9.5", hs3: "9.0", dgk: "9.2", dck: "9.5" },
-            "Hoàng Gia Huy": { hs1: "6.5", hs2: "7.0", hs3: "6.0", dgk: "6.5", dck: "" }
+            "Hoàng Gia Huy": { hs1: "6.5", hs2: "7.0", hs3: "6.0", dgk: "6.5", dck: "7.0" }
         };
 
         let examData = JSON.parse(localStorage.getItem('math_exams')) || {
@@ -472,6 +483,7 @@
             }
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            if(tabId === 'vnedu') renderVnEduTable();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -491,16 +503,32 @@
         function openAuthModal() { document.getElementById('authModal').classList.remove('hidden'); document.getElementById('authModal').classList.add('flex'); }
         function closeAuthModal() { document.getElementById('authModal').classList.remove('flex'); document.getElementById('authModal').classList.add('hidden'); }
 
+        function toggleAuthFields() {
+            const role = document.getElementById('authRole').value;
+            if(role === 'teacher') {
+                document.getElementById('studentSelectBox').classList.add('hidden');
+                document.getElementById('teacherInputBox').classList.remove('hidden');
+            } else {
+                document.getElementById('studentSelectBox').classList.remove('hidden');
+                document.getElementById('teacherInputBox').classList.add('hidden');
+            }
+        }
+
         function handleAuth() {
             const role = document.getElementById('authRole').value;
-            const name = document.getElementById('authName').value.trim();
-            if(!name) { alert('Vui lòng nhập họ và tên!'); return; }
+            let name = "";
+            if(role === 'student') {
+                name = document.getElementById('authStudentName').value;
+            } else {
+                name = document.getElementById('authTeacherName').value.trim() || "Giáo viên";
+            }
             currentUser = { name, role };
             localStorage.setItem('math_user', JSON.stringify(currentUser));
             closeAuthModal();
             updateAuthUI();
             renderNotes();
-            alert(`Đăng nhập thành công với tư cách ${role === 'teacher' ? 'Giáo viên' : 'Học sinh'}!`);
+            renderVnEduTable();
+            alert(`Đăng nhập thành công với tư cách ${role === 'teacher' ? 'Giáo viên' : 'Học sinh: ' + name}!`);
             if(role === 'teacher') switchTab('teacher');
         }
 
@@ -509,6 +537,7 @@
             localStorage.removeItem('math_user');
             updateAuthUI();
             renderNotes();
+            renderVnEduTable();
             switchTab('home');
         }
 
@@ -516,7 +545,6 @@
             const authArea = document.getElementById('authArea');
             const teacherContainer = document.getElementById('teacherNavContainer');
             const teacherNoteContainer = document.getElementById('teacherNoteActionContainer');
-            const vneduNotice = document.getElementById('vneduTeacherNotice');
             
             if(currentUser) {
                 authArea.innerHTML = `
@@ -524,32 +552,52 @@
                         <span class="text-xs font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-3 py-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800">
                             ${currentUser.name} (${currentUser.role === 'teacher' ? 'GV' : 'HS'})
                         </span>
-                        <button onclick="logout()" class="text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 text-sm font-medium p-1"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        <button onclick="logout()" class="text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 text-sm font-medium p-1"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</button>
                     </div>
                 `;
                 if(currentUser.role === 'teacher') {
                     teacherContainer.classList.remove('hidden');
                     if(teacherNoteContainer) teacherNoteContainer.classList.remove('hidden');
-                    if(vneduNotice) vneduNotice.classList.remove('hidden');
                 } else {
                     teacherContainer.classList.add('hidden');
                     if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
-                    if(vneduNotice) vneduNotice.classList.add('hidden');
                 }
             } else {
                 authArea.innerHTML = `<button onclick="openAuthModal()" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-indigo-700 transition">Đăng nhập</button>`;
                 teacherContainer.classList.add('hidden');
                 if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
-                if(vneduNotice) vneduNotice.classList.add('hidden');
             }
         }
 
-        // VNEDU TABLE RENDER & CALCULATION
+        // VNEDU TABLE RENDER & PRIVACY LOGIC (HS CHỈ THẤY ĐIỂM MÌNH, GV THẤY HẾT)
         function renderVnEduTable() {
             const tbody = document.getElementById('vneduTableBody');
+            const noticeBox = document.getElementById('vneduNoticeBox');
             let html = '';
-            for(let student in vneduScores) {
-                let d = vneduScores[student];
+
+            if(!currentUser) {
+                tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-slate-400 dark:text-slate-500 font-medium">🔒 Bạn cần <button onclick="openAuthModal()" class="text-indigo-600 dark:text-indigo-400 font-bold underline">Đăng nhập</button> tài khoản Học sinh hoặc Giáo viên để xem sổ điểm.</td></tr>`;
+                if(noticeBox) noticeBox.innerHTML = "Vui lòng đăng nhập để xem thông tin điểm số.";
+                return;
+            }
+
+            let displayData = {};
+            if(currentUser.role === 'student') {
+                // HỌC SINH CHỈ XEM ĐƯỢC DÒNG CỦA MÌNH
+                if(vneduScores[currentUser.name]) {
+                    displayData[currentUser.name] = vneduScores[currentUser.name];
+                } else {
+                    displayData[currentUser.name] = { hs1: "—", hs2: "—", hs3: "—", dgk: "8.0", dck: "8.5" };
+                }
+                if(noticeBox) noticeBox.innerHTML = `👤 Sổ điểm cá nhân học sinh: <b class="underline">${currentUser.name}</b> (Bảo mật - Chỉ bạn mới xem được điểm này).`;
+            } else {
+                // GIÁO VIÊN XEM TOÀN BỘ LỚP
+                displayData = vneduScores;
+                if(noticeBox) noticeBox.innerHTML = `👨‍🏫 Chế độ Giáo viên: Đang xem bảng điểm của tất cả học sinh trong lớp.`;
+            }
+
+            for(let student in displayData) {
+                let d = displayData[student];
                 let s1 = parseFloat(d.hs1) || 0, s2 = parseFloat(d.hs2) || 0, s3 = parseFloat(d.hs3) || 0;
                 let dgk = parseFloat(d.dgk) || 0, dck = parseFloat(d.dck) || 0;
                 
@@ -564,8 +612,8 @@
                         <td class="p-3 border-r dark:border-slate-600">${d.hs1 !== "" ? d.hs1 : "—"}</td>
                         <td class="p-3 border-r dark:border-slate-600">${d.hs2 !== "" ? d.hs2 : "—"}</td>
                         <td class="p-3 border-r dark:border-slate-600">${d.hs3 !== "" ? d.hs3 : "—"}</td>
-                        <td class="p-3 border-r dark:border-slate-600 font-medium text-indigo-600 dark:text-indigo-400">${d.dgk !== "" ? d.dgk : "—"}</td>
-                        <td class="p-3 border-r dark:border-slate-600 font-medium text-indigo-600 dark:text-indigo-400">${d.dck !== "" ? d.dck : "—"}</td>
+                        <td class="p-3 border-r dark:border-slate-600 font-medium text-amber-600 dark:text-amber-400 bg-amber-50/30">${d.dgk !== "" ? d.dgk : "—"}</td>
+                        <td class="p-3 border-r dark:border-slate-600 font-medium text-amber-600 dark:text-amber-400 bg-amber-50/30">${d.dck !== "" ? d.dck : "—"}</td>
                         <td class="p-4 bg-emerald-50 dark:bg-emerald-950/80 font-extrabold text-emerald-700 dark:text-emerald-300 text-base">${dtb}</td>
                     </tr>
                 `;
@@ -573,6 +621,7 @@
             tbody.innerHTML = html;
         }
 
+        // CẬP NHẬT ĐIỂM ĐGTX (KHÔNG SỬA ĐƯỢC GIỮA KỲ & CUỐI KỲ)
         function updateVnEduScore() {
             if(!currentUser || currentUser.role !== 'teacher') {
                 alert('⚠️ Chỉ giáo viên mới có quyền cập nhật điểm!');
@@ -582,11 +631,16 @@
             const col = document.getElementById('v_column').value;
             const score = document.getElementById('v_score').value.trim();
 
-            if(!vneduScores[student]) vneduScores[student] = { hs1: "", hs2: "", hs3: "", dgk: "", dck: "" };
+            if(col === 'dgk' || col === 'dck') {
+                alert('🔒 Điểm Giữa kỳ và Cuối kỳ là cố định, không thể thay đổi!');
+                return;
+            }
+
+            if(!vneduScores[student]) vneduScores[student] = { hs1: "", hs2: "", hs3: "", dgk: "8.0", dck: "8.5" };
             vneduScores[student][col] = score;
             localStorage.setItem('math_vnedu', JSON.stringify(vneduScores));
             renderVnEduTable();
-            alert(`Đã cập nhật điểm cho học sinh ${student} thành công!`);
+            alert(`Đã cập nhật điểm ĐGTX cho học sinh ${student} thành công!`);
             document.getElementById('v_score').value = '';
         }
 
