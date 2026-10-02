@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathOnline THCS - Full Features with Teacher Reply</title>
+    <title>MathOnline THCS - Full Features with Student Peer Private Chat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -39,6 +39,7 @@
                     <button onclick="switchTab('home')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Trang chủ</button>
                     <button onclick="switchTab('vnedu')" class="nav-btn text-emerald-700 dark:text-emerald-300 font-bold transition px-3 py-1.5 text-sm bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700 rounded-xl hover:bg-emerald-200"><i class="fa-solid fa-book-journal-whills mr-1 text-emerald-600"></i> Sổ điểm</button>
                     <button onclick="switchTab('chat')" class="nav-btn text-indigo-600 dark:text-indigo-300 font-bold transition px-3 py-1.5 text-sm bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 rounded-xl hover:bg-indigo-100"><i class="fa-solid fa-comments mr-1"></i> Phòng Chat</button>
+                    <button onclick="switchTab('private_chat')" class="nav-btn text-violet-700 dark:text-violet-300 font-bold transition px-3 py-1.5 text-sm bg-violet-50 dark:bg-violet-950/50 border border-violet-200 dark:border-violet-800 rounded-xl hover:bg-violet-100"><i class="fa-solid fa-user-lock mr-1"></i> Chat riêng 1-1</button>
                     <button onclick="switchTab('feedback')" class="nav-btn text-cyan-700 dark:text-cyan-300 font-bold transition px-3 py-1.5 text-sm bg-cyan-50 dark:bg-cyan-950/50 border border-cyan-200 dark:border-cyan-800 rounded-xl hover:bg-cyan-100"><i class="fa-solid fa-comment-dots mr-1"></i> Phản hồi</button>
                     <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Bài giảng</button>
                     <button onclick="switchTab('exam')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Thi thử</button>
@@ -108,11 +109,11 @@
                 <div class="max-w-2xl relative z-10">
                     <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Ôn thi Vào 10 & Học sinh giỏi</span>
                     <h1 class="text-3xl md:text-5xl font-extrabold mt-4 mb-4 leading-tight">Chinh phục Toán THCS cùng MathOnline Cloud</h1>
-                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng tích hợp Sổ điểm trực tiếp, Phòng chat thảo luận lớp học & Phòng thi chống gian lận.</p>
+                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng tích hợp Sổ điểm trực tiếp, Phòng chat chung & Chat riêng tư 1-1 linh hoạt.</p>
                     <div class="flex flex-wrap gap-4">
                         <button onclick="switchTab('exam')" class="bg-white text-indigo-600 font-bold px-6 py-3 rounded-xl shadow hover:bg-indigo-50 transition flex items-center"><i class="fa-solid fa-laptop-code mr-2"></i> Vào Phòng Thi Thử</button>
-                        <button onclick="switchTab('vnedu')" class="bg-emerald-500 text-white font-bold px-6 py-3 rounded-xl shadow hover:bg-emerald-600 transition flex items-center"><i class="fa-solid fa-book-journal-whills mr-2"></i> Xem Sổ điểm</button>
-                        <button onclick="switchTab('chat')" class="border border-white/40 text-white font-medium px-6 py-3 rounded-xl hover:bg-white/10 transition">Phòng Chat</button>
+                        <button onclick="switchTab('private_chat')" class="bg-violet-500 text-white font-bold px-6 py-3 rounded-xl shadow hover:bg-violet-600 transition flex items-center"><i class="fa-solid fa-user-lock mr-2"></i> Chat riêng 1-1</button>
+                        <button onclick="switchTab('vnedu')" class="border border-white/40 text-white font-medium px-6 py-3 rounded-xl hover:bg-white/10 transition">Xem Sổ Điểm</button>
                     </div>
                 </div>
             </div>
@@ -152,7 +153,7 @@
             </div>
         </div>
 
-        <!-- 3. TAB PHÒNG CHAT LỚP HỌC -->
+        <!-- 3. TAB PHÒNG CHAT CHUNG LỚP HỌC -->
         <div id="tab-chat" class="tab-content hidden max-w-4xl mx-auto space-y-4">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
                 <div>
@@ -174,7 +175,44 @@
             </div>
         </div>
 
-        <!-- 4. TAB PHẢN HỒI & GÓP Ý (ĐÃ THÊM TÍNH NĂNG GV TRẢ LỜI) -->
+        <!-- 3.1 TAB CHAT RIÊNG TƯ 1-1 (ĐÃ HỖ TRỢ HỌC SINH NHẮN TIN VỚI NHAU) -->
+        <div id="tab-private_chat" class="tab-content hidden max-w-5xl mx-auto space-y-4">
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-user-lock text-violet-600 mr-2.5"></i> Nhắn Tin Riêng Tư 1-1</h2>
+                    <p id="privateChatSubTitle" class="text-xs text-slate-500 dark:text-slate-400 mt-1">Trao đổi bảo mật 1-1 với Thầy cô hoặc các bạn học sinh khác trong lớp.</p>
+                </div>
+                <span class="bg-violet-50 dark:bg-violet-950/80 text-violet-600 dark:text-violet-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-violet-200 dark:border-violet-800"><i class="fa-solid fa-shield-halved mr-1"></i>Bảo mật 1-1</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-[500px]">
+                <!-- Danh sách liên lạc bên trái -->
+                <div class="md:col-span-1 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm p-3 flex flex-col space-y-2 overflow-y-auto">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider px-2 py-1">Danh sách liên hệ</span>
+                    <div id="privateContactsList" class="space-y-1"></div>
+                </div>
+
+                <!-- Khung chat bên phải -->
+                <div class="md:col-span-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm p-4 flex flex-col justify-between">
+                    <div id="privateChatHeader" class="border-b dark:border-slate-700 pb-3 font-bold text-sm text-indigo-600 dark:text-indigo-400 flex items-center">
+                        <i class="fa-solid fa-circle-user mr-2 text-lg"></i> Chọn một người để bắt đầu nhắn tin riêng
+                    </div>
+                    
+                    <div id="privateMessagesContainer" class="space-y-3 overflow-y-auto pr-2 h-full py-2">
+                        <div class="text-center text-slate-400 py-24 text-sm">Chưa chọn đoạn hội thoại nào.</div>
+                    </div>
+                    
+                    <div id="privateInputArea" class="pt-3 mt-2 border-t dark:border-slate-700 flex gap-2 hidden">
+                        <input type="text" id="privateChatInput" onkeydown="if(event.key==='Enter') sendPrivateMessage()" placeholder="Nhập tin nhắn riêng tư..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-violet-500 focus:outline-none">
+                        <button onclick="sendPrivateMessage()" class="bg-violet-600 hover:bg-violet-700 text-white px-5 py-2.5 rounded-xl font-bold transition flex items-center shadow-sm shrink-0">
+                            <i class="fa-solid fa-paper-plane mr-1.5"></i> Gửi
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. TAB PHẢN HỒI & GÓP Ý -->
         <div id="tab-feedback" class="tab-content hidden space-y-6">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100"><i class="fa-solid fa-comment-dots text-cyan-600 mr-2"></i> Gửi Phản Hồi & Giải Đáp Thắc Mắc</h2>
@@ -242,7 +280,6 @@
                 </div>
             </div>
 
-            <!-- Khu vực làm bài thi -->
             <div id="examWorkspace" class="hidden grid grid-cols-1 lg:grid-cols-4 gap-6">
                 <div class="lg:col-span-3 space-y-6" id="questionsContainer"></div>
                 <div class="space-y-6">
@@ -255,7 +292,6 @@
                 </div>
             </div>
             
-            <!-- Bảng kết quả sau khi nộp bài -->
             <div id="examResultBox" class="hidden bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm text-center max-w-xl mx-auto space-y-4">
                 <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto"><i class="fa-solid fa-circle-check"></i></div>
                 <h3 class="text-2xl font-bold">Nộp bài thành công!</h3>
@@ -321,7 +357,6 @@
                 </div>
             </div>
 
-            <!-- MỤC 1: ĐỔI MẬT KHẨU GIÁO VIÊN -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <div class="border-b dark:border-slate-700 pb-3">
                     <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-shield-halved text-rose-600 dark:text-rose-400 mr-2"></i> 1. Đổi Mật Khẩu Tài Khoản Giáo Viên</h3>
@@ -345,7 +380,6 @@
                 </div>
             </div>
 
-            <!-- MỤC 2: THÊM HỌC SINH MỚI -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
                 <div class="border-b dark:border-slate-700 pb-3">
                     <h3 class="font-bold text-xl text-slate-800 dark:text-slate-100"><i class="fa-solid fa-user-plus text-indigo-600 dark:text-indigo-400 mr-2"></i> 2. Thêm Học Sinh Mới & Cấp Tài Khoản (Cloud Synced)</h3>
@@ -387,13 +421,12 @@
                 </div>
             </div>
 
-            <!-- MỤC 3: TẠO ĐỀ THI TRỰC TUYẾN -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-file-circle-plus text-rose-600 dark:text-rose-400 mr-2"></i> 3. Tạo Phòng / Đề Thi Trực Tuyến Mới (Cloud Synced)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Tên Đề Thi <span class="text-rose-500">*</span></label>
-                        <input type="text" id="newExamTitle" placeholder="Nhập tên đề thi (Ví dụ: Đề 15 phút Số học 9)..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 font-medium">
+                        <input type="text" id="newExamTitle" placeholder="Nhập tên đề thi..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 font-medium">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Thời gian làm bài (Phút)</label>
@@ -413,7 +446,7 @@
                                 <span class="font-bold text-xs uppercase text-indigo-600 dark:text-indigo-400">Câu hỏi 1</span>
                                 <button type="button" onclick="this.closest('.builder-q-item').remove(); updateQuestionNumbers();" class="text-xs text-rose-500 hover:text-rose-700 font-semibold"><i class="fa-solid fa-trash-can mr-1"></i>Xóa câu này</button>
                             </div>
-                            <input type="text" placeholder="Nội dung câu hỏi (Ví dụ: 1 + 2! = ?)" class="bq-text w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-700">
+                            <input type="text" placeholder="Nội dung câu hỏi..." class="bq-text w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-700">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                                 <input type="text" placeholder="Đáp án A (Vị trí 0)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
                                 <input type="text" placeholder="Đáp án B (Vị trí 1)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
@@ -422,7 +455,7 @@
                             </div>
                             <div class="flex flex-wrap justify-between items-center text-xs gap-2 pt-1">
                                 <span class="font-medium">Đáp án đúng (0-3): <input type="number" min="0" max="3" value="0" class="bq-ans w-14 border rounded px-1.5 py-0.5 text-center font-bold bg-white dark:bg-slate-700 text-indigo-600"></span>
-                                <input type="text" placeholder="Lời giải chi tiết (không bắt buộc)..." class="bq-explain w-full md:w-1/2 border rounded px-2.5 py-1 bg-white dark:bg-slate-700">
+                                <input type="text" placeholder="Lời giải chi tiết..." class="bq-explain w-full md:w-1/2 border rounded px-2.5 py-1 bg-white dark:bg-slate-700">
                             </div>
                         </div>
                     </div>
@@ -433,7 +466,6 @@
                 </div>
             </div>
 
-            <!-- MỤC 4: ĐĂNG TẢI BÀI GIẢNG -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-plus-circle text-rose-600 dark:text-rose-400 mr-2"></i> 4. Đăng Tải Bài Giảng Mới (Cloud Synced)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -527,9 +559,11 @@
         let scores = [];
         let notes = [];
         let chatMessages = [];
+        let privateMessages = {};
         let feedbacks = [];
 
         let currentUser = JSON.parse(localStorage.getItem('math_user')) || null;
+        let activePrivatePartner = null;
         let db = null;
 
         try {
@@ -537,8 +571,8 @@
             db = firebase.database();
             document.getElementById('syncStatus').innerHTML = `<i class="fa-solid fa-cloud-check text-emerald-500 mr-1"></i>Cloud Online`;
 
-            db.ref('users').on('value', snap => { usersList = snap.val() || DEFAULT_USERS; renderTeacherStudentManagement(); renderVnEduTable(); });
-            db.ref('vneduScores').on('value', snap => { vneduScores = snap.val() || DEFAULT_VNEDU; renderVnEduTable(); renderTeacherStudentManagement(); });
+            db.ref('users').on('value', snap => { usersList = snap.val() || DEFAULT_USERS; renderTeacherStudentManagement(); renderVnEduTable(); renderPrivateContacts(); });
+            db.ref('vneduScores').on('value', snap => { vneduScores = snap.val() || DEFAULT_VNEDU; renderVnEduTable(); });
             db.ref('exams').on('value', snap => { examData = snap.val() || DEFAULT_EXAMS; renderExamSelect(); });
             db.ref('lectures').on('value', snap => { lectures = snap.val() || DEFAULT_LECTURES; renderLectures(); });
             
@@ -546,13 +580,8 @@
                 const val = snap.val();
                 scores = [];
                 if (val) {
-                    if (Array.isArray(val)) {
-                        scores = val.filter(Boolean);
-                    } else {
-                        for (let k in val) {
-                            scores.push({ id: k, ...val[k] });
-                        }
-                    }
+                    if (Array.isArray(val)) scores = val.filter(Boolean);
+                    else for (let k in val) scores.push({ id: k, ...val[k] });
                 }
                 scores.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0));
                 renderScores();
@@ -566,12 +595,15 @@
                 renderChatMessages();
             });
 
+            db.ref('privateMessages').on('value', snap => {
+                privateMessages = snap.val() || {};
+                if(activePrivatePartner) renderPrivateMessages();
+            });
+
             db.ref('feedbacks').on('value', snap => {
                 const val = snap.val();
                 feedbacks = [];
-                if (val) {
-                    for (let key in val) feedbacks.push({ id: key, ...val[key] });
-                }
+                if (val) for (let key in val) feedbacks.push({ id: key, ...val[key] });
                 renderFeedbacks();
             });
 
@@ -606,6 +638,7 @@
             if(tabId === 'vnedu') renderVnEduTable();
             if(tabId === 'teacher') renderTeacherStudentManagement();
             if(tabId === 'chat') { renderChatMessages(); scrollToBottomChat(); }
+            if(tabId === 'private_chat') renderPrivateContacts();
             if(tabId === 'feedback') renderFeedbacks();
             if(tabId === 'scores') renderScores();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -654,13 +687,10 @@
                 currentUser = { name: userFound.name, username: userFound.username, role: userFound.role };
                 localStorage.setItem('math_user', JSON.stringify(currentUser));
                 updateAuthUI();
-                renderNotes();
-                renderVnEduTable();
-                renderScores();
-                renderFeedbacks();
+                activePrivatePartner = null;
                 alert(`Đăng nhập thành công! Chào mừng ${userFound.role === 'teacher' ? 'Giáo viên' : 'Học sinh'}: ${userFound.name}`);
                 if(userFound.role === 'teacher') switchTab('teacher');
-                else switchTab('exam');
+                else switchTab('private_chat');
             } else {
                 alert('❌ Sai Vai trò, Tài khoản hoặc Mật khẩu! Vui lòng kiểm tra lại.');
             }
@@ -668,6 +698,7 @@
 
         function logout() {
             currentUser = null;
+            activePrivatePartner = null;
             localStorage.removeItem('math_user');
             updateAuthUI();
             switchTab('login');
@@ -700,6 +731,124 @@
                 if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
             }
             renderFeedbacks();
+        }
+
+        // =========================================================================
+        // 🔥 HỆ THỐNG CHAT RIÊNG TƯ 1-1 (ĐÃ CHO PHÉP HS NHẮN TIN VỚI NHAU) 🔥
+        // =========================================================================
+        function getPrivateRoomId(userA, userB) {
+            return [userA, userB].sort().join('_').replace(/[\s\.\#\$\/\[\]]/g, '_');
+        }
+
+        function renderPrivateContacts() {
+            const listEl = document.getElementById('privateContactsList');
+            const subTitle = document.getElementById('privateChatSubTitle');
+            if(!listEl) return;
+
+            if(!currentUser) {
+                listEl.innerHTML = `<div class="text-xs text-slate-400 p-2">Vui lòng đăng nhập.</div>`;
+                return;
+            }
+
+            if(subTitle) subTitle.innerText = "Trò chuyện riêng tư bảo mật 1-1 với Thầy cô hoặc các bạn học sinh trong lớp.";
+
+            // Lọc ra tất cả các tài khoản KHÁC tài khoản đang đăng nhập
+            let contacts = usersList.filter(u => u.name !== currentUser.name);
+
+            let html = '';
+            if(contacts.length === 0) {
+                listEl.innerHTML = `<div class="text-xs text-slate-400 p-2">Không có liên hệ nào khác.</div>`;
+                return;
+            }
+
+            contacts.forEach(c => {
+                const isActive = activePrivatePartner === c.name;
+                const isTeacher = c.role === 'teacher';
+                html += `
+                    <button onclick="selectPrivatePartner('${c.name}')" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between ${isActive ? 'bg-violet-600 text-white shadow-sm' : 'hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200'}">
+                        <div class="flex items-center space-x-2 truncate">
+                            <i class="fa-solid fa-circle-user text-base ${isActive ? 'text-white' : (isTeacher ? 'text-rose-500' : 'text-violet-500')}"></i>
+                            <span class="truncate">${c.name}</span>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 rounded uppercase ${isActive ? 'bg-white/20 text-white' : (isTeacher ? 'bg-rose-100 text-rose-600' : 'bg-slate-200 text-slate-600')}">${isTeacher ? 'GV' : 'HS'}</span>
+                    </button>
+                `;
+            });
+            listEl.innerHTML = html;
+        }
+
+        function selectPrivatePartner(partnerName) {
+            activePrivatePartner = partnerName;
+            renderPrivateContacts();
+
+            const headerEl = document.getElementById('privateChatHeader');
+            const inputArea = document.getElementById('privateInputArea');
+            if(headerEl) headerEl.innerHTML = `<i class="fa-solid fa-circle-user mr-2 text-xl text-violet-600"></i> Đang chat riêng với: <span class="underline ml-1">${partnerName}</span>`;
+            if(inputArea) inputArea.classList.remove('hidden');
+
+            renderPrivateMessages();
+        }
+
+        function sendPrivateMessage() {
+            if(!currentUser || !activePrivatePartner) return;
+            const input = document.getElementById('privateChatInput');
+            const text = input.value.trim();
+            if(!text) return;
+
+            const roomId = getPrivateRoomId(currentUser.name, activePrivatePartner);
+            const now = new Date();
+            const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} ${now.getDate()}/${now.getMonth()+1}`;
+
+            const newMsg = {
+                sender: currentUser.name,
+                receiver: activePrivatePartner,
+                text: text,
+                time: timeStr,
+                timestamp: Date.now()
+            };
+
+            if(db) {
+                db.ref(`privateMessages/${roomId}`).push(newMsg).then(() => {
+                    input.value = '';
+                });
+            }
+        }
+
+        function renderPrivateMessages() {
+            const container = document.getElementById('privateMessagesContainer');
+            if(!container || !activePrivatePartner || !currentUser) return;
+
+            const roomId = getPrivateRoomId(currentUser.name, activePrivatePartner);
+            const roomData = privateMessages[roomId] || {};
+            const messages = Object.values(roomData);
+            messages.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0));
+
+            if(messages.length === 0) {
+                container.innerHTML = `<div class="text-center text-slate-400 py-16 text-xs">Chưa có tin nhắn riêng nào với ${activePrivatePartner}. Hãy gửi lời chào đầu tiên!</div>`;
+                return;
+            }
+
+            let html = '';
+            messages.forEach(msg => {
+                const isMe = msg.sender === currentUser.name;
+                if(isMe) {
+                    html += `
+                        <div class="flex flex-col items-end">
+                            <span class="text-[10px] text-slate-400 mb-0.5">${msg.time}</span>
+                            <div class="bg-violet-600 text-white rounded-2xl rounded-tr-none px-4 py-2 max-w-md text-xs sm:text-sm shadow-sm break-words">${msg.text}</div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="flex flex-col items-start">
+                            <span class="text-[10px] text-slate-400 mb-0.5">${msg.sender} • ${msg.time}</span>
+                            <div class="bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-100 rounded-2xl rounded-tl-none px-4 py-2 max-w-md text-xs sm:text-sm shadow-sm break-words">${msg.text}</div>
+                        </div>
+                    `;
+                }
+            });
+            container.innerHTML = html;
+            container.scrollTop = container.scrollHeight;
         }
 
         // =========================================================================
@@ -752,17 +901,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
                 `;
 
-                let optsList = [];
-                if (Array.isArray(item.opts)) {
-                    optsList = item.opts;
-                } else if (item.opts && typeof item.opts === 'object') {
-                    optsList = Object.values(item.opts);
-                }
-
-                if (optsList.length === 0) {
-                    optsList = ["Đáp án A", "Đáp án B", "Đáp án C", "Đáp án D"];
-                }
-
+                let optsList = Array.isArray(item.opts) ? item.opts : (item.opts ? Object.values(item.opts) : ["Đáp án A", "Đáp án B", "Đáp án C", "Đáp án D"]);
                 const letters = ["A", "B", "C", "D"];
                 optsList.forEach((opt, oIdx) => {
                     let displayOpt = (opt !== undefined && opt !== "") ? opt : `Lựa chọn ${letters[oIdx] || oIdx + 1}`;
@@ -814,16 +953,12 @@
             isExamining = false;
             clearInterval(examTimer);
 
-            if (document.fullscreenElement) {
-                document.exitFullscreen().catch(err => console.log(err));
-            }
+            if (document.fullscreenElement) document.exitFullscreen().catch(err => console.log(err));
 
             let correctCount = 0;
             currentQuestions.forEach((item, idx) => {
                 const selected = document.querySelector(`input[name="q_${idx}"]:checked`);
-                if(selected && parseInt(selected.value) === parseInt(item.ans || 0)) {
-                    correctCount++;
-                }
+                if(selected && parseInt(selected.value) === parseInt(item.ans || 0)) correctCount++;
             });
 
             let totalQ = currentQuestions.length || 1;
@@ -834,22 +969,10 @@
             const now = new Date();
             const timeStr = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')} - ${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
 
-            const newScoreRecord = {
-                name: studentName,
-                exam: examTitle,
-                correct: `${correctCount}/${totalQ}`,
-                score: finalScore,
-                time: timeStr,
-                timestamp: Date.now()
-            };
+            const newScoreRecord = { name: studentName, exam: examTitle, correct: `${correctCount}/${totalQ}`, score: finalScore, time: timeStr, timestamp: Date.now() };
 
             if(db) {
-                db.ref('scores').push(newScoreRecord).then(() => {
-                    renderScores();
-                }).catch(err => {
-                    scores.unshift(newScoreRecord);
-                    renderScores();
-                });
+                db.ref('scores').push(newScoreRecord).then(() => renderScores()).catch(err => { scores.unshift(newScoreRecord); renderScores(); });
             } else {
                 scores.unshift(newScoreRecord);
                 renderScores();
@@ -951,11 +1074,7 @@
             const title = document.getElementById('newExamTitle').value.trim();
             const time = parseInt(document.getElementById('newExamTime').value) || 15;
 
-            if(!title) {
-                alert('⚠️ Vui lòng điền "TÊN ĐỀ THI" trước khi lưu!');
-                document.getElementById('newExamTitle').focus();
-                return;
-            }
+            if(!title) { alert('⚠️ Vui lòng điền "TÊN ĐỀ THI" trước khi lưu!'); return; }
 
             const qBoxes = document.querySelectorAll('.builder-q-item');
             let questions = [];
@@ -963,26 +1082,18 @@
             qBoxes.forEach((box) => {
                 const qInput = box.querySelector('.bq-text');
                 const q = qInput ? qInput.value.trim() : '';
-
                 const optInputs = box.querySelectorAll('.bq-opt');
                 let opts = [];
                 optInputs.forEach(input => opts.push(input.value.trim()));
-
                 const ansInput = box.querySelector('.bq-ans');
                 const ans = ansInput ? parseInt(ansInput.value) || 0 : 0;
-
                 const explainInput = box.querySelector('.bq-explain');
                 const explain = explainInput ? explainInput.value.trim() : '';
 
-                if(q) {
-                    questions.push({ q, opts, ans, explain });
-                }
+                if(q) questions.push({ q, opts, ans, explain });
             });
 
-            if(questions.length === 0) {
-                alert('⚠️ Vui lòng nhập nội dung cho ít nhất 1 câu hỏi!');
-                return;
-            }
+            if(questions.length === 0) { alert('⚠️ Vui lòng nhập nội dung cho ít nhất 1 câu hỏi!'); return; }
 
             const newExamKey = 'exam_' + Date.now();
             examData[newExamKey] = { title, time, questions };
@@ -1024,7 +1135,7 @@
                 if(noticeBox) noticeBox.innerHTML = `👤 Sổ điểm cá nhân học sinh: <b class="underline">${currentUser.name}</b> (Bảo mật - Chỉ bạn xem được).`;
             } else {
                 displayData = vneduScores;
-                if(noticeBox) noticeBox.innerHTML = `👨‍🏫 Quyền Giáo Viên: ⚡ Bạn có thể gõ trực tiếp điểm số vào từng ô dưới đây để cập nhật vĩnh viễn lên Cloud!`;
+                if(noticeBox) noticeBox.innerHTML = `👨‍🏫 Quyền Giáo Viên: ⚡ Gõ trực tiếp điểm số vào từng ô dưới đây để cập nhật vĩnh viễn lên Cloud!`;
             }
 
             for(let studentName in displayData) {
@@ -1088,27 +1199,22 @@
                 renderVnEduTable();
                 return;
             }
-
             if(!vneduScores[studentName]) vneduScores[studentName] = { hs1: "", hs2: "", hs3: "", dgk: "", dck: "" };
             vneduScores[studentName][col] = val;
-
             if(db) db.ref('vneduScores/' + studentName).set(vneduScores[studentName]);
         }
 
         function deleteStudentFromVnEdu(studentName) {
             if(!currentUser || currentUser.role !== 'teacher') return;
-            if(confirm(`Bạn có chắc chắn muốn xóa học sinh "${studentName}" khỏi Sổ Điểm không?`)) {
+            if(confirm(`Xóa học sinh "${studentName}" khỏi Sổ Điểm?`)) {
                 delete vneduScores[studentName];
                 usersList = usersList.filter(u => u.name !== studentName);
-                if(db) {
-                    db.ref('vneduScores').set(vneduScores);
-                    db.ref('users').set(usersList);
-                }
+                if(db) { db.ref('vneduScores').set(vneduScores); db.ref('users').set(usersList); }
             }
         }
 
         // =========================================================================
-        // 🔥 PHÒNG CHAT REALTIME 🔥
+        // 🔥 PHÒNG CHAT CHUNG LỚP HỌC 🔥
         // =========================================================================
         function sendChatMessage() {
             if(!currentUser) { alert('Vui lòng Đăng nhập để tham gia chat!'); switchTab('login'); return; }
@@ -1119,18 +1225,8 @@
             const now = new Date();
             const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} ${now.getDate()}/${now.getMonth()+1}`;
 
-            const newMsg = {
-                sender: currentUser.name,
-                role: currentUser.role,
-                text: text,
-                time: timeStr,
-                timestamp: Date.now()
-            };
-
-            if(db) {
-                db.ref('chatMessages').push(newMsg);
-                input.value = '';
-            }
+            const newMsg = { sender: currentUser.name, role: currentUser.role, text: text, time: timeStr, timestamp: Date.now() };
+            if(db) { db.ref('chatMessages').push(newMsg); input.value = ''; }
         }
 
         function renderChatMessages() {
@@ -1138,7 +1234,7 @@
             if(!container) return;
             let html = '';
             if(chatMessages.length === 0) {
-                container.innerHTML = `<div class="text-center text-slate-400 py-12 text-sm">Chưa có tin nhắn nào. Hãy gửi tin nhắn đầu tiên!</div>`;
+                container.innerHTML = `<div class="text-center text-slate-400 py-12 text-sm">Chưa có tin nhắn nào.</div>`;
                 return;
             }
 
@@ -1149,26 +1245,15 @@
                 if(isMe) {
                     html += `
                         <div class="flex flex-col items-end">
-                            <div class="flex items-center space-x-1.5 mb-1">
-                                <span class="text-[10px] text-slate-400">${msg.time}</span>
-                                <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Tôi</span>
-                            </div>
-                            <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none px-4 py-2.5 max-w-md text-sm shadow-sm break-words">
-                                ${msg.text}
-                            </div>
+                            <div class="flex items-center space-x-1.5 mb-1"><span class="text-[10px] text-slate-400">${msg.time}</span><span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Tôi</span></div>
+                            <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none px-4 py-2.5 max-w-md text-sm shadow-sm break-words">${msg.text}</div>
                         </div>
                     `;
                 } else {
                     html += `
                         <div class="flex flex-col items-start">
-                            <div class="flex items-center space-x-1.5 mb-1">
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-200">${msg.sender}</span>
-                                <span class="text-[10px] font-extrabold px-1.5 py-0.2 rounded ${isTeacher ? 'bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-300' : 'bg-slate-100 text-slate-500'}">${isTeacher ? 'GV' : 'HS'}</span>
-                                <span class="text-[10px] text-slate-400">${msg.time}</span>
-                            </div>
-                            <div class="${isTeacher ? 'bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-slate-800 dark:text-slate-100' : 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-100'} rounded-2xl rounded-tl-none px-4 py-2.5 max-w-md text-sm shadow-sm break-words">
-                                ${msg.text}
-                            </div>
+                            <div class="flex items-center space-x-1.5 mb-1"><span class="text-xs font-bold text-slate-700 dark:text-slate-200">${msg.sender}</span><span class="text-[10px] font-extrabold px-1.5 py-0.2 rounded ${isTeacher ? 'bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-300' : 'bg-slate-100 text-slate-500'}">${isTeacher ? 'GV' : 'HS'}</span><span class="text-[10px] text-slate-400">${msg.time}</span></div>
+                            <div class="${isTeacher ? 'bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-slate-800 dark:text-slate-100' : 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-100'} rounded-2xl rounded-tl-none px-4 py-2.5 max-w-md text-sm shadow-sm break-words">${msg.text}</div>
                         </div>
                     `;
                 }
@@ -1183,42 +1268,25 @@
         }
 
         // =========================================================================
-        // 🔥 FEEDBACK / PHẢN HỒI (TÍCH HỢP GV TRẢ LỜI TRỰC TIẾP) 🔥
+        // 🔥 FEEDBACK / PHẢN HỒI 🔥
         // =========================================================================
         function submitFeedback() {
             if(!currentUser) { alert('Vui lòng Đăng nhập để gửi phản hồi!'); switchTab('login'); return; }
             const cat = document.getElementById('fbCategory').value;
             const content = document.getElementById('fbContent').value.trim();
-
             if(!content) { alert('Vui lòng nhập nội dung góp ý!'); return; }
 
             const now = new Date();
             const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} ${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}`;
 
-            const newFb = {
-                sender: currentUser.name,
-                role: currentUser.role,
-                category: cat,
-                content: content,
-                time: timeStr,
-                status: 'Chưa xử lý',
-                reply: '', // Câu trả lời của GV
-                timestamp: Date.now()
-            };
-
-            if(db) {
-                db.ref('feedbacks').push(newFb).then(() => {
-                    alert('✅ Đã gửi phản hồi thành công! Cảm ơn ý kiến đóng góp của bạn.');
-                    document.getElementById('fbContent').value = '';
-                });
-            }
+            const newFb = { sender: currentUser.name, role: currentUser.role, category: cat, content: content, time: timeStr, status: 'Chưa xử lý', reply: '', timestamp: Date.now() };
+            if(db) { db.ref('feedbacks').push(newFb).then(() => { alert('✅ Đã gửi phản hồi thành công!'); document.getElementById('fbContent').value = ''; }); }
         }
 
         function renderFeedbacks() {
             const container = document.getElementById('feedbackListContainer');
             const countBadge = document.getElementById('fbCountBadge');
             if(!container) return;
-
             if(countBadge) countBadge.innerText = `${feedbacks.length} ý kiến`;
 
             if(feedbacks.length === 0) {
@@ -1230,49 +1298,14 @@
             feedbacks.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0)).forEach(fb => {
                 const isTeacher = currentUser && currentUser.role === 'teacher';
                 const hasReply = fb.reply && fb.reply.trim() !== "";
-
-                let replySection = '';
-                if(hasReply) {
-                    replySection = `
-                        <div class="mt-3 bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 p-3.5 rounded-xl space-y-1">
-                            <div class="flex items-center space-x-2 text-xs font-bold text-indigo-700 dark:text-indigo-300">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                                <span>Phản hồi từ Giáo viên:</span>
-                            </div>
-                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed">${fb.reply}</p>
-                        </div>
-                    `;
-                }
-
-                let teacherActionBox = '';
-                if(isTeacher) {
-                    teacherActionBox = `
-                        <div class="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700 space-y-2">
-                            <div class="flex gap-2">
-                                <input type="text" id="reply_input_${fb.id}" value="${fb.reply || ''}" placeholder="Nhập câu trả lời/giải đáp của giáo viên..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-1.5 text-xs bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                                <button onclick="sendTeacherReply('${fb.id}')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-xl font-bold text-xs shrink-0 transition shadow-sm"><i class="fa-solid fa-paper-plane mr-1"></i> Gửi trả lời</button>
-                            </div>
-                            <div class="flex justify-between items-center text-xs pt-1">
-                                <span class="font-bold text-indigo-600">Trạng thái: ${hasReply ? 'Đã giải đáp' : 'Chưa giải đáp'}</span>
-                                <button onclick="deleteFeedback('${fb.id}')" class="text-rose-600 hover:underline font-bold">Xóa góp ý</button>
-                            </div>
-                        </div>
-                    `;
-                }
+                let replySection = hasReply ? `<div class="mt-3 bg-indigo-50/80 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 p-3.5 rounded-xl space-y-1"><div class="flex items-center space-x-2 text-xs font-bold text-indigo-700 dark:text-indigo-300"><i class="fa-solid fa-chalkboard-user"></i><span>Phản hồi từ Giáo viên:</span></div><p class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed">${fb.reply}</p></div>` : '';
+                let teacherActionBox = isTeacher ? `<div class="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700 space-y-2"><div class="flex gap-2"><input type="text" id="reply_input_${fb.id}" value="${fb.reply || ''}" placeholder="Nhập câu trả lời..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-1.5 text-xs bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100"><button onclick="sendTeacherReply('${fb.id}')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-1.5 rounded-xl font-bold text-xs shrink-0 transition">Gửi</button></div><div class="flex justify-between items-center text-xs pt-1"><span class="font-bold text-indigo-600">${hasReply ? 'Đã giải đáp' : 'Chưa giải đáp'}</span><button onclick="deleteFeedback('${fb.id}')" class="text-rose-600 hover:underline font-bold">Xóa</button></div></div>` : '';
 
                 html += `
                     <div class="bg-slate-50 dark:bg-slate-700/40 p-4 rounded-xl border border-slate-200 dark:border-slate-600 space-y-2">
-                        <div class="flex justify-between items-center text-xs">
-                            <div class="flex items-center space-x-2">
-                                <span class="font-bold text-slate-800 dark:text-slate-200">${fb.sender}</span>
-                                <span class="bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 px-2 py-0.5 rounded font-semibold">${fb.category}</span>
-                            </div>
-                            <span class="text-slate-400">${fb.time}</span>
-                        </div>
+                        <div class="flex justify-between items-center text-xs"><div class="flex items-center space-x-2"><span class="font-bold text-slate-800 dark:text-slate-200">${fb.sender}</span><span class="bg-cyan-100 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300 px-2 py-0.5 rounded font-semibold">${fb.category}</span></div><span class="text-slate-400">${fb.time}</span></div>
                         <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">${fb.content}</p>
-                        
-                        ${replySection}
-                        ${teacherActionBox}
+                        ${replySection} ${teacherActionBox}
                     </div>
                 `;
             });
@@ -1284,25 +1317,15 @@
             const inputEl = document.getElementById(`reply_input_${id}`);
             if(!inputEl) return;
             const replyText = inputEl.value.trim();
-
-            if(db) {
-                db.ref(`feedbacks/${id}`).update({
-                    reply: replyText,
-                    status: replyText ? 'Đã tiếp nhận' : 'Chưa xử lý'
-                }).then(() => {
-                    alert('✅ Đã cập nhật câu trả lời thành công!');
-                });
-            }
+            if(db) db.ref(`feedbacks/${id}`).update({ reply: replyText, status: replyText ? 'Đã tiếp nhận' : 'Chưa xử lý' }).then(() => alert('✅ Đã cập nhật câu trả lời!'));
         }
 
         function deleteFeedback(id) {
             if(!currentUser || currentUser.role !== 'teacher') return;
-            if(confirm('Xác nhận xóa phản hồi này?')) {
-                if(db) db.ref(`feedbacks/${id}`).remove();
-            }
+            if(confirm('Xác nhận xóa phản hồi này?')) { if(db) db.ref(`feedbacks/${id}`).remove(); }
         }
 
-        // --- CÁC HÀM PHỤ THUỘC KHÁC ---
+        // --- CÁC HÀM QUẢN LÝ KHÁC ---
         function renderTeacherStudentManagement() {
             const accountsTable = document.getElementById('studentAccountsTableBody');
             let tableHtml = '';
@@ -1324,13 +1347,11 @@
             const name = document.getElementById('add_fullname').value.trim();
             const username = document.getElementById('add_username').value.trim();
             const password = document.getElementById('add_password').value.trim();
-
             if(!name || !username || !password) return;
             if(usersList.some(u => u.username.toLowerCase() === username.toLowerCase())) { alert('Tài khoản đã tồn tại!'); return; }
 
             usersList.push({ name, username, password, role: "student" });
             if(!vneduScores[name]) vneduScores[name] = { hs1: "", hs2: "", hs3: "", dgk: "", dck: "" };
-
             if(db) { db.ref('users').set(usersList); db.ref('vneduScores').set(vneduScores); }
             alert(`Đã thêm học sinh: ${name}`);
         }
@@ -1350,7 +1371,6 @@
             const curPass = document.getElementById('curTeacherPass').value.trim();
             const newPass = document.getElementById('newTeacherPass').value.trim();
             const confPass = document.getElementById('confirmTeacherPass').value.trim();
-
             const teacherAcc = usersList.find(u => u.username === currentUser.username && u.role === 'teacher');
             if(!teacherAcc) return;
 
@@ -1370,10 +1390,7 @@
             lectures.forEach(lec => {
                 html += `
                     <div class="bg-white dark:bg-slate-800 rounded-2xl border p-6 flex flex-col justify-between shadow-sm">
-                        <div>
-                            <span class="text-xs font-bold uppercase bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-lg">${lec.category}</span>
-                            <h3 class="font-bold text-lg mt-2">${lec.title}</h3>
-                        </div>
+                        <div><span class="text-xs font-bold uppercase bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-lg">${lec.category}</span><h3 class="font-bold text-lg mt-2">${lec.title}</h3></div>
                         <button onclick="viewLectureDetail(${lec.id})" class="mt-4 bg-indigo-50 text-indigo-600 py-2 rounded-xl font-bold">Vào học</button>
                     </div>
                 `;
@@ -1395,7 +1412,6 @@
             let video = document.getElementById('lecVideo').value.trim();
             const content = document.getElementById('lecContent').value.trim();
             if(!title || !category || !content) return;
-
             lectures.unshift({ id: Date.now(), title, category, video, content });
             if(db) db.ref('lectures').set(lectures);
             alert('Đã xuất bản bài giảng!');
