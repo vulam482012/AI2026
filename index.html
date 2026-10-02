@@ -68,7 +68,7 @@
     <!-- Main Content Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-        <!-- 0. TRANG ĐĂNG NHẬP RIÊNG (LOGIN TAB) -->
+        <!-- 0. TRANG ĐĂNG NHẬP RIÊNG (ĐÃ ẨN HOÀN TOÀN TÀI KHOẢN MẪU & MẬT KHẨU MẶC ĐỊNH) -->
         <div id="tab-login" class="tab-content hidden max-w-lg mx-auto space-y-6 my-6">
             <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 shadow-xl space-y-6">
                 <div class="text-center space-y-2">
@@ -90,18 +90,12 @@
 
                     <div>
                         <label id="loginUserLabel" class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">2. TÊN HỌC SINH / TÀI KHOẢN</label>
-                        <input type="text" id="loginUsername" placeholder="Ví dụ: vulam" value="vulam" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500">
+                        <input type="text" id="loginUsername" placeholder="Nhập tên tài khoản..." value="" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500">
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">3. MẬT KHẨU</label>
-                        <input type="password" id="loginPassword" placeholder="Nhập mật khẩu..." value="123" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500">
-                    </div>
-
-                    <div class="bg-indigo-50 dark:bg-indigo-950/60 p-4 rounded-2xl border border-indigo-200 dark:border-indigo-800 text-xs space-y-1.5">
-                        <p class="font-bold text-indigo-700 dark:text-indigo-300"><i class="fa-solid fa-key mr-1"></i> Tài khoản mẫu thử nghiệm:</p>
-                        <p>• 👨‍🏫 <b>Giáo viên:</b> chọn <i>Giáo viên</i> -> Tài khoản: <code class="bg-indigo-100 dark:bg-indigo-900 px-1.5 py-0.5 rounded font-mono">gv</code> | Mật khẩu ban đầu: <code class="bg-indigo-100 dark:bg-indigo-900 px-1.5 py-0.5 rounded font-mono">123</code></p>
-                        <p>• 👨‍🎓 <b>Học sinh:</b> chọn <i>Học sinh</i> -> Tài khoản: <code class="bg-indigo-100 dark:bg-indigo-900 px-1.5 py-0.5 rounded font-mono">vulam</code> | Mật khẩu: <code class="bg-indigo-100 dark:bg-indigo-900 px-1.5 py-0.5 rounded font-mono">123</code></p>
+                        <input type="password" id="loginPassword" placeholder="Nhập mật khẩu..." value="" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500">
                     </div>
 
                     <button onclick="handleAuth()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-xl font-bold transition shadow-lg text-base"><i class="fa-solid fa-right-to-bracket mr-1"></i> Đăng nhập ngay</button>
@@ -300,7 +294,7 @@
             <div id="notesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 9. TEACHER DASHBOARD TAB -->
+        <!-- 9. TEACHER DASHBOARD TAB (ĐÃ ĐƯA KHUNG ĐỔI MẬT KHẨU LÊN ĐẦU TRANG) -->
         <div id="tab-teacher" class="tab-content hidden space-y-8">
             <div class="bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 p-6 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
@@ -313,16 +307,16 @@
                 </div>
             </div>
 
-            <!-- MỚI: BẢO MẬT & ĐỔI MẬT KHẨU GIÁO VIÊN -->
+            <!-- 1. KHUNG ĐỔI MẬT KHẨU GIÁO VIÊN (ĐÃ ĐẶT NGAY TRÊN ĐẦU TRANG) -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <div class="border-b dark:border-slate-700 pb-3">
                     <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-shield-halved text-rose-600 dark:text-rose-400 mr-2"></i> Bảo Mật & Đổi Mật Khẩu Tài Khoản Giáo Viên</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Đổi mật khẩu tài khoản Giáo viên (`gv`) để ngăn người khác tự ý truy cập vào trang quản lý.</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Thay đổi mật khẩu tài khoản Giáo viên (`gv`) để ngăn không cho người khác truy cập vào trang quản lý này.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Mật khẩu hiện tại</label>
-                        <input type="password" id="currentTeacherPass" placeholder="Nhập mật khẩu hiện tại..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                        <input type="password" id="curTeacherPass" placeholder="Nhập mật khẩu hiện tại..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Mật khẩu mới</label>
@@ -338,7 +332,7 @@
                 </div>
             </div>
 
-            <!-- CÔNG CỤ THÊM HỌC SINH MỚI -->
+            <!-- 2. CÔNG CỤ THÊM HỌC SINH MỚI & CẤP TÀI KHOẢN -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
                 <div class="border-b dark:border-slate-700 pb-3">
                     <h3 class="font-bold text-xl text-slate-800 dark:text-slate-100"><i class="fa-solid fa-user-plus text-indigo-600 dark:text-indigo-400 mr-2"></i> Thêm Học Sinh Mới & Cấp Tài Khoản</h3>
@@ -384,7 +378,7 @@
                 </div>
             </div>
 
-            <!-- NHẬP ĐIỂM CHO HỌC SINH -->
+            <!-- 3. NHẬP ĐIỂM CHO HỌC SINH -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-pen-to-square text-rose-600 dark:text-rose-400 mr-2"></i> Cập Nhật Điểm Môn Toán Cho Học Sinh</h3>
                 <p class="text-xs text-amber-600 dark:text-amber-400 font-medium">🔒 LƯU Ý: Điểm Giữa kỳ (ĐGK) và Cuối kỳ (ĐCK) chỉ được nhập 1 LẦN duy nhất và không thể thay đổi sau khi nhập!</p>
@@ -413,7 +407,7 @@
                 </div>
             </div>
 
-            <!-- TẠO ĐỀ THI TRỰC TUYẾN MỚI -->
+            <!-- 4. TẠO ĐỀ THI TRỰC TUYẾN MỚI -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-file-circle-plus text-rose-600 dark:text-rose-400 mr-2"></i> Tạo Phòng / Đề Thi Trực Tuyến Mới</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -448,7 +442,7 @@
                 <button onclick="saveNewExam()" class="w-full bg-rose-600 text-white py-2.5 rounded-xl font-bold hover:bg-rose-700 transition">Lưu & Phát hành đề thi</button>
             </div>
 
-            <!-- Đăng tải Bài giảng mới -->
+            <!-- 5. ĐĂNG TẢI BÀI GIẢNG MỚI -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-plus-circle text-rose-600 dark:text-rose-400 mr-2"></i> Đăng tải Bài giảng mới</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -494,15 +488,9 @@
 
     <!-- JavaScript Application Logic -->
     <script>
-        // PHIÊN BẢN 7.0 (TÍCH HỢP ĐỔI MẬT KHẨU GIÁO VIÊN & ĐĂNG XUẤT BẢO MẬT)
-        const CURRENT_VERSION = "v7.0_teacher_password_security";
-        if(localStorage.getItem('math_app_ver') !== CURRENT_VERSION) {
-            localStorage.clear();
-            localStorage.setItem('math_app_ver', CURRENT_VERSION);
-        }
-
-        // TÀI KHOẢN NGƯỜI DÙNG
-        let usersList = JSON.parse(localStorage.getItem('math_users')) || [
+        // TÀI KHOẢN NGƯỜI DÙNG (BẢO TOÀN DỮ LIỆU ĐÃ LƯU TRONG LOCALSTORAGE)
+        let savedUsers = localStorage.getItem('math_users');
+        let usersList = savedUsers ? JSON.parse(savedUsers) : [
             { name: "Thầy Giáo Võ Văn A", username: "gv", password: "123", role: "teacher" },
             { name: "Nguyễn Vũ Lâm", username: "vulam", password: "123", role: "student" },
             { name: "Lê Minh Quân", username: "minhquan", password: "123", role: "student" },
@@ -670,13 +658,13 @@
             }
         }
 
-        // TÍNH NĂNG BẢO MẬT: ĐỔI MẬT KHẨU GIÁO VIÊN
+        // TÍNH NĂNG ĐỔI MẬT KHẨU GIÁO VIÊN
         function changeTeacherPassword() {
             if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ tài khoản Giáo viên mới có quyền đổi mật khẩu này!');
+                alert('⚠️ Chỉ tài khoản Giáo viên mới có quyền đổi mật khẩu!');
                 return;
             }
-            const curPass = document.getElementById('currentTeacherPass').value.trim();
+            const curPass = document.getElementById('curTeacherPass').value.trim();
             const newPass = document.getElementById('newTeacherPass').value.trim();
             const confPass = document.getElementById('confirmTeacherPass').value.trim();
 
@@ -699,14 +687,15 @@
             }
 
             if(newPass.length < 3) {
-                alert('⚠️️ Mật khẩu mới phải có ít nhất 3 ký tự!');
+                alert('⚠️ Mật khẩu mới phải có ít nhất 3 ký tự!');
                 return;
             }
 
+            // Cập nhật và lưu vào LocalStorage
             teacherAcc.password = newPass;
             localStorage.setItem('math_users', JSON.stringify(usersList));
 
-            document.getElementById('currentTeacherPass').value = '';
+            document.getElementById('curTeacherPass').value = '';
             document.getElementById('newTeacherPass').value = '';
             document.getElementById('confirmTeacherPass').value = '';
 
@@ -1015,7 +1004,7 @@
 
         document.addEventListener("visibilitychange", function() {
             if (document.hidden && isExamining) {
-                alert("⚠️️ Phát hiện rời màn hình thi! Hệ thống đã tự động nộp bài.");
+                alert("⚠️ Phát hiện rời màn hình thi! Hệ thống đã tự động nộp bài.");
                 submitExam();
             }
         });
