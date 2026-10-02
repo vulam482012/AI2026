@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathOnline THCS - Inline Grade Edit & Cloud Sync</title>
+    <title>MathOnline THCS - Inline Grade Edit & Exam Builder Fix</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -118,7 +118,7 @@
             </div>
         </div>
 
-        <!-- 2. TAB SỔ ĐIỂM ĐIỆN TỬ (CÓ CHỨC NĂNG NHẬP ĐIỂM TRỰC TIẾP TRÊN BẢNG) -->
+        <!-- 2. TAB SỔ ĐIỂM ĐIỆN TỬ -->
         <div id="tab-vnedu" class="tab-content hidden space-y-6">
             <div class="bg-emerald-600 text-white p-6 rounded-2xl shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
@@ -384,39 +384,51 @@
                 </div>
             </div>
 
-            <!-- MỤC 3: TẠO ĐỀ THI TRỰC TUYẾN -->
+            <!-- MỤC 3: TẠO ĐỀ THI TRỰC TUYẾN (ĐÃ TỐI ƯU CÔNG CỤ TẠO CÂU HỎI) -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-file-circle-plus text-rose-600 dark:text-rose-400 mr-2"></i> 3. Tạo Phòng / Đề Thi Trực Tuyến Mới (Cloud Synced)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Tên Đề Thi</label>
-                        <input type="text" id="newExamTitle" placeholder="Ví dụ: Đề kiểm tra 15 phút" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Tên Đề Thi <span class="text-rose-500">*</span></label>
+                        <input type="text" id="newExamTitle" placeholder="Nhập tên đề thi (Ví dụ: Đề 15 phút Số học 9)..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 font-medium">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Thời gian (Phút)</label>
-                        <input type="number" id="newExamTime" value="15" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Thời gian làm bài (Phút)</label>
+                        <input type="number" id="newExamTime" value="15" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 font-medium">
                     </div>
                 </div>
+                
                 <div class="border-t dark:border-slate-700 pt-4 space-y-3">
-                    <h4 class="font-bold text-sm text-slate-700 dark:text-slate-300">Soạn câu hỏi trắc nghiệm:</h4>
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm text-slate-700 dark:text-slate-300"><i class="fa-solid fa-list-ol mr-1"></i> Soạn danh sách câu hỏi trắc nghiệm:</h4>
+                        <button type="button" onclick="addQuestionBuilderBox()" class="bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 px-3 py-1.5 rounded-xl text-xs font-bold hover:bg-indigo-100 transition"><i class="fa-solid fa-plus mr-1"></i>Thêm câu hỏi mới</button>
+                    </div>
+
                     <div id="builderQuestionsContainer" class="space-y-4">
-                        <div class="builder-q-item bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-600 space-y-3">
-                            <input type="text" placeholder="Nội dung câu hỏi..." class="bq-text w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-700">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                <input type="text" placeholder="Đáp án A" class="bq-opt bq-opt-0 w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
-                                <input type="text" placeholder="Đáp án B" class="bq-opt bq-opt-1 w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
-                                <input type="text" placeholder="Đáp án C" class="bq-opt bq-opt-2 w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
-                                <input type="text" placeholder="Đáp án D" class="bq-opt bq-opt-3 w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
+                        <!-- Mặc định 1 câu hỏi sẵn -->
+                        <div class="builder-q-item bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-600 space-y-3 relative">
+                            <div class="flex justify-between items-center border-b dark:border-slate-600 pb-2">
+                                <span class="font-bold text-xs uppercase text-indigo-600 dark:text-indigo-400">Câu hỏi 1</span>
+                                <button type="button" onclick="this.closest('.builder-q-item').remove(); updateQuestionNumbers();" class="text-xs text-rose-500 hover:text-rose-700 font-semibold"><i class="fa-solid fa-trash-can mr-1"></i>Xóa câu này</button>
                             </div>
-                            <div class="flex justify-between items-center text-xs">
-                                <span>Đáp án đúng (0-3): <input type="number" min="0" max="3" value="0" class="bq-ans w-12 border rounded px-1 py-0.5 text-center font-bold bg-white dark:bg-slate-700"></span>
-                                <input type="text" placeholder="Giải thích..." class="bq-explain w-1/2 border rounded px-2 py-1 bg-white dark:bg-slate-700">
+                            <input type="text" placeholder="Nội dung câu hỏi (Ví dụ: 1 + 2! = ?)" class="bq-text w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-700">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <input type="text" placeholder="Đáp án A (Vị trí 0)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
+                                <input type="text" placeholder="Đáp án B (Vị trí 1)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
+                                <input type="text" placeholder="Đáp án C (Vị trí 2)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
+                                <input type="text" placeholder="Đáp án D (Vị trí 3)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
+                            </div>
+                            <div class="flex flex-wrap justify-between items-center text-xs gap-2 pt-1">
+                                <span class="font-medium">Đáp án đúng (0-3): <input type="number" min="0" max="3" value="0" class="bq-ans w-14 border rounded px-1.5 py-0.5 text-center font-bold bg-white dark:bg-slate-700 text-indigo-600"></span>
+                                <input type="text" placeholder="Lời giải chi tiết (không bắt buộc)..." class="bq-explain w-full md:w-1/2 border rounded px-2.5 py-1 bg-white dark:bg-slate-700">
                             </div>
                         </div>
                     </div>
-                    <button onclick="addQuestionBuilderBox()" class="text-indigo-600 dark:text-indigo-400 text-sm font-semibold hover:underline">+ Thêm câu hỏi</button>
                 </div>
-                <button onclick="saveNewExam()" class="w-full bg-rose-600 text-white py-2.5 rounded-xl font-bold hover:bg-rose-700 transition">Lưu & Phát hành đề thi lên Cloud</button>
+
+                <div class="pt-2">
+                    <button type="button" onclick="saveNewExam()" class="w-full bg-rose-600 text-white py-3 rounded-xl font-bold hover:bg-rose-700 transition shadow-md flex items-center justify-center"><i class="fa-solid fa-cloud-arrow-up mr-2"></i> Lưu & Phát hành đề thi lên Cloud</button>
+                </div>
             </div>
 
             <!-- MỤC 4: ĐĂNG TẢI BÀI GIẢNG -->
@@ -480,7 +492,6 @@
         };
         // =========================================================================
 
-        // Dữ liệu người dùng chỉ còn đúng Nguyễn Vũ Lâm & Lê Trần Khánh Vân
         const DEFAULT_USERS = [
             { name: "Thầy Giáo Võ Văn A", username: "gv", password: "123", role: "teacher" },
             { name: "Nguyễn Vũ Lâm", username: "vulam", password: "123", role: "student" },
@@ -671,7 +682,103 @@
         }
 
         // =========================================================================
-        // 🔥 BẢNG SỔ ĐIỂM ĐIỆN TỬ (HỖ TRỢ NHẬP ĐIỂM TRỰC TIẾP EXCEL STYLE & XÓA) 🔥
+        // 🔥 PHẦN TẠO CÂU HỎI & BÀI THI (HOÀN THIỆN ĐÃ SỬA LỖI) 🔥
+        // =========================================================================
+        function addQuestionBuilderBox() {
+            const container = document.getElementById('builderQuestionsContainer');
+            const count = container.querySelectorAll('.builder-q-item').length + 1;
+            
+            const div = document.createElement('div');
+            div.className = "builder-q-item bg-slate-50 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-600 space-y-3 relative";
+            div.innerHTML = `
+                <div class="flex justify-between items-center border-b dark:border-slate-600 pb-2">
+                    <span class="font-bold text-xs uppercase text-indigo-600 dark:text-indigo-400">Câu hỏi ${count}</span>
+                    <button type="button" onclick="this.closest('.builder-q-item').remove(); updateQuestionNumbers();" class="text-xs text-rose-500 hover:text-rose-700 font-semibold"><i class="fa-solid fa-trash-can mr-1"></i>Xóa câu này</button>
+                </div>
+                <input type="text" placeholder="Nội dung câu hỏi (Ví dụ: 1 + 2! = ?)" class="bq-text w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-slate-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <input type="text" placeholder="Đáp án A (Vị trí 0)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
+                    <input type="text" placeholder="Đáp án B (Vị trí 1)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
+                    <input type="text" placeholder="Đáp án C (Vị trí 2)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
+                    <input type="text" placeholder="Đáp án D (Vị trí 3)" class="bq-opt w-full border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-slate-700">
+                </div>
+                <div class="flex flex-wrap justify-between items-center text-xs gap-2 pt-1">
+                    <span class="font-medium">Đáp án đúng (0-3): <input type="number" min="0" max="3" value="0" class="bq-ans w-14 border rounded px-1.5 py-0.5 text-center font-bold bg-white dark:bg-slate-700 text-indigo-600"></span>
+                    <input type="text" placeholder="Lời giải chi tiết (không bắt buộc)..." class="bq-explain w-full md:w-1/2 border rounded px-2.5 py-1 bg-white dark:bg-slate-700">
+                </div>
+            `;
+            container.appendChild(div);
+        }
+
+        function updateQuestionNumbers() {
+            const boxes = document.querySelectorAll('.builder-q-item');
+            boxes.forEach((box, idx) => {
+                const label = box.querySelector('.text-indigo-600');
+                if(label) label.innerText = `Câu hỏi ${idx + 1}`;
+            });
+        }
+
+        function saveNewExam() {
+            if(!currentUser || currentUser.role !== 'teacher') {
+                alert('⚠️ Chỉ giáo viên mới có quyền tạo đề thi!');
+                return;
+            }
+
+            const title = document.getElementById('newExamTitle').value.trim();
+            const time = parseInt(document.getElementById('newExamTime').value) || 15;
+
+            if(!title) {
+                alert('⚠️ Vui lòng điền "TÊN ĐỀ THI" trước khi lưu!');
+                document.getElementById('newExamTitle').focus();
+                return;
+            }
+
+            const qBoxes = document.querySelectorAll('.builder-q-item');
+            let questions = [];
+
+            qBoxes.forEach((box, idx) => {
+                const qInput = box.querySelector('.bq-text');
+                const q = qInput ? qInput.value.trim() : '';
+
+                const optInputs = box.querySelectorAll('.bq-opt');
+                let opts = [];
+                optInputs.forEach(input => opts.push(input.value.trim()));
+
+                const ansInput = box.querySelector('.bq-ans');
+                const ans = ansInput ? parseInt(ansInput.value) || 0 : 0;
+
+                const explainInput = box.querySelector('.bq-explain');
+                const explain = explainInput ? explainInput.value.trim() : '';
+
+                if(q && opts.length === 4 && opts.some(o => o !== '')) {
+                    questions.push({ q, opts, ans, explain });
+                }
+            });
+
+            if(questions.length === 0) {
+                alert('⚠️ Vui lòng nhập nội dung cho ít nhất 1 câu hỏi!');
+                return;
+            }
+
+            const newExamKey = 'exam_' + Date.now();
+            examData[newExamKey] = {
+                title: title,
+                time: time,
+                questions: questions
+            };
+
+            if(db) {
+                db.ref('exams').set(examData).then(() => {
+                    alert(`✅ Đã tạo và phát hành đề thi "${title}" (${questions.length} câu) thành công lên Cloud!`);
+                    document.getElementById('newExamTitle').value = '';
+                    renderExamSelect();
+                    switchTab('exam');
+                });
+            }
+        }
+
+        // =========================================================================
+        // 🔥 LOGIC SỔ ĐIỂM (NHẬP TRỰC TIẾP EXCEL STYLE) 🔥
         // =========================================================================
         function renderVnEduTable() {
             const tbody = document.getElementById('vneduTableBody');
@@ -710,7 +817,6 @@
                 let dtb = (divisor > 0) ? (((s1 + s2 + s3) + dgk*2 + dck*3) / divisor).toFixed(1) : "—";
 
                 if(isTeacher) {
-                    // Render dạng ô Input cho Giáo viên nhập trực tiếp
                     html += `
                         <tr class="hover:bg-indigo-50/30 dark:hover:bg-slate-700/50 transition">
                             <td class="p-3 font-bold text-slate-800 dark:text-slate-100 border-r dark:border-slate-600 text-left bg-slate-50/50 dark:bg-slate-800/50">${studentName}</td>
@@ -726,7 +832,6 @@
                         </tr>
                     `;
                 } else {
-                    // Xem dạng Chỉ Đọc cho Học sinh
                     html += `
                         <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
                             <td class="p-4 font-bold text-slate-800 dark:text-slate-100 border-r dark:border-slate-600 text-left">${studentName}</td>
@@ -743,7 +848,6 @@
             if(tbody) tbody.innerHTML = html;
         }
 
-        // Tạo thẻ ô Input nhập điểm nhanh
         function makeScoreInput(studentName, col, val, isImportant = false) {
             let cleanVal = (val && val !== "—") ? val : "";
             let colorClass = isImportant ? "font-bold text-amber-600 dark:text-amber-400" : "font-semibold text-slate-800 dark:text-slate-100";
@@ -756,7 +860,6 @@
             `;
         }
 
-        // Lưu điểm trực tiếp khi Giáo viên gõ vào ô
         function saveInlineScore(studentName, col, val) {
             if(!currentUser || currentUser.role !== 'teacher') return;
             val = val.trim();
@@ -769,12 +872,9 @@
             if(!vneduScores[studentName]) vneduScores[studentName] = { hs1: "", hs2: "", hs3: "", dgk: "", dck: "" };
             vneduScores[studentName][col] = val;
 
-            if(db) {
-                db.ref('vneduScores/' + studentName).set(vneduScores[studentName]);
-            }
+            if(db) db.ref('vneduScores/' + studentName).set(vneduScores[studentName]);
         }
 
-        // Xóa học sinh trực tiếp trên Sổ Điểm
         function deleteStudentFromVnEdu(studentName) {
             if(!currentUser || currentUser.role !== 'teacher') return;
             if(confirm(`Bạn có chắc chắn muốn xóa học sinh "${studentName}" khỏi Sổ Điểm không?`)) {
@@ -788,7 +888,7 @@
         }
 
         // =========================================================================
-        // 🔥 LOGIC PHÒNG CHAT REALTIME 🔥
+        // 🔥 PHÒNG CHAT REALTIME 🔥
         // =========================================================================
         function sendChatMessage() {
             if(!currentUser) { alert('Vui lòng Đăng nhập để tham gia chat!'); switchTab('login'); return; }
@@ -863,7 +963,7 @@
         }
 
         // =========================================================================
-        // 🔥 LOGIC PHẦN GÓP Ý & PHẢN HỒI (FEEDBACK) 🔥
+        // 🔥 FEEDBACK / PHẢN HỒI 🔥
         // =========================================================================
         function submitFeedback() {
             if(!currentUser) { alert('Vui lòng Đăng nhập để gửi phản hồi!'); switchTab('login'); return; }
@@ -955,7 +1055,7 @@
             }
         }
 
-        // --- BỔ SUNG CÁC HÀM XỬ LÝ KHÁC ---
+        // --- CÁC HÀM QUẢN LÝ TÀI KHOẢN KHÁC ---
         function renderTeacherStudentManagement() {
             const accountsTable = document.getElementById('studentAccountsTableBody');
             let tableHtml = '';
