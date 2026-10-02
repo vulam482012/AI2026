@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathOnline THCS - Full Tính Năng & Cloud Synchronized</title>
+    <title>MathOnline THCS - Full Feature & Realtime Cloud Sync</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -20,7 +20,7 @@
 </head>
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
 
-    <!-- Navbar -->
+    <!-- Navigation -->
     <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 
-                <!-- Nav Links -->
+                <!-- Nav Items -->
                 <div class="hidden md:flex items-center space-x-2">
                     <button onclick="switchTab('home')" class="nav-btn text-indigo-600 dark:text-indigo-400 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Trang chủ</button>
                     <button onclick="switchTab('lectures')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Bài giảng</button>
@@ -63,18 +63,18 @@
         </div>
     </nav>
 
-    <!-- Main Content Container -->
+    <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-        <!-- 0. TRANG ĐĂNG NHẬP -->
+        <!-- 0. TAB DANG NHAP -->
         <div id="tab-login" class="tab-content hidden max-w-lg mx-auto space-y-6 my-6">
             <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 shadow-xl space-y-6">
                 <div class="text-center space-y-2">
                     <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center text-3xl mx-auto shadow-inner">
                         <i class="fa-solid fa-right-to-bracket"></i>
                     </div>
-                    <h2 class="text-2xl font-extrabold text-slate-800 dark:text-slate-100">Đăng Nhập Tài Khoản</h2>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Tài khoản và điểm số đồng bộ Realtime trên Cloud</p>
+                    <h2 class="text-2xl font-extrabold text-slate-800 dark:text-slate-100">Đăng Nhập Hệ Thống</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Tài khoản & dữ liệu được đồng bộ trực tiếp lên Firebase Cloud</p>
                 </div>
 
                 <div class="space-y-4">
@@ -88,7 +88,7 @@
 
                     <div>
                         <label id="loginUserLabel" class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">2. TÀI KHOẢN</label>
-                        <input type="text" id="loginUsername" placeholder="Nhập tên tài khoản..." value="vulam" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500">
+                        <input type="text" id="loginUsername" placeholder="Nhập tài khoản..." value="vulam" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500">
                     </div>
 
                     <div>
@@ -101,7 +101,7 @@
             </div>
         </div>
 
-        <!-- 1. TRANG CHỦ -->
+        <!-- 1. TAB TRANG CHU -->
         <div id="tab-home" class="tab-content space-y-8">
             <div class="bg-gradient-to-r from-indigo-600 to-violet-600 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
                 <div class="max-w-2xl relative z-10">
@@ -120,7 +120,7 @@
                 <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('vnedu')">
                     <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-book-journal-whills"></i></div>
                     <h3 class="font-bold text-lg mb-2">Sổ điểm điện tử</h3>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm">Xem điểm ĐGTX, Giữa kỳ, Cuối kỳ và Trung bình môn chuẩn xác.</p>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm">Xem điểm ĐGTX, Giữa kỳ, Cuối kỳ và Tự động tính ĐTB Môn.</p>
                 </div>
                 <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition cursor-pointer" onclick="switchTab('lectures')">
                     <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-video"></i></div>
@@ -135,7 +135,7 @@
             </div>
         </div>
 
-        <!-- 2. TRANG BÀI GIẢNG -->
+        <!-- 2. TAB BAI GIANG -->
         <div id="tab-lectures" class="tab-content hidden space-y-6">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
@@ -147,7 +147,7 @@
             <div id="lecturesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 3. CHI TIẾT BÀI GIẢNG -->
+        <!-- 3. TAB CHI TIET BAI GIANG -->
         <div id="tab-lecture-detail" class="tab-content hidden space-y-6">
             <button onclick="switchTab('lectures')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center">
                 <i class="fa-solid fa-arrow-left mr-2"></i> Quay lại danh sách bài giảng
@@ -155,7 +155,7 @@
             <div id="lectureDetailContent" class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6"></div>
         </div>
 
-        <!-- 4. TRANG THI THỬ -->
+        <!-- 4. TAB THI THU -->
         <div id="tab-exam" class="tab-content hidden space-y-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div>
@@ -190,7 +190,7 @@
             </div>
         </div>
 
-        <!-- 5. TRANG SỔ ĐIỂM -->
+        <!-- 5. TAB SO DIEM -->
         <div id="tab-vnedu" class="tab-content hidden space-y-6">
             <div class="bg-emerald-600 text-white p-6 rounded-2xl shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
@@ -223,7 +223,7 @@
             </div>
         </div>
 
-        <!-- 6. TRANG LỊCH SỬ THI -->
+        <!-- 6. TAB LICH SU THI -->
         <div id="tab-scores" class="tab-content hidden space-y-6">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
                 <div>
@@ -248,7 +248,7 @@
             </div>
         </div>
 
-        <!-- 7. TRANG SỔ TAY CÔNG THỨC -->
+        <!-- 7. TAB SO TAY CONG THUC -->
         <div id="tab-formulas" class="tab-content hidden space-y-6">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Sổ Tay Công Thức Toán THCS</h2>
@@ -276,7 +276,7 @@
             </div>
         </div>
 
-        <!-- 8. TRANG THÔNG BÁO -->
+        <!-- 8. TAB THONG BAO -->
         <div id="tab-notes" class="tab-content hidden space-y-6">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
@@ -292,12 +292,12 @@
             <div id="notesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 9. TRANG QUẢN LÝ DÀNH CHO GIÁO VIÊN (ĐẦY ĐỦ 100% CÁC CÔNG CỤ CỦA BẢN CŨ) -->
+        <!-- 9. TAB QUAN LY GIAO VIEN (FULL 5 CONG CU) -->
         <div id="tab-teacher" class="tab-content hidden space-y-8">
             <div class="bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 p-6 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <h2 class="text-2xl font-bold text-rose-800 dark:text-rose-300"><i class="fa-solid fa-chalkboard-user mr-2"></i> Trang Quản Lý Dành Cho Giáo Viên (Cloud Synchronized)</h2>
-                    <p class="text-rose-600 dark:text-rose-400 text-sm mt-1">Đổi mật khẩu GV, cấp tài khoản học sinh, nhập điểm ĐGTX / ĐGK / ĐCK, tạo đề thi và bài giảng mới.</p>
+                    <h2 class="text-2xl font-bold text-rose-800 dark:text-rose-300"><i class="fa-solid fa-chalkboard-user mr-2"></i> Trang Quản Lý Dành Cho Giáo Viên (Cloud Realtime)</h2>
+                    <p class="text-rose-600 dark:text-rose-400 text-sm mt-1">Đổi mật khẩu GV, Cấp tài khoản HS, Nhập điểm ĐGTX / ĐGK / ĐCK, Tạo đề thi và Đăng bài giảng.</p>
                 </div>
                 <div class="flex items-center space-x-3">
                     <span class="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Quyền Giáo Viên</span>
@@ -305,10 +305,10 @@
                 </div>
             </div>
 
-            <!-- 1. KHUNG ĐỔI MẬT KHẨU GIÁO VIÊN -->
+            <!-- MỤC 1: ĐỔI MẬT KHẨU GIÁO VIÊN -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <div class="border-b dark:border-slate-700 pb-3">
-                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-shield-halved text-rose-600 dark:text-rose-400 mr-2"></i> Bảo Mật & Đổi Mật Khẩu Tài Khoản Giáo Viên</h3>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-shield-halved text-rose-600 dark:text-rose-400 mr-2"></i> 1. Đổi Mật Khẩu Tài Khoản Giáo Viên</h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Thay đổi mật khẩu tài khoản Giáo viên (`gv`) đồng bộ trực tiếp lên Cloud Database.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -330,11 +330,11 @@
                 </div>
             </div>
 
-            <!-- 2. CÔNG CỤ THÊM HỌC SINH MỚI & CẤP TÀI KHOẢN -->
+            <!-- MỤC 2: THÊM HỌC SINH MỚI & QUẢN LÝ DANH SÁCH -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
                 <div class="border-b dark:border-slate-700 pb-3">
-                    <h3 class="font-bold text-xl text-slate-800 dark:text-slate-100"><i class="fa-solid fa-user-plus text-indigo-600 dark:text-indigo-400 mr-2"></i> Thêm Học Sinh Mới & Cấp Tài Khoản (Cloud Synced)</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Khi Thầy/Cô thêm học sinh tại đây, dữ liệu lập tức đẩy lên Cloud và mọi máy khác đều có thể đăng nhập ngay.</p>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-slate-100"><i class="fa-solid fa-user-plus text-indigo-600 dark:text-indigo-400 mr-2"></i> 2. Thêm Học Sinh Mới & Cấp Tài Khoản (Cloud Synced)</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Tài khoản được lưu lên Cloud để học sinh trên bất kỳ thiết bị nào cũng có thể đăng nhập ngay.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
@@ -355,7 +355,6 @@
                     </div>
                 </div>
 
-                <!-- BẢNG DANH SÁCH TÀI KHOẢN HỌC SINH -->
                 <div class="pt-2">
                     <h4 class="font-bold text-sm text-slate-700 dark:text-slate-300 mb-3"><i class="fa-solid fa-list-check mr-1"></i> Danh sách Tài khoản Học sinh Lớp học:</h4>
                     <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
@@ -376,9 +375,9 @@
                 </div>
             </div>
 
-            <!-- 3. NHẬP ĐIỂM CHO HỌC SINH -->
+            <!-- MỤC 3: CẬP NHẬT ĐIỂM (CÓ KHÓA ĐGK VÀ ĐCK) -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-pen-to-square text-rose-600 dark:text-rose-400 mr-2"></i> Cập Nhật Điểm Môn Toán Cho Học Sinh</h3>
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-pen-to-square text-rose-600 dark:text-rose-400 mr-2"></i> 3. Cập Nhật Điểm Môn Toán Cho Học Sinh</h3>
                 <p class="text-xs text-amber-600 dark:text-amber-400 font-medium">🔒 LƯU Ý: Điểm Giữa kỳ (ĐGK) và Cuối kỳ (ĐCK) chỉ được nhập 1 LẦN duy nhất và sẽ bị KHÓA CỐ ĐỊNH sau khi nhập!</p>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
                     <div>
@@ -405,9 +404,9 @@
                 </div>
             </div>
 
-            <!-- 4. TẠO ĐỀ THI TRỰC TUYẾN MỚI -->
+            <!-- MỤC 4: TẠO ĐỀ THI TRỰC TUYẾN -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-file-circle-plus text-rose-600 dark:text-rose-400 mr-2"></i> Tạo Phòng / Đề Thi Trực Tuyến Mới (Cloud Synced)</h3>
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-file-circle-plus text-rose-600 dark:text-rose-400 mr-2"></i> 4. Tạo Phòng / Đề Thi Trực Tuyến Mới (Cloud Synced)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Tên Đề Thi</label>
@@ -440,13 +439,13 @@
                 <button onclick="saveNewExam()" class="w-full bg-rose-600 text-white py-2.5 rounded-xl font-bold hover:bg-rose-700 transition">Lưu & Phát hành đề thi lên Cloud</button>
             </div>
 
-            <!-- 5. ĐĂNG TẢI BÀI GIẢNG MỚI -->
+            <!-- MỤC 5: ĐĂNG TẢI BÀI GIẢNG -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-plus-circle text-rose-600 dark:text-rose-400 mr-2"></i> Đăng Tải Bài Giảng Mới (Cloud Synced)</h3>
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-plus-circle text-rose-600 dark:text-rose-400 mr-2"></i> 5. Đăng Tải Bài Giảng Mới (Cloud Synced)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Tiêu đề bài giảng</label>
-                        <input type="text" id="lecTitle" placeholder="Ví dụ: Chuyên đề..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                        <input type="text" id="lecTitle" placeholder="Ví dụ: Chuyên đề căn thức..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Môn / Khối lớp</label>
@@ -467,7 +466,7 @@
 
     </main>
 
-    <!-- NOTE MODAL THÔNG BÁO -->
+    <!-- MODAL THÔNG BÁO -->
     <div id="noteModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-4">
             <button onclick="closeNoteModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"><i class="fa-solid fa-xmark text-xl"></i></button>
@@ -484,10 +483,10 @@
         </div>
     </div>
 
-    <!-- JavaScript Application Logic & Realtime Cloud Sync -->
+    <!-- JS Application Logic -->
     <script>
         // =========================================================================
-        // 🔥 CẤU HÌNH FIREBASE REALTIME DATABASE CỦA LÂM 🔥
+        // 🔥 CẤU HÌNH FIREBASE REALTIME DATABASE TOANTHCS 🔥
         // =========================================================================
         const firebaseConfig = {
             apiKey: "AIzaSyAvya2xnZYZh0TqLuBo0mt36AK4ukaMwg8",
@@ -501,7 +500,6 @@
         };
         // =========================================================================
 
-        // Dữ liệu mẫu khởi tạo
         const DEFAULT_USERS = [
             { name: "Thầy Giáo Võ Văn A", username: "gv", password: "123", role: "teacher" },
             { name: "Nguyễn Vũ Lâm", username: "vulam", password: "123", role: "student" },
@@ -540,7 +538,6 @@
             { title: "Lịch thi học kì sắp tới", content: "Các em học sinh ôn tập kỹ chuyên đề căn thức và hệ thức lượng trong tam giác vuông." }
         ];
 
-        // Biến lưu trữ ứng dụng
         let usersList = DEFAULT_USERS;
         let vneduScores = DEFAULT_VNEDU;
         let examData = DEFAULT_EXAMS;
@@ -551,13 +548,11 @@
         let currentUser = JSON.parse(localStorage.getItem('math_user')) || null;
         let db = null;
 
-        // Khởi tạo Firebase Cloud Listener Realtime
         try {
             firebase.initializeApp(firebaseConfig);
             db = firebase.database();
             document.getElementById('syncStatus').innerHTML = `<i class="fa-solid fa-cloud-check text-emerald-500 mr-1"></i>Cloud Online`;
 
-            // Lắng nghe biến đổi real-time cho các node
             db.ref('users').on('value', snap => {
                 usersList = snap.val() || DEFAULT_USERS;
                 renderTeacherStudentManagement();
@@ -717,12 +712,8 @@
             }
         }
 
-        // 1. ĐỔI MẬT KHẨU GIÁO VIÊN (ĐỒNG BỘ CLOUD)
         function changeTeacherPassword() {
-            if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ tài khoản Giáo viên mới có quyền đổi mật khẩu!');
-                return;
-            }
+            if(!currentUser || currentUser.role !== 'teacher') { alert('⚠️ Chỉ tài khoản Giáo viên mới có quyền đổi mật khẩu!'); return; }
             const curPass = document.getElementById('curTeacherPass').value.trim();
             const newPass = document.getElementById('newTeacherPass').value.trim();
             const confPass = document.getElementById('confirmTeacherPass').value.trim();
@@ -746,7 +737,6 @@
             logout();
         }
 
-        // 2. BẢNG SỔ ĐIỂM HỌC SINH
         function renderVnEduTable() {
             const tbody = document.getElementById('vneduTableBody');
             const noticeBox = document.getElementById('vneduNoticeBox');
@@ -796,7 +786,6 @@
             tbody.innerHTML = html;
         }
 
-        // 3. QUẢN LÝ DANH SÁCH HỌC SINH CỦA GIÁO VIÊN
         function renderTeacherStudentManagement() {
             const studentSelect = document.getElementById('v_student');
             const accountsTable = document.getElementById('studentAccountsTableBody');
@@ -826,20 +815,13 @@
             if(accountsTable) accountsTable.innerHTML = tableHtml || `<tr><td colspan="6" class="p-4 text-center text-slate-400">Chưa có học sinh nào.</td></tr>`;
         }
 
-        // 4. THÊM TÀI KHOẢN HỌC SINH MỚI
         function createNewStudentAccount() {
-            if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ giáo viên mới có quyền tạo tài khoản học sinh!');
-                return;
-            }
+            if(!currentUser || currentUser.role !== 'teacher') { alert('⚠️ Chỉ giáo viên mới có quyền tạo tài khoản học sinh!'); return; }
             const name = document.getElementById('add_fullname').value.trim();
             const username = document.getElementById('add_username').value.trim();
             const password = document.getElementById('add_password').value.trim();
 
-            if(!name || !username || !password) {
-                alert('Vui lòng điền đủ Họ và tên, Tài khoản và Mật khẩu!');
-                return;
-            }
+            if(!name || !username || !password) { alert('Vui lòng điền đủ Họ và tên, Tài khoản và Mật khẩu!'); return; }
 
             if(usersList.some(u => u.username.toLowerCase() === username.toLowerCase())) {
                 alert('⚠️ Tên tài khoản này đã tồn tại, vui lòng chọn tên tài khoản khác!');
@@ -867,9 +849,7 @@
             if(!currentUser || currentUser.role !== 'teacher') return;
             if(confirm(`Bạn có chắc muốn xóa tài khoản học sinh (${username}) khỏi hệ thống?`)) {
                 const target = usersList.find(u => u.username === username);
-                if(target) {
-                    delete vneduScores[target.name];
-                }
+                if(target) delete vneduScores[target.name];
                 usersList = usersList.filter(u => u.username !== username);
                 if(db) {
                     db.ref('users').set(usersList);
@@ -878,12 +858,8 @@
             }
         }
 
-        // 5. CẬP NHẬT ĐIỂM CHO HỌC SINH (CÓ KHÓA ĐIỂM GIỮA KỲ VÀ CUỐI KỲ)
         function updateVnEduScore() {
-            if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ giáo viên mới có quyền cập nhật điểm!');
-                return;
-            }
+            if(!currentUser || currentUser.role !== 'teacher') { alert('⚠️ Chỉ giáo viên mới có quyền cập nhật điểm!'); return; }
             const student = document.getElementById('v_student').value;
             const col = document.getElementById('v_column').value;
             const score = document.getElementById('v_score').value.trim();
@@ -896,7 +872,6 @@
 
             if(!vneduScores[student]) vneduScores[student] = { hs1: "", hs2: "", hs3: "", dgk: "", dck: "" };
 
-            // Khóa điểm ĐGK và ĐCK
             if((col === 'dgk' || col === 'dck') && vneduScores[student][col] && vneduScores[student][col] !== "" && vneduScores[student][col] !== "—") {
                 const colName = col === 'dgk' ? 'Giữa kỳ (ĐGK)' : 'Cuối kỳ (ĐCK)';
                 alert(`⚠️ Điểm ${colName} của học sinh "${student}" đã được nhập trước đó (${vneduScores[student][col]}) và đã bị KHÓA CỐ ĐỊNH! Không thể nhập đè hay chỉnh sửa lại.`);
@@ -911,7 +886,6 @@
             document.getElementById('v_score').value = '';
         }
 
-        // 6. BÀI GIẢNG TRỰC TUYẾN
         function renderLectures() {
             const keyword = document.getElementById('searchLectureInput') ? document.getElementById('searchLectureInput').value.toLowerCase() : '';
             const container = document.getElementById('lecturesContainer');
@@ -965,10 +939,7 @@
         }
 
         function addNewLecture() {
-            if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ giáo viên mới có quyền đăng bài giảng!');
-                return;
-            }
+            if(!currentUser || currentUser.role !== 'teacher') { alert('⚠️ Chỉ giáo viên mới có quyền đăng bài giảng!'); return; }
             const title = document.getElementById('lecTitle').value.trim();
             const category = document.getElementById('lecCategory').value.trim();
             let video = document.getElementById('lecVideo').value.trim();
@@ -988,7 +959,6 @@
             alert('Đã xuất bản bài giảng mới lên Cloud thành công!');
         }
 
-        // 7. PHÒNG THI VÀ SOẠN ĐỀ THI
         function renderExamSelect() {
             const select = document.getElementById('examSelect');
             let html = '';
@@ -1119,10 +1089,7 @@
         }
 
         function saveNewExam() {
-            if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ giáo viên mới có quyền tạo đề thi!');
-                return;
-            }
+            if(!currentUser || currentUser.role !== 'teacher') { alert('⚠️ Chỉ giáo viên mới có quyền tạo đề thi!'); return; }
             const title = document.getElementById('newExamTitle').value.trim();
             const time = parseInt(document.getElementById('newExamTime').value) || 15;
             if(!title) { alert('Vui lòng nhập tên đề thi!'); return; }
@@ -1150,7 +1117,6 @@
             alert('Đã tạo và phát hành đề thi mới lên Cloud thành công!');
         }
 
-        // 8. LỊCH SỬ THI
         function renderScores() {
             let html = '';
             if(scores.length === 0) html = `<tr><td colspan="5" class="p-6 text-center text-slate-400">Chưa có lịch sử làm bài.</td></tr>`;
@@ -1159,41 +1125,28 @@
 
             const clearBtn = document.getElementById('btnClearScores');
             if(clearBtn) {
-                if(currentUser && currentUser.role === 'teacher') {
-                    clearBtn.classList.remove('hidden');
-                } else {
-                    clearBtn.classList.add('hidden');
-                }
+                if(currentUser && currentUser.role === 'teacher') clearBtn.classList.remove('hidden');
+                else clearBtn.classList.add('hidden');
             }
         }
 
         function clearScores() {
-            if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ giáo viên mới có quyền xóa lịch sử điểm!');
-                return;
-            }
+            if(!currentUser || currentUser.role !== 'teacher') { alert('⚠️ Chỉ giáo viên mới có quyền xóa lịch sử điểm!'); return; }
             if(confirm('Bạn có chắc chắn muốn xóa toàn bộ lịch sử điểm thi trên Cloud?')) { 
                 scores = []; 
                 if(db) db.ref('scores').set([]);
             }
         }
 
-        // 9. BẢNG THÔNG BÁO
         function openNoteModal() {
-            if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ giáo viên mới có quyền thêm thông báo!');
-                return;
-            }
+            if(!currentUser || currentUser.role !== 'teacher') { alert('⚠️ Chỉ giáo viên mới có quyền thêm thông báo!'); return; }
             document.getElementById('noteModal').classList.remove('hidden');
             document.getElementById('noteModal').classList.add('flex');
         }
         function closeNoteModal() { document.getElementById('noteModal').classList.remove('flex'); document.getElementById('noteModal').classList.add('hidden'); }
 
         function saveNote() {
-            if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ giáo viên mới có quyền thêm thông báo!');
-                return;
-            }
+            if(!currentUser || currentUser.role !== 'teacher') { alert('⚠️ Chỉ giáo viên mới có quyền thêm thông báo!'); return; }
             const title = document.getElementById('noteTitleInput').value.trim();
             const content = document.getElementById('noteContentInput').value.trim();
             if(!title || !content) { alert('Vui lòng điền đủ tiêu đề và nội dung!'); return; }
@@ -1214,10 +1167,7 @@
         }
 
         function deleteNote(idx) {
-            if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️ Chỉ giáo viên mới có quyền xóa thông báo!');
-                return;
-            }
+            if(!currentUser || currentUser.role !== 'teacher') { alert('⚠️ Chỉ giáo viên mới có quyền xóa thông báo!'); return; }
             notes.splice(idx, 1);
             if(db) db.ref('notes').set(notes);
         }
