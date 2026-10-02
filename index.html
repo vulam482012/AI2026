@@ -58,7 +58,7 @@
                     </button>
                     
                     <div id="authArea">
-                        <button onclick="openAuthModal()" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-indigo-700 shadow-sm transition">Đăng nhập</button>
+                        <button onclick="switchTab('login')" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-indigo-700 shadow-sm transition">Đăng nhập</button>
                     </div>
                 </div>
             </div>
@@ -67,6 +67,47 @@
 
     <!-- Main Content Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- 0. TRANG ĐĂNG NHẬP RIÊNG (LOGIN TAB) -->
+        <div id="tab-login" class="tab-content hidden max-w-lg mx-auto space-y-6 my-6">
+            <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 shadow-xl space-y-6">
+                <div class="text-center space-y-2">
+                    <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center text-3xl mx-auto shadow-inner">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </div>
+                    <h2 class="text-2xl font-extrabold text-slate-800 dark:text-slate-100">Đăng Nhập Tài Khoản</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Chọn vai trò Học sinh hoặc Giáo viên để đăng nhập vào hệ thống</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">1. CHỌN VAI TRỜ</label>
+                        <select id="loginRole" onchange="onRoleChange()" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-3 text-sm bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-slate-100 font-semibold focus:ring-2 focus:ring-indigo-500">
+                            <option value="student">Học sinh</option>
+                            <option value="teacher">Giáo viên</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label id="loginUserLabel" class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">2. TÊN HỌC SINH / TÀI KHOẢN</label>
+                        <input type="text" id="loginUsername" placeholder="Ví dụ: vulam" value="vulam" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">3. MẬT KHẨU</label>
+                        <input type="password" id="loginPassword" placeholder="Nhập mật khẩu (Mặc định: 123)..." value="123" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500">
+                    </div>
+
+                    <div class="bg-indigo-50 dark:bg-indigo-950/60 p-4 rounded-2xl border border-indigo-200 dark:border-indigo-800 text-xs space-y-1.5">
+                        <p class="font-bold text-indigo-700 dark:text-indigo-300"><i class="fa-solid fa-key mr-1"></i> Tài khoản mẫu thử nghiệm:</p>
+                        <p>• 👨‍🏫 <b>Giáo viên:</b> chọn <i>Giáo viên</i> -> Tài khoản: <code class="bg-indigo-100 dark:bg-indigo-900 px-1.5 py-0.5 rounded font-mono">gv</code> | Mật khẩu: <code class="bg-indigo-100 dark:bg-indigo-900 px-1.5 py-0.5 rounded font-mono">123</code></p>
+                        <p>• 👨‍🎓 <b>Học sinh:</b> chọn <i>Học sinh</i> -> Tài khoản: <code class="bg-indigo-100 dark:bg-indigo-900 px-1.5 py-0.5 rounded font-mono">vulam</code> | Mật khẩu: <code class="bg-indigo-100 dark:bg-indigo-900 px-1.5 py-0.5 rounded font-mono">123</code></p>
+                    </div>
+
+                    <button onclick="handleAuth()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3.5 rounded-xl font-bold transition shadow-lg text-base"><i class="fa-solid fa-right-to-bracket mr-1"></i> Đăng nhập ngay</button>
+                </div>
+            </div>
+        </div>
 
         <!-- 1. HOME TAB -->
         <div id="tab-home" class="tab-content space-y-8">
@@ -127,7 +168,7 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div>
                     <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Phòng Thi Trực Tuyến Toán THCS</h2>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">⚠️ Chế độ chống gian lận: Thoát màn hình hoặc chuyển tab sẽ tự động nộp bài!</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">⚠️️ Chế độ chống gian lận: Thoát màn hình hoặc chuyển tab sẽ tự động nộp bài!</p>
                 </div>
                 <div class="mt-4 md:mt-0 flex gap-2">
                     <select id="examSelect" class="border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"></select>
@@ -173,8 +214,8 @@
                         <tr class="bg-slate-100 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600 text-xs font-bold text-slate-700 dark:text-slate-200 uppercase text-center">
                             <th rowspan="2" class="p-4 text-left border-r dark:border-slate-600 w-1/4">Học sinh</th>
                             <th colspan="3" class="p-3 border-r dark:border-slate-600">Đánh giá thường xuyên (ĐGTX)</th>
-                            <th colspan="1" class="p-3 border-r dark:border-slate-600 bg-amber-500/10">Giữa kỳ (Cố định)</th>
-                            <th colspan="1" class="p-3 border-r dark:border-slate-600 bg-amber-500/10">Cuối kỳ (Cố định)</th>
+                            <th colspan="1" class="p-3 border-r dark:border-slate-600 bg-amber-500/10">Giữa kỳ (ĐGK)</th>
+                            <th colspan="1" class="p-3 border-r dark:border-slate-600 bg-amber-500/10">Cuối kỳ (ĐCK)</th>
                             <th rowspan="2" class="p-4 bg-emerald-50 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">ĐTB Môn</th>
                         </tr>
                         <tr class="bg-slate-50 dark:bg-slate-700/50 border-b border-slate-200 dark:border-slate-600 text-xs font-semibold text-slate-500 dark:text-slate-400 text-center">
@@ -265,41 +306,33 @@
             <div class="bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 p-6 rounded-2xl flex justify-between items-center">
                 <div>
                     <h2 class="text-2xl font-bold text-rose-800 dark:text-rose-300"><i class="fa-solid fa-chalkboard-user mr-2"></i> Trang Quản Lý Dành Cho Giáo Viên</h2>
-                    <p class="text-rose-600 dark:text-rose-400 text-sm mt-1">Tạo tài khoản học sinh, nhập điểm ĐGTX, tạo đề thi và bài giảng.</p>
+                    <p class="text-rose-600 dark:text-rose-400 text-sm mt-1">Cấp tài khoản học sinh, nhập điểm ĐGTX, Giữa kỳ, Cuối kỳ và tạo đề thi.</p>
                 </div>
                 <span class="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Quyền Giáo Viên</span>
             </div>
 
-            <!-- KHU VỰC QUẢN LÝ HỌC SINH VÀ CẤP TÀI KHOẢN (ĐƯỢC ĐẶT Ở ĐẦU TRANG) -->
+            <!-- 1. CÔNG CỤ THÊM HỌC SINH MỚI (CHỈ TẠO NICK, BỎ NHẬP ĐIỂM) -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
                 <div class="border-b dark:border-slate-700 pb-3">
-                    <h3 class="font-bold text-xl text-slate-800 dark:text-slate-100"><i class="fa-solid fa-users-gear text-rose-600 dark:text-rose-400 mr-2"></i> Quản Lý Danh Sách Học Sinh & Cấp Tài Khoản</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Giáo viên khởi tạo tài khoản, đặt mật khẩu và cấp điểm cố định cho học sinh trong lớp.</p>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-slate-100"><i class="fa-solid fa-user-plus text-indigo-600 dark:text-indigo-400 mr-2"></i> Thêm Học Sinh Mới & Cấp Tài Khoản</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Chỉ tạo thông tin tài khoản cho học sinh. Điểm số sẽ được nhập riêng ở mục Quản lý điểm.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Họ và tên Học sinh</label>
-                        <input type="text" id="add_fullname" placeholder="Ví dụ: Phạm Đức Anh" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700">
+                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Họ và tên học sinh</label>
+                        <input type="text" id="add_fullname" placeholder="Ví dụ: Phạm Đức Anh" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2.5 text-sm bg-white dark:bg-slate-700">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Tài khoản (Username)</label>
-                        <input type="text" id="add_username" placeholder="Ví dụ: ducanh" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700">
+                        <input type="text" id="add_username" placeholder="Ví dụ: ducanh" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2.5 text-sm bg-white dark:bg-slate-700">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Mật khẩu (Password)</label>
-                        <input type="text" id="add_password" placeholder="Ví dụ: 123" value="123" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700">
+                        <input type="text" id="add_password" placeholder="Mật khẩu..." value="123" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2.5 text-sm bg-white dark:bg-slate-700">
                     </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Điểm Giữa kỳ cố định</label>
-                        <input type="number" step="0.1" id="add_dgk" value="8.0" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Điểm Cuối kỳ cố định</label>
-                        <input type="number" step="0.1" id="add_dck" value="8.5" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700">
-                    </div>
-                    <div class="flex items-end">
-                        <button onclick="createNewStudentAccount()" class="w-full bg-indigo-600 text-white py-2 rounded-xl font-bold hover:bg-indigo-700 transition"><i class="fa-solid fa-user-plus mr-1"></i> Thêm Học Sinh Mới</button>
+                    <div class="md:col-span-3 flex justify-end">
+                        <button onclick="createNewStudentAccount()" class="bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-indigo-700 transition"><i class="fa-solid fa-plus mr-1"></i> Thêm Học Sinh Mới</button>
                     </div>
                 </div>
 
@@ -324,21 +357,23 @@
                 </div>
             </div>
 
-            <!-- NHẬP ĐIỂM ĐGTX CHO HỌC SINH -->
+            <!-- 2. NHẬP ĐIỂM CHO HỌC SINH (TÍCH HỢP ĐGTX, GIỮA KỲ VÀ CUỐI KỲ - KHÓA ĐIỂM GK/CK) -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-pen-to-square text-rose-600 dark:text-rose-400 mr-2"></i> Cập Nhật Điểm ĐGTX Cho Học Sinh</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400">🔒 Điểm Giữa kỳ và Cuối kỳ là cố định, chỉ cập nhật các cột ĐGTX.</p>
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-pen-to-square text-rose-600 dark:text-rose-400 mr-2"></i> Cập Nhật Điểm Môn Toán Cho Học Sinh</h3>
+                <p class="text-xs text-amber-600 dark:text-amber-400 font-medium">🔒 LƯU Ý: Điểm Giữa kỳ (ĐGK) và Cuối kỳ (ĐCK) chỉ được nhập 1 LẦN duy nhất và không thể thay đổi sau khi nhập!</p>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Học sinh</label>
                         <select id="v_student" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100"></select>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Cột điểm ĐGTX</label>
-                        <select id="v_column" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Cột điểm</label>
+                        <select id="v_column" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 font-medium">
                             <option value="hs1">ĐGTX 1 (Hệ số 1)</option>
                             <option value="hs2">ĐGTX 2 (Hệ số 1)</option>
                             <option value="hs3">ĐGTX 3 (Hệ số 1)</option>
+                            <option value="dgk">⭐ Giữa kỳ - ĐGK (Hệ số 2) - Chỉ nhập 1 lần</option>
+                            <option value="dck">⭐ Cuối kỳ - ĐCK (Hệ số 3) - Chỉ nhập 1 lần</option>
                         </select>
                     </div>
                     <div>
@@ -413,46 +448,6 @@
 
     </main>
 
-    <!-- AUTH MODAL - BẢNG ĐĂNG NHẬP CHUẨN GIAO DIỆN HÌNH MẪU -->
-    <div id="authModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-5">
-            <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"><i class="fa-solid fa-xmark text-xl"></i></button>
-            
-            <div class="text-center space-y-1">
-                <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Đăng Nhập Tài Khoản</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Chọn vai trò Học sinh hoặc Giáo viên</p>
-            </div>
-
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">1. CHỌN VAI TRÒ</label>
-                    <select id="loginRole" onchange="onRoleChange()" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 font-medium focus:ring-2 focus:ring-indigo-500">
-                        <option value="student">Học sinh</option>
-                        <option value="teacher">Giáo viên</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label id="loginUserLabel" class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">2. TÊN HỌC SINH / TÀI KHOẢN</label>
-                    <input type="text" id="loginUsername" placeholder="Ví dụ: vulam" value="vulam" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">3. MẬT KHẨU</label>
-                    <input type="password" id="loginPassword" placeholder="Nhập mật khẩu (Mặc định: 123)..." value="123" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
-                </div>
-
-                <div class="bg-indigo-50 dark:bg-indigo-950/60 p-3 rounded-xl border border-indigo-200 dark:border-indigo-800 text-xs space-y-1">
-                    <p class="font-bold text-indigo-700 dark:text-indigo-300">💡 Tài khoản mẫu thử nghiệm:</p>
-                    <p>• 👨‍🏫 <b>Giáo viên:</b> chọn Vai trò <i>Giáo viên</i> -> nhập <code class="bg-indigo-100 dark:bg-indigo-900 px-1 rounded">gv</code> | MK: <code class="bg-indigo-100 dark:bg-indigo-900 px-1 rounded">123</code></p>
-                    <p>• 👨‍🎓 <b>Học sinh:</b> chọn Vai trò <i>Học sinh</i> -> nhập <code class="bg-indigo-100 dark:bg-indigo-900 px-1 rounded">vulam</code> | MK: <code class="bg-indigo-100 dark:bg-indigo-900 px-1 rounded">123</code></p>
-                </div>
-
-                <button onclick="handleAuth()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition shadow-md text-base">Đăng nhập ngay</button>
-            </div>
-        </div>
-    </div>
-
     <!-- NOTE MODAL -->
     <div id="noteModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-8 shadow-2xl relative space-y-4">
@@ -472,8 +467,8 @@
 
     <!-- JavaScript Application Logic -->
     <script>
-        // PHIÊN BẢN 5.0 FIX TRIỆT ĐỂ
-        const CURRENT_VERSION = "v5.0_fix_teacher_and_auth";
+        // PHIÊN BẢN 6.0
+        const CURRENT_VERSION = "v6.0_separate_login_and_score_lock";
         if(localStorage.getItem('math_app_ver') !== CURRENT_VERSION) {
             localStorage.clear();
             localStorage.setItem('math_app_ver', CURRENT_VERSION);
@@ -511,7 +506,7 @@
             "Nguyễn Vũ Lâm": { hs1: "8.5", hs2: "9.0", hs3: "8.0", dgk: "8.5", dck: "9.0" },
             "Lê Minh Quân": { hs1: "7.5", hs2: "8.0", hs3: "8.5", dgk: "8.0", dck: "8.0" },
             "Trần Bảo Ngọc": { hs1: "9.0", hs2: "9.5", hs3: "9.0", dgk: "9.2", dck: "9.5" },
-            "Hoàng Gia Huy": { hs1: "6.5", hs2: "7.0", hs3: "6.0", dgk: "6.5", dck: "7.0" }
+            "Hoàng Gia Huy": { hs1: "6.5", hs2: "7.0", hs3: "6.0", dgk: "", dck: "" }
         };
 
         let examData = JSON.parse(localStorage.getItem('math_exams')) || {
@@ -568,9 +563,6 @@
             }
         }
 
-        function openAuthModal() { document.getElementById('authModal').classList.remove('hidden'); document.getElementById('authModal').classList.add('flex'); }
-        function closeAuthModal() { document.getElementById('authModal').classList.remove('flex'); document.getElementById('authModal').classList.add('hidden'); }
-
         function onRoleChange() {
             const role = document.getElementById('loginRole').value;
             const label = document.getElementById('loginUserLabel');
@@ -601,13 +593,13 @@
             if(userFound) {
                 currentUser = { name: userFound.name, username: userFound.username, role: userFound.role };
                 localStorage.setItem('math_user', JSON.stringify(currentUser));
-                closeAuthModal();
                 updateAuthUI();
                 renderNotes();
                 renderVnEduTable();
                 renderScores();
                 alert(`Đăng nhập thành công! Chào mừng ${userFound.role === 'teacher' ? 'Giáo viên' : 'Học sinh'}: ${userFound.name}`);
                 if(userFound.role === 'teacher') switchTab('teacher');
+                else switchTab('vnedu');
             } else {
                 alert('❌ Sai Vai trò, Tài khoản hoặc Mật khẩu! Vui lòng kiểm tra lại.');
             }
@@ -620,7 +612,7 @@
             renderNotes();
             renderVnEduTable();
             renderScores();
-            switchTab('home');
+            switchTab('login');
         }
 
         function updateAuthUI() {
@@ -645,7 +637,7 @@
                     if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
                 }
             } else {
-                authArea.innerHTML = `<button onclick="openAuthModal()" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-indigo-700 transition">Đăng nhập</button>`;
+                authArea.innerHTML = `<button onclick="switchTab('login')" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-indigo-700 transition">Đăng nhập</button>`;
                 teacherContainer.classList.add('hidden');
                 if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
             }
@@ -658,7 +650,7 @@
             let html = '';
 
             if(!currentUser) {
-                tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-slate-400 dark:text-slate-500 font-medium">🔒 Vui lòng <button onclick="openAuthModal()" class="text-indigo-600 dark:text-indigo-400 font-bold underline">Đăng nhập</button> để xem thông tin sổ điểm.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-slate-400 dark:text-slate-500 font-medium">🔒 Vui lòng <button onclick="switchTab('login')" class="text-indigo-600 dark:text-indigo-400 font-bold underline">Đăng nhập</button> để xem thông tin sổ điểm.</td></tr>`;
                 if(noticeBox) noticeBox.innerHTML = "Chưa đăng nhập.";
                 return;
             }
@@ -668,7 +660,7 @@
                 if(vneduScores[currentUser.name]) {
                     displayData[currentUser.name] = vneduScores[currentUser.name];
                 } else {
-                    displayData[currentUser.name] = { hs1: "—", hs2: "—", hs3: "—", dgk: "8.0", dck: "8.5" };
+                    displayData[currentUser.name] = { hs1: "—", hs2: "—", hs3: "—", dgk: "—", dck: "—" };
                 }
                 if(noticeBox) noticeBox.innerHTML = `👤 Sổ điểm cá nhân học sinh: <b class="underline">${currentUser.name}</b> (Bảo mật - Chỉ bạn xem được).`;
             } else {
@@ -683,8 +675,8 @@
                 
                 let countTX = (d.hs1 && d.hs1 !== "" && d.hs1 !== "—" ? 1 : 0) + (d.hs2 && d.hs2 !== "" && d.hs2 !== "—" ? 1 : 0) + (d.hs3 && d.hs3 !== "" && d.hs3 !== "—" ? 1 : 0);
                 let sumTX = s1 + s2 + s3;
-                let divisor = countTX + 2 + 3;
-                let dtb = (countTX > 0 || dgk > 0 || dck > 0) ? ((sumTX + dgk*2 + dck*3) / divisor).toFixed(1) : "—";
+                let divisor = countTX + (d.dgk ? 2 : 0) + (d.dck ? 3 : 0);
+                let dtb = (divisor > 0) ? ((sumTX + dgk*2 + dck*3) / divisor).toFixed(1) : "—";
 
                 html += `
                     <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
@@ -692,8 +684,8 @@
                         <td class="p-3 border-r dark:border-slate-600">${d.hs1 && d.hs1 !== "" ? d.hs1 : "—"}</td>
                         <td class="p-3 border-r dark:border-slate-600">${d.hs2 && d.hs2 !== "" ? d.hs2 : "—"}</td>
                         <td class="p-3 border-r dark:border-slate-600">${d.hs3 && d.hs3 !== "" ? d.hs3 : "—"}</td>
-                        <td class="p-3 border-r dark:border-slate-600 font-bold text-amber-600 dark:text-amber-400 bg-amber-50/20">${d.dgk ? d.dgk : "—"}</td>
-                        <td class="p-3 border-r dark:border-slate-600 font-bold text-amber-600 dark:text-amber-400 bg-amber-50/20">${d.dck ? d.dck : "—"}</td>
+                        <td class="p-3 border-r dark:border-slate-600 font-bold text-amber-600 dark:text-amber-400 bg-amber-50/20">${d.dgk && d.dgk !== "" ? d.dgk : "—"}</td>
+                        <td class="p-3 border-r dark:border-slate-600 font-bold text-amber-600 dark:text-amber-400 bg-amber-50/20">${d.dck && d.dck !== "" ? d.dck : "—"}</td>
                         <td class="p-4 bg-emerald-50 dark:bg-emerald-950/80 font-extrabold text-emerald-700 dark:text-emerald-300 text-base">${dtb}</td>
                     </tr>
                 `;
@@ -701,7 +693,7 @@
             tbody.innerHTML = html;
         }
 
-        // TÍNH NĂNG QUẢN LÝ TÀI KHOẢN HỌC SINH DÀNH CHO GIÁO VIÊN
+        // QUẢN LÝ TÀI KHOẢN HỌC SINH
         function renderTeacherStudentManagement() {
             const studentSelect = document.getElementById('v_student');
             const accountsTable = document.getElementById('studentAccountsTableBody');
@@ -712,14 +704,14 @@
 
             studentUsers.forEach(s => {
                 selectHtml += `<option value="${s.name}">${s.name}</option>`;
-                let scoreObj = vneduScores[s.name] || { dgk: "8.0", dck: "8.5" };
+                let scoreObj = vneduScores[s.name] || { dgk: "—", dck: "—" };
                 tableHtml += `
                     <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
                         <td class="p-3 border-b border-r dark:border-slate-600 font-bold">${s.name}</td>
                         <td class="p-3 border-b border-r dark:border-slate-600 font-mono text-indigo-600 dark:text-indigo-400">${s.username}</td>
                         <td class="p-3 border-b border-r dark:border-slate-600 font-mono text-rose-600 dark:text-rose-400">${s.password}</td>
-                        <td class="p-3 border-b border-r dark:border-slate-600 font-semibold">${scoreObj.dgk || "8.0"}</td>
-                        <td class="p-3 border-b border-r dark:border-slate-600 font-semibold">${scoreObj.dck || "8.5"}</td>
+                        <td class="p-3 border-b border-r dark:border-slate-600 font-semibold text-amber-600">${scoreObj.dgk || "—"}</td>
+                        <td class="p-3 border-b border-r dark:border-slate-600 font-semibold text-amber-600">${scoreObj.dck || "—"}</td>
                         <td class="p-3 border-b text-center">
                             <button onclick="deleteStudentAccount('${s.username}')" class="text-rose-600 hover:text-rose-800 dark:hover:text-rose-400 font-medium text-xs"><i class="fa-solid fa-trash"></i> Xóa</button>
                         </td>
@@ -731,19 +723,18 @@
             if(accountsTable) accountsTable.innerHTML = tableHtml || `<tr><td colspan="6" class="p-4 text-center text-slate-400">Chưa có học sinh nào.</td></tr>`;
         }
 
+        // THÊM NICK HỌC SINH MỚI
         function createNewStudentAccount() {
             if(!currentUser || currentUser.role !== 'teacher') {
-                alert('⚠️️ Chỉ giáo viên mới có quyền tạo tài khoản học sinh!');
+                alert('⚠️ Chỉ giáo viên mới có quyền tạo tài khoản học sinh!');
                 return;
             }
             const name = document.getElementById('add_fullname').value.trim();
             const username = document.getElementById('add_username').value.trim();
             const password = document.getElementById('add_password').value.trim();
-            const dgk = document.getElementById('add_dgk').value.trim() || "8.0";
-            const dck = document.getElementById('add_dck').value.trim() || "8.5";
 
             if(!name || !username || !password) {
-                alert('Vui lòng điền đủ Họ tên, Tài khoản và Mật khẩu!');
+                alert('Vui lòng điền đủ Họ và tên, Tài khoản và Mật khẩu!');
                 return;
             }
 
@@ -755,7 +746,9 @@
             usersList.push({ name, username, password, role: "student" });
             localStorage.setItem('math_users', JSON.stringify(usersList));
 
-            vneduScores[name] = { hs1: "", hs2: "", hs3: "", dgk: dgk, dck: dck };
+            if(!vneduScores[name]) {
+                vneduScores[name] = { hs1: "", hs2: "", hs3: "", dgk: "", dck: "" };
+            }
             localStorage.setItem('math_vnedu', JSON.stringify(vneduScores));
 
             renderTeacherStudentManagement();
@@ -765,7 +758,7 @@
             document.getElementById('add_username').value = '';
             document.getElementById('add_password').value = '123';
 
-            alert(`✅ Đã thêm học sinh thành công:\nHọ tên: ${name}\nTài khoản: ${username} | Mật khẩu: ${password}`);
+            alert(`✅ Đã thêm tài khoản học sinh thành công:\nHọ tên: ${name}\nTài khoản: ${username} | Mật khẩu: ${password}`);
         }
 
         function deleteStudentAccount(username) {
@@ -783,6 +776,7 @@
             }
         }
 
+        // CẬP NHẬT ĐIỂM HỌC SINH (KHÓA ĐIỂM GIỮA KỲ VÀ CUỐI KỲ)
         function updateVnEduScore() {
             if(!currentUser || currentUser.role !== 'teacher') {
                 alert('⚠️ Chỉ giáo viên mới có quyền cập nhật điểm!');
@@ -792,11 +786,28 @@
             const col = document.getElementById('v_column').value;
             const score = document.getElementById('v_score').value.trim();
 
-            if(!vneduScores[student]) vneduScores[student] = { hs1: "", hs2: "", hs3: "", dgk: "8.0", dck: "8.5" };
+            if(!student) { alert('Vui lòng chọn học sinh!'); return; }
+            if(score === '' || isNaN(score) || parseFloat(score) < 0 || parseFloat(score) > 10) {
+                alert('Vui lòng nhập điểm số hợp lệ từ 0 đến 10!');
+                return;
+            }
+
+            if(!vneduScores[student]) vneduScores[student] = { hs1: "", hs2: "", hs3: "", dgk: "", dck: "" };
+
+            // Quy tắc: ĐGK và ĐCK chỉ được nhập 1 lần duy nhất
+            if((col === 'dgk' || col === 'dck') && vneduScores[student][col] && vneduScores[student][col] !== "" && vneduScores[student][col] !== "—") {
+                const colName = col === 'dgk' ? 'Giữa kỳ (ĐGK)' : 'Cuối kỳ (ĐCK)';
+                alert(`⚠️ Điểm ${colName} của học sinh "${student}" đã được nhập trước đó (${vneduScores[student][col]}) và đã bị KHÓA CỐ ĐỊNH! Không thể nhập đè hay chỉnh sửa lại.`);
+                return;
+            }
+
             vneduScores[student][col] = score;
             localStorage.setItem('math_vnedu', JSON.stringify(vneduScores));
             renderVnEduTable();
-            alert(`Đã cập nhật điểm ĐGTX cho học sinh ${student} thành công!`);
+            renderTeacherStudentManagement();
+
+            const colText = document.getElementById('v_column').options[document.getElementById('v_column').selectedIndex].text;
+            alert(`✅ Đã cập nhật thành công ${colText} cho học sinh ${student}!`);
             document.getElementById('v_score').value = '';
         }
 
@@ -1042,14 +1053,13 @@
             alert('Đã tạo và phát hành đề thi mới thành công!');
         }
 
-        // SCORES (BẢO MẬT NÚT XÓA)
+        // SCORES
         function renderScores() {
             let html = '';
             if(scores.length === 0) html = `<tr><td colspan="5" class="p-6 text-center text-slate-400">Chưa có lịch sử làm bài.</td></tr>`;
             else scores.forEach(s => html += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 transition"><td class="p-4 font-semibold text-slate-800 dark:text-slate-200">${s.name}</td><td class="p-4 text-slate-600 dark:text-slate-300">${s.exam}</td><td class="p-4 font-medium">${s.correct}</td><td class="p-4 font-bold text-indigo-600 dark:text-indigo-400">${s.score}</td><td class="p-4 text-xs text-slate-400">${s.time}</td></tr>`);
             document.getElementById('scoresTableBody').innerHTML = html;
 
-            // ẨN NÚT XÓA NẾU LÀ HỌC SINH
             const clearBtn = document.getElementById('btnClearScores');
             if(clearBtn) {
                 if(currentUser && currentUser.role === 'teacher') {
