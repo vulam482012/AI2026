@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathOnline THCS - Full Features with Student Peer Private Chat</title>
+    <title>MathOnline THCS - Full Features with Fixed Private Chat & Delete Messages</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -81,7 +81,7 @@
 
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">1. CHỌN VAI TRỜ</label>
+                        <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">1. CHỌN VAI TRÒ</label>
                         <select id="loginRole" onchange="onRoleChange()" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-3 text-sm bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-slate-100 font-semibold focus:ring-2 focus:ring-indigo-500">
                             <option value="student">Học sinh</option>
                             <option value="teacher">Giáo viên</option>
@@ -153,7 +153,7 @@
             </div>
         </div>
 
-        <!-- 3. TAB PHÒNG CHAT CHUNG LỚP HỌC -->
+        <!-- 3. TAB PHÒNG CHAT CHUNG LỚP HỌC (GV CÓ QUYỀN XÓA TIN NHẮN) -->
         <div id="tab-chat" class="tab-content hidden max-w-4xl mx-auto space-y-4">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
                 <div>
@@ -175,12 +175,12 @@
             </div>
         </div>
 
-        <!-- 3.1 TAB CHAT RIÊNG TƯ 1-1 (ĐÃ HỖ TRỢ HỌC SINH NHẮN TIN VỚI NHAU) -->
+        <!-- 3.1 TAB CHAT RIÊNG TƯ 1-1 (ĐÃ FIX LỖI KẾT NỐI VÀ CHỌN BẠN CHAT) -->
         <div id="tab-private_chat" class="tab-content hidden max-w-5xl mx-auto space-y-4">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
                 <div>
                     <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-user-lock text-violet-600 mr-2.5"></i> Nhắn Tin Riêng Tư 1-1</h2>
-                    <p id="privateChatSubTitle" class="text-xs text-slate-500 dark:text-slate-400 mt-1">Trao đổi bảo mật 1-1 với Thầy cô hoặc các bạn học sinh khác trong lớp.</p>
+                    <p id="privateChatSubTitle" class="text-xs text-slate-500 dark:text-slate-400 mt-1">Trao đổi bảo mật 1-1 với Thầy cô hoặc các bạn học sinh trong lớp.</p>
                 </div>
                 <span class="bg-violet-50 dark:bg-violet-950/80 text-violet-600 dark:text-violet-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-violet-200 dark:border-violet-800"><i class="fa-solid fa-shield-halved mr-1"></i>Bảo mật 1-1</span>
             </div>
@@ -558,7 +558,7 @@
         let lectures = DEFAULT_LECTURES;
         let scores = [];
         let notes = [];
-        let chatMessages = [];
+        let chatMessagesObj = {};
         let privateMessages = {};
         let feedbacks = [];
 
@@ -590,8 +590,7 @@
             db.ref('notes').on('value', snap => { notes = snap.val() || []; renderNotes(); });
 
             db.ref('chatMessages').on('value', snap => {
-                const val = snap.val();
-                chatMessages = val ? Object.values(val) : [];
+                chatMessagesObj = snap.val() || {};
                 renderChatMessages();
             });
 
@@ -734,10 +733,10 @@
         }
 
         // =========================================================================
-        // 🔥 HỆ THỐNG CHAT RIÊNG TƯ 1-1 (ĐÃ CHO PHÉP HS NHẮN TIN VỚI NHAU) 🔥
+        // 🔥 HỆ THỐNG CHAT RIÊNG TƯ 1-1 (ĐÃ FIX CHÍNH XÁC) 🔥
         // =========================================================================
         function getPrivateRoomId(userA, userB) {
-            return [userA, userB].sort().join('_').replace(/[\s\.\#\$\/\[\]]/g, '_');
+            return [userA, userB].sort().join('___').replace(/[\s\.\#\$\/\[\]]/g, '_');
         }
 
         function renderPrivateContacts() {
@@ -752,7 +751,6 @@
 
             if(subTitle) subTitle.innerText = "Trò chuyện riêng tư bảo mật 1-1 với Thầy cô hoặc các bạn học sinh trong lớp.";
 
-            // Lọc ra tất cả các tài khoản KHÁC tài khoản đang đăng nhập
             let contacts = usersList.filter(u => u.name !== currentUser.name);
 
             let html = '';
@@ -765,7 +763,7 @@
                 const isActive = activePrivatePartner === c.name;
                 const isTeacher = c.role === 'teacher';
                 html += `
-                    <button onclick="selectPrivatePartner('${c.name}')" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between ${isActive ? 'bg-violet-600 text-white shadow-sm' : 'hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200'}">
+                    <button onclick="selectPrivatePartner('${c.name.replace(/'/g, "\\'")}')" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between ${isActive ? 'bg-violet-600 text-white shadow-sm' : 'hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200'}">
                         <div class="flex items-center space-x-2 truncate">
                             <i class="fa-solid fa-circle-user text-base ${isActive ? 'text-white' : (isTeacher ? 'text-rose-500' : 'text-violet-500')}"></i>
                             <span class="truncate">${c.name}</span>
@@ -849,6 +847,80 @@
             });
             container.innerHTML = html;
             container.scrollTop = container.scrollHeight;
+        }
+
+        // =========================================================================
+        // 🔥 PHÒNG CHAT CHUNG LỚP HỌC (GV CÓ QUYỀN XÓA TIN NHẮN) 🔥
+        // =========================================================================
+        function sendChatMessage() {
+            if(!currentUser) { alert('Vui lòng Đăng nhập để tham gia chat!'); switchTab('login'); return; }
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if(!text) return;
+
+            const now = new Date();
+            const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} ${now.getDate()}/${now.getMonth()+1}`;
+
+            const newMsg = { sender: currentUser.name, role: currentUser.role, text: text, time: timeStr, timestamp: Date.now() };
+            if(db) { db.ref('chatMessages').push(newMsg); input.value = ''; }
+        }
+
+        function deleteChatMessage(msgId) {
+            if(!currentUser || currentUser.role !== 'teacher') return;
+            if(confirm('Giáo viên xác nhận xóa tin nhắn này khỏi phòng chat chung?')) {
+                if(db) {
+                    db.ref(`chatMessages/${msgId}`).remove().then(() => {
+                        console.log("Đã xóa tin nhắn:", msgId);
+                    });
+                }
+            }
+        }
+
+        function renderChatMessages() {
+            const container = document.getElementById('chatMessagesContainer');
+            if(!container) return;
+            let html = '';
+            const messagesArray = [];
+            for(let key in chatMessagesObj) {
+                messagesArray.push({ id: key, ...chatMessagesObj[key] });
+            }
+            messagesArray.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0));
+
+            if(messagesArray.length === 0) {
+                container.innerHTML = `<div class="text-center text-slate-400 py-12 text-sm">Chưa có tin nhắn nào.</div>`;
+                return;
+            }
+
+            const isTeacher = currentUser && currentUser.role === 'teacher';
+
+            messagesArray.forEach(msg => {
+                const isMe = currentUser && currentUser.name === msg.sender;
+                const msgIsTeacher = msg.role === 'teacher';
+                let deleteBtnHtml = isTeacher ? `<button onclick="deleteChatMessage('${msg.id}')" class="text-rose-500 hover:text-rose-700 text-xs px-1.5 py-0.5 ml-2 font-bold" title="GV xóa tin nhắn"><i class="fa-solid fa-trash-can"></i></button>` : '';
+
+                if(isMe) {
+                    html += `
+                        <div class="flex flex-col items-end">
+                            <div class="flex items-center space-x-1.5 mb-1"><span class="text-[10px] text-slate-400">${msg.time}</span><span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Tôi</span> ${deleteBtnHtml}</div>
+                            <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none px-4 py-2.5 max-w-md text-sm shadow-sm break-words">${msg.text}</div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="flex flex-col items-start">
+                            <div class="flex items-center space-x-1.5 mb-1"><span class="text-xs font-bold text-slate-700 dark:text-slate-200">${msg.sender}</span><span class="text-[10px] font-extrabold px-1.5 py-0.2 rounded ${msgIsTeacher ? 'bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-300' : 'bg-slate-100 text-slate-500'}">${msgIsTeacher ? 'GV' : 'HS'}</span><span class="text-[10px] text-slate-400">${msg.time}</span> ${deleteBtnHtml}</div>
+                            <div class="${msgIsTeacher ? 'bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-slate-800 dark:text-slate-100' : 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-100'} rounded-2xl rounded-tl-none px-4 py-2.5 max-w-md text-sm shadow-sm break-words">${msg.text}</div>
+                        </div>
+                    `;
+                }
+            });
+            container.innerHTML = html;
+            scrollToBottomChat();
+        }
+
+        function scrollToBottomChat() {
+            const container = document.getElementById('chatMessagesContainer');
+            if(container) container.scrollTop = container.scrollHeight;
         }
 
         // =========================================================================
@@ -1211,60 +1283,6 @@
                 usersList = usersList.filter(u => u.name !== studentName);
                 if(db) { db.ref('vneduScores').set(vneduScores); db.ref('users').set(usersList); }
             }
-        }
-
-        // =========================================================================
-        // 🔥 PHÒNG CHAT CHUNG LỚP HỌC 🔥
-        // =========================================================================
-        function sendChatMessage() {
-            if(!currentUser) { alert('Vui lòng Đăng nhập để tham gia chat!'); switchTab('login'); return; }
-            const input = document.getElementById('chatInput');
-            const text = input.value.trim();
-            if(!text) return;
-
-            const now = new Date();
-            const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')} ${now.getDate()}/${now.getMonth()+1}`;
-
-            const newMsg = { sender: currentUser.name, role: currentUser.role, text: text, time: timeStr, timestamp: Date.now() };
-            if(db) { db.ref('chatMessages').push(newMsg); input.value = ''; }
-        }
-
-        function renderChatMessages() {
-            const container = document.getElementById('chatMessagesContainer');
-            if(!container) return;
-            let html = '';
-            if(chatMessages.length === 0) {
-                container.innerHTML = `<div class="text-center text-slate-400 py-12 text-sm">Chưa có tin nhắn nào.</div>`;
-                return;
-            }
-
-            chatMessages.forEach(msg => {
-                const isMe = currentUser && currentUser.name === msg.sender;
-                const isTeacher = msg.role === 'teacher';
-
-                if(isMe) {
-                    html += `
-                        <div class="flex flex-col items-end">
-                            <div class="flex items-center space-x-1.5 mb-1"><span class="text-[10px] text-slate-400">${msg.time}</span><span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Tôi</span></div>
-                            <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none px-4 py-2.5 max-w-md text-sm shadow-sm break-words">${msg.text}</div>
-                        </div>
-                    `;
-                } else {
-                    html += `
-                        <div class="flex flex-col items-start">
-                            <div class="flex items-center space-x-1.5 mb-1"><span class="text-xs font-bold text-slate-700 dark:text-slate-200">${msg.sender}</span><span class="text-[10px] font-extrabold px-1.5 py-0.2 rounded ${isTeacher ? 'bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-300' : 'bg-slate-100 text-slate-500'}">${isTeacher ? 'GV' : 'HS'}</span><span class="text-[10px] text-slate-400">${msg.time}</span></div>
-                            <div class="${isTeacher ? 'bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-slate-800 dark:text-slate-100' : 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-100'} rounded-2xl rounded-tl-none px-4 py-2.5 max-w-md text-sm shadow-sm break-words">${msg.text}</div>
-                        </div>
-                    `;
-                }
-            });
-            container.innerHTML = html;
-            scrollToBottomChat();
-        }
-
-        function scrollToBottomChat() {
-            const container = document.getElementById('chatMessagesContainer');
-            if(container) container.scrollTop = container.scrollHeight;
         }
 
         // =========================================================================
