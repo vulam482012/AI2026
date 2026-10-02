@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathOnline THCS - Unified Chat & Delete Fixed</title>
+    <title>MathOnline THCS - Unified Clean Chat & Teacher Rename</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 
-                <!-- Nav Menu Links -->
+                <!-- Nav Menu Links (Đã gộp gọn gàng theo đúng yêu cầu) -->
                 <div class="hidden md:flex items-center space-x-1 lg:space-x-2">
                     <button onclick="switchTab('home')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2.5 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Trang chủ</button>
                     <button onclick="switchTab('vnedu')" class="nav-btn text-emerald-700 dark:text-emerald-300 font-bold transition px-3 py-1.5 text-sm bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700 rounded-xl hover:bg-emerald-200"><i class="fa-solid fa-book-journal-whills mr-1 text-emerald-600"></i> Sổ điểm</button>
@@ -153,11 +153,11 @@
             </div>
         </div>
 
-        <!-- 3. TAB CHAT CHUNG (GV XÓA TIN NHẮN TRỰC TIẾP) -->
+        <!-- 3. TAB CHAT CHUNG (CÓ TÍCH HỢP NÚT XÓA TIN NHẮN CHO GV) -->
         <div id="tab-chat" class="tab-content hidden max-w-4xl mx-auto space-y-4">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-comments text-indigo-600 mr-2.5"></i> Chat chung</h2>
+                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-comments text-indigo-600 mr-2.5"></i> Chat chung lớp học</h2>
                     <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Tin nhắn hiển thị tức thì giữa Giáo viên và toàn bộ Học sinh (Realtime Cloud).</p>
                 </div>
                 <span class="bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-indigo-200 dark:border-indigo-800"><i class="fa-solid fa-circle text-[8px] text-emerald-500 mr-1"></i>Trực tuyến</span>
@@ -342,12 +342,12 @@
             <div id="notesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 9. TAB QUẢN LÝ GIÁO VIÊN -->
+        <!-- 9. TAB QUẢN LÝ GIÁO VIÊN (CÓ THÊM TÍNH NĂNG ĐỔI TÊN GV) -->
         <div id="tab-teacher" class="tab-content hidden space-y-8">
             <div class="bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 p-6 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 class="text-2xl font-bold text-rose-800 dark:text-rose-300"><i class="fa-solid fa-chalkboard-user mr-2"></i> Trang Quản Lý Dành Cho Giáo Viên</h2>
-                    <p class="text-rose-600 dark:text-rose-400 text-sm mt-1">Đổi mật khẩu GV, Cấp tài khoản HS, Tạo đề thi và Đăng bài giảng.</p>
+                    <p class="text-rose-600 dark:text-rose-400 text-sm mt-1">Đổi tên hiển thị, đổi mật khẩu, cấp tài khoản HS, tạo đề thi và đăng bài giảng.</p>
                 </div>
                 <div class="flex items-center space-x-3">
                     <span class="bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Quyền Giáo Viên</span>
@@ -355,32 +355,50 @@
                 </div>
             </div>
 
+            <!-- TÍNH NĂNG MỚI: ĐỔI TÊN GIÁO VIÊN -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <div class="border-b dark:border-slate-700 pb-3">
-                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-shield-halved text-rose-600 dark:text-rose-400 mr-2"></i> 1. Đổi Mật Khẩu Tài Khoản Giáo Viên</h3>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-id-card text-rose-600 dark:text-rose-400 mr-2"></i> 1. Đổi Tên Hiển Thị Giáo Viên</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Tên hiển thị mới của Giáo viên</label>
+                        <input type="text" id="newTeacherNameInput" placeholder="Ví dụ: Thầy Giáo Võ Văn A..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 font-semibold">
+                    </div>
+                    <div class="flex items-end">
+                        <button onclick="changeTeacherName()" class="bg-rose-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-rose-700 transition shadow-sm"><i class="fa-solid fa-floppy-disk mr-1.5"></i> Lưu Tên Giáo Viên Mới</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ĐỔI MẬT KHẨU GV -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                <div class="border-b dark:border-slate-700 pb-3">
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-shield-halved text-rose-600 dark:text-rose-400 mr-2"></i> 2. Đổi Mật Khẩu Tài Khoản Giáo Viên</h3>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Mật khẩu hiện tại</label>
-                        <input type="password" id="curTeacherPass" placeholder="Nhập mật khẩu hiện tại..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                        <input type="password" id="curTeacherPass" placeholder="Mật khẩu hiện tại..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Mật khẩu mới</label>
-                        <input type="password" id="newTeacherPass" placeholder="Nhập mật khẩu mới..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                        <input type="password" id="newTeacherPass" placeholder="Mật khẩu mới..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Xác nhận mật khẩu mới</label>
-                        <input type="password" id="confirmTeacherPass" placeholder="Nhập lại mật khẩu mới..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
+                        <input type="password" id="confirmTeacherPass" placeholder="Nhập lại mật khẩu..." class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-3 py-2 text-sm bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100">
                     </div>
                 </div>
                 <div class="flex justify-end pt-1">
-                    <button onclick="changeTeacherPassword()" class="bg-rose-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-rose-700 transition shadow-sm"><i class="fa-solid fa-key mr-1.5"></i> Cập nhật Mật khẩu Giáo viên</button>
+                    <button onclick="changeTeacherPassword()" class="bg-rose-600 text-white px-6 py-2 rounded-xl text-sm font-bold hover:bg-rose-700 transition shadow-sm"><i class="fa-solid fa-key mr-1.5"></i> Cập nhật Mật khẩu</button>
                 </div>
             </div>
 
+            <!-- QUẢN LÝ HỌC SINH -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6">
                 <div class="border-b dark:border-slate-700 pb-3">
-                    <h3 class="font-bold text-xl text-slate-800 dark:text-slate-100"><i class="fa-solid fa-user-plus text-indigo-600 dark:text-indigo-400 mr-2"></i> 2. Thêm Học Sinh Mới & Cấp Tài Khoản (Cloud Synced)</h3>
+                    <h3 class="font-bold text-xl text-slate-800 dark:text-slate-100"><i class="fa-solid fa-user-plus text-indigo-600 dark:text-indigo-400 mr-2"></i> 3. Thêm Học Sinh Mới & Cấp Tài Khoản (Cloud Synced)</h3>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
@@ -419,8 +437,9 @@
                 </div>
             </div>
 
+            <!-- TẠO ĐỀ THI -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-file-circle-plus text-rose-600 dark:text-rose-400 mr-2"></i> 3. Tạo Phòng / Đề Thi Trực Tuyến Mới (Cloud Synced)</h3>
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-file-circle-plus text-rose-600 dark:text-rose-400 mr-2"></i> 4. Tạo Phòng / Đề Thi Trực Tuyến Mới (Cloud Synced)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Tên Đề Thi <span class="text-rose-500">*</span></label>
@@ -464,8 +483,9 @@
                 </div>
             </div>
 
+            <!-- ĐĂNG BÀI GIẢNG -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-plus-circle text-rose-600 dark:text-rose-400 mr-2"></i> 4. Đăng Tải Bài Giảng Mới (Cloud Synced)</h3>
+                <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-plus-circle text-rose-600 dark:text-rose-400 mr-2"></i> 5. Đăng Tải Bài Giảng Mới (Cloud Synced)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1">Tiêu đề bài giảng</label>
@@ -569,7 +589,22 @@
             db = firebase.database();
             document.getElementById('syncStatus').innerHTML = `<i class="fa-solid fa-cloud-check text-emerald-500 mr-1"></i>Cloud Online`;
 
-            db.ref('users').on('value', snap => { usersList = snap.val() || DEFAULT_USERS; renderTeacherStudentManagement(); renderVnEduTable(); renderPrivateContacts(); });
+            db.ref('users').on('value', snap => { 
+                usersList = snap.val() || DEFAULT_USERS; 
+                // Cập nhật lại tên hiện tại của currentUser nếu đang đăng nhập mà GV đổi tên
+                if(currentUser) {
+                    const fresh = usersList.find(u => u.username === currentUser.username && u.role === currentUser.role);
+                    if(fresh) {
+                        currentUser.name = fresh.name;
+                        localStorage.setItem('math_user', JSON.stringify(currentUser));
+                    }
+                }
+                renderTeacherStudentManagement(); 
+                renderVnEduTable(); 
+                renderPrivateContacts();
+                updateAuthUI();
+            });
+
             db.ref('vneduScores').on('value', snap => { vneduScores = snap.val() || DEFAULT_VNEDU; renderVnEduTable(); });
             db.ref('exams').on('value', snap => { examData = snap.val() || DEFAULT_EXAMS; renderExamSelect(); });
             db.ref('lectures').on('value', snap => { lectures = snap.val() || DEFAULT_LECTURES; renderLectures(); });
@@ -633,7 +668,13 @@
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById(`tab-${tabId}`).classList.remove('hidden');
             if(tabId === 'vnedu') renderVnEduTable();
-            if(tabId === 'teacher') renderTeacherStudentManagement();
+            if(tabId === 'teacher') {
+                renderTeacherStudentManagement();
+                const teacherAcc = usersList.find(u => u.role === 'teacher');
+                if(teacherAcc && document.getElementById('newTeacherNameInput')) {
+                    document.getElementById('newTeacherNameInput').value = teacherAcc.name;
+                }
+            }
             if(tabId === 'chat') { renderChatMessages(); scrollToBottomChat(); }
             if(tabId === 'private_chat') renderPrivateContacts();
             if(tabId === 'feedback') renderFeedbacks();
@@ -716,15 +757,15 @@
                     </div>
                 `;
                 if(currentUser.role === 'teacher') {
-                    teacherContainer.classList.remove('hidden');
+                    if(teacherContainer) teacherContainer.classList.remove('hidden');
                     if(teacherNoteContainer) teacherNoteContainer.classList.remove('hidden');
                 } else {
-                    teacherContainer.classList.add('hidden');
+                    if(teacherContainer) teacherContainer.classList.add('hidden');
                     if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
                 }
             } else {
                 authArea.innerHTML = `<button onclick="switchTab('login')" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-indigo-700 transition">Đăng nhập</button>`;
-                teacherContainer.classList.add('hidden');
+                if(teacherContainer) teacherContainer.classList.add('hidden');
                 if(teacherNoteContainer) teacherNoteContainer.classList.add('hidden');
             }
             renderFeedbacks();
@@ -845,7 +886,7 @@
         }
 
         // =========================================================================
-        // 🔥 PHÒNG CHAT CHUNG (GV XÓA TIN NHẮN THỰC THẾ) 🔥
+        // 🔥 PHÒNG CHAT CHUNG (CÓ CHỨC NĂNG XÓA TIN NHẮN CHO GIÁO VIÊN) 🔥
         // =========================================================================
         function sendChatMessage() {
             if(!currentUser) { alert('Vui lòng Đăng nhập để tham gia chat!'); switchTab('login'); return; }
@@ -861,8 +902,11 @@
         }
 
         function deleteChatMessage(msgId) {
-            if(!currentUser || currentUser.role !== 'teacher') return;
-            if(confirm('Giáo viên xác nhận xóa tin nhắn này khỏi phòng chat chung?')) {
+            if(!currentUser || currentUser.role !== 'teacher') {
+                alert('⚠️ Chỉ có tài khoản Giáo viên mới có quyền xóa tin nhắn!');
+                return;
+            }
+            if(confirm('Giáo viên xác nhận xóa vĩnh viễn tin nhắn này khỏi phòng chat chung?')) {
                 if(db) {
                     db.ref(`chatMessages/${msgId}`).remove().then(() => {
                         console.log("Đã xóa tin nhắn thành công:", msgId);
@@ -891,7 +935,9 @@
             messagesArray.forEach(msg => {
                 const isMe = currentUser && currentUser.name === msg.sender;
                 const msgIsTeacher = msg.role === 'teacher';
-                let deleteBtnHtml = isTeacher ? `<button onclick="deleteChatMessage('${msg.id}')" class="text-rose-500 hover:text-rose-700 text-xs px-1.5 py-0.5 ml-2 font-bold cursor-pointer" title="GV xóa tin nhắn"><i class="fa-solid fa-trash-can"></i></button>` : '';
+                
+                // Nút xóa hiển thị rõ ràng cho Giáo viên
+                let deleteBtnHtml = isTeacher ? `<button onclick="deleteChatMessage('${msg.id}')" class="text-rose-500 hover:text-rose-700 bg-rose-50 dark:bg-rose-950 px-2 py-0.5 rounded ml-2 font-bold text-xs shadow-sm transition" title="Xóa tin nhắn này"><i class="fa-solid fa-trash-can mr-1"></i>Xóa</button>` : '';
 
                 if(isMe) {
                     html += `
@@ -1141,7 +1187,7 @@
             const title = document.getElementById('newExamTitle').value.trim();
             const time = parseInt(document.getElementById('newExamTime').value) || 15;
 
-            if(!title) { alert('⚠️ Vui lòng điền "TÊN ĐỀ THI" trước khi lưu!'); return; }
+            if(!title) { alert('⚠️️ Vui lòng điền "TÊN ĐỀ THI" trước khi lưu!'); return; }
 
             const qBoxes = document.querySelectorAll('.builder-q-item');
             let questions = [];
@@ -1202,7 +1248,7 @@
                 if(noticeBox) noticeBox.innerHTML = `👤 Sổ điểm cá nhân học sinh: <b class="underline">${currentUser.name}</b> (Bảo mật - Chỉ bạn xem được).`;
             } else {
                 displayData = vneduScores;
-                if(noticeBox) noticeBox.innerHTML = `👨‍🏫 Quyền Giáo Viên: ⚡ Gõ trực tiếp điểm số vào từng ô dưới đây để cập nhật vĩnh viễn lên Cloud!`;
+                if(noticeBox) noticeBox.innerHTML = `👨‍‍🏫 Quyền Giáo Viên: ⚡ Gõ trực tiếp điểm số vào từng ô dưới đây để cập nhật vĩnh viễn lên Cloud!`;
             }
 
             for(let studentName in displayData) {
@@ -1338,7 +1384,7 @@
             if(confirm('Xác nhận xóa phản hồi này?')) { if(db) db.ref(`feedbacks/${id}`).remove(); }
         }
 
-        // --- CÁC HÀM QUẢN LÝ KHÁC ---
+        // --- CÁC HÀM QUẢN LÝ KHÁC (CÓ TÍNH NĂNG ĐỔI TÊN GV) ---
         function renderTeacherStudentManagement() {
             const accountsTable = document.getElementById('studentAccountsTableBody');
             let tableHtml = '';
@@ -1353,6 +1399,34 @@
                 `;
             });
             if(accountsTable) accountsTable.innerHTML = tableHtml || `<tr><td colspan="4" class="p-4 text-center text-slate-400">Chưa có học sinh.</td></tr>`;
+        }
+
+        function changeTeacherName() {
+            if(!currentUser || currentUser.role !== 'teacher') {
+                alert('⚠️ Chỉ có tài khoản Giáo viên mới đổi được tên này!');
+                return;
+            }
+            const newName = document.getElementById('newTeacherNameInput').value.trim();
+            if(!newName) {
+                alert('⚠️ Vui lòng nhập tên mới cho Giáo viên!');
+                return;
+            }
+
+            // Cập nhật tên trong usersList
+            const teacherAcc = usersList.find(u => u.username === currentUser.username && u.role === 'teacher');
+            if(teacherAcc) {
+                teacherAcc.name = newName;
+                currentUser.name = newName;
+                localStorage.setItem('math_user', JSON.stringify(currentUser));
+
+                if(db) {
+                    db.ref('users').set(usersList).then(() => {
+                        alert(`✅ Đã đổi tên giáo viên thành công thành: "${newName}" trên Cloud!`);
+                        updateAuthUI();
+                        renderPrivateContacts();
+                    });
+                }
+            }
         }
 
         function createNewStudentAccount() {
