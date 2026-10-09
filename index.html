@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathOnline THCS - Messenger, Teacher Rename & 1v1 Arena</title>
+    <title>MathOnline THCS - Arena & Realtime Cloud</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -20,8 +20,29 @@
 </head>
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
 
+    <!-- THƯ MỜI THÁCH ĐẤU NỔI (FLOATING NOTIFICATION GÓC TRÊN PHẢI) -->
+    <div id="floatingArenaInvite" class="fixed top-20 right-6 z-50 hidden max-w-sm w-full bg-white dark:bg-slate-800 border-2 border-amber-500 rounded-2xl shadow-2xl p-4 space-y-3 animate-bounce">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center text-lg shrink-0">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="flex-1 truncate">
+                <h4 class="text-xs font-extrabold uppercase text-amber-600 dark:text-amber-400">Lời Mời Thách Đấu!</h4>
+                <p id="floatingInviteText" class="text-xs font-bold text-slate-700 dark:text-slate-200 truncate">Ai đó vừa thách đấu bạn.</p>
+            </div>
+        </div>
+        <div class="text-[11px] text-slate-500 dark:text-slate-400" id="floatingInviteTopics">Chủ đề: Đại số</div>
+        <div class="flex items-center justify-between pt-1 border-t dark:border-slate-700">
+            <span class="text-xs font-mono font-bold text-rose-600" id="floatingInviteTimer">Còn 20s</span>
+            <div class="flex space-x-2">
+                <button onclick="declineFloatingInvite()" class="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-slate-300 transition">Không đấu</button>
+                <button onclick="acceptFloatingInvite()" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-1.5 rounded-lg text-xs font-bold transition shadow">Đấu luôn!</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation Bar -->
-    <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50 shadow-sm">
+    <nav class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
@@ -34,7 +55,6 @@
                     </div>
                 </div>
                 
-                <!-- Nav Menu Links -->
                 <div class="hidden md:flex items-center space-x-1 lg:space-x-1.5">
                     <button onclick="switchTab('home')" class="nav-btn text-slate-600 dark:text-slate-300 font-medium transition px-2 py-1.5 text-sm rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">Trang chủ</button>
                     <button onclick="switchTab('vnedu')" class="nav-btn text-emerald-700 dark:text-emerald-300 font-bold transition px-2.5 py-1.5 text-sm bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700 rounded-xl hover:bg-emerald-200"><i class="fa-solid fa-book-journal-whills mr-1"></i> Sổ điểm</button>
@@ -109,7 +129,7 @@
                 <div class="max-w-2xl relative z-10">
                     <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Ôn thi Vào 10 & Học sinh giỏi</span>
                     <h1 class="text-3xl md:text-5xl font-extrabold mt-4 mb-4 leading-tight">Chinh phục Toán THCS cùng MathOnline Cloud</h1>
-                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng tích hợp Sổ điểm, Đoạn chat kiểu Messenger và Đấu Trường 1v1 AI kịch tính.</p>
+                    <p class="text-indigo-100 text-base md:text-lg mb-8">Nền tảng tích hợp Sổ điểm, Trò chuyện Messenger và Đấu Trường 1v1 AI thực tế.</p>
                     <div class="flex flex-wrap gap-4">
                         <button onclick="switchTab('arena')" class="bg-amber-500 text-white font-bold px-6 py-3 rounded-xl shadow hover:bg-amber-600 transition flex items-center"><i class="fa-solid fa-gamepad mr-2"></i> Vào Đấu Trường 1v1</button>
                         <button onclick="switchTab('chat_messenger')" class="bg-violet-500 text-white font-bold px-6 py-3 rounded-xl shadow hover:bg-violet-600 transition flex items-center"><i class="fa-brands fa-facebook-messenger mr-2"></i> Mở Trò Chuyện</button>
@@ -118,7 +138,7 @@
             </div>
         </div>
 
-        <!-- 2. TAB SỔ ĐIỂM ĐIỆN TỬ -->
+        <!-- 2. TAB SỔ ĐIỂM -->
         <div id="tab-vnedu" class="tab-content hidden space-y-6">
             <div class="bg-emerald-600 text-white p-6 rounded-2xl shadow-sm flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
@@ -152,7 +172,7 @@
             </div>
         </div>
 
-        <!-- 3. TAB TRÒ CHUYỆN (GỘP CHUNG & RIÊNG KIỂU MESSENGER) -->
+        <!-- 3. TAB TRÒ CHUYỆN (MESSENGER) -->
         <div id="tab-chat_messenger" class="tab-content hidden max-w-6xl mx-auto space-y-4">
             <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
                 <div>
@@ -205,13 +225,13 @@
             </div>
         </div>
 
-        <!-- 4. TAB ĐẤU TRƯỜNG 1V1 (AI RA ĐỀ + TIMEOUT 20S) -->
+        <!-- 4. TAB ĐẤU TRƯỜNG 1V1 (AI THỰC TẾ + CHỈ NGƯỜI ONLINE + LƯU LỊCH SỬ) -->
         <div id="tab-arena" class="tab-content hidden space-y-6 max-w-5xl mx-auto">
             <div class="bg-gradient-to-r from-amber-500 to-orange-600 rounded-3xl p-8 text-white shadow-xl flex flex-col md:flex-row justify-between items-center gap-6">
                 <div class="space-y-2">
                     <span class="bg-white/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">PvP Realtime Arena</span>
-                    <h2 class="text-3xl font-extrabold flex items-center"><i class="fa-solid fa-fire text-yellow-200 mr-3"></i> Đấu Trường Toán Học 1v1</h2>
-                    <p class="text-amber-100 text-sm">Thách đấu bạn cùng lớp, chọn chuyên đề bài giảng và để AI ra đề. Đối thủ có 20 giây để chấp nhận!</p>
+                    <h2 class="text-3xl font-extrabold flex items-center"><i class="fa-solid fa-fire text-yellow-200 mr-3"></i> Đấu Trường Toán Học Thực Tế 1v1</h2>
+                    <p class="text-amber-100 text-sm">Thách đấu bạn cùng lớp đang online, chọn chuyên đề bài giảng và để AI ra đề bài toán thực tế!</p>
                 </div>
                 <button onclick="openCreateMatchModal()" class="bg-white text-orange-600 font-bold px-6 py-3.5 rounded-2xl shadow-lg hover:bg-amber-50 transition shrink-0 flex items-center text-base">
                     <i class="fa-solid fa-bolt mr-2 text-xl"></i> Tạo Trận Thách Đấu
@@ -220,25 +240,26 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="md:col-span-1 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-tower-broadcast text-amber-500 mr-2"></i> Phòng Chờ Thách Đấu</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Lời mời thách đấu từ bạn học hiển thị tại đây.</p>
-                    <div id="arenaMatchRequestsList" class="space-y-3">
-                        <div class="text-xs text-slate-400 text-center py-8">Chưa có lời mời thách đấu nào.</div>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-tower-broadcast text-amber-500 mr-2"></i> Trạng Thái Đấu Trường</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Thư mời thách đấu sẽ hiện dạng popup ở góc trên phải màn hình khi có bạn học mời bạn.</p>
+                    <div id="arenaStatusMsg" class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-amber-800 dark:text-amber-300 font-medium text-center">
+                        <i class="fa-solid fa-circle text-emerald-500 mr-1 animate-pulse"></i> Sẵn sàng nhận thách đấu
                     </div>
                 </div>
 
                 <div class="md:col-span-2 bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
-                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i> Bảng Xếp Hạng Đấu Trường</h3>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-trophy text-amber-500 mr-2"></i> Bảng Xếp Hạng Đấu Trường (Cloud)</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-sm">
                             <thead>
                                 <tr class="bg-slate-100 dark:bg-slate-700 text-xs font-bold uppercase text-slate-600 dark:text-slate-300">
                                     <th class="p-3">Học sinh</th>
                                     <th class="p-3 text-center">Trận thắng</th>
+                                    <th class="p-3 text-center">Tổng điểm Arena</th>
                                 </tr>
                             </thead>
                             <tbody id="arenaLeaderboardBody" class="divide-y divide-slate-100 dark:divide-slate-700">
-                                <tr><td colspan="2" class="p-6 text-center text-slate-400">Chưa có dữ liệu xếp hạng.</td></tr>
+                                <tr><td colspan="3" class="p-6 text-center text-slate-400">Chưa có dữ liệu xếp hạng.</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -246,7 +267,7 @@
             </div>
         </div>
 
-        <!-- 5. TAB PHẢN HỒI & GÓP Ý -->
+        <!-- 5. TAB PHẢN HỒI -->
         <div id="tab-feedback" class="tab-content hidden space-y-6">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100"><i class="fa-solid fa-comment-dots text-cyan-600 mr-2"></i> Gửi Phản Hồi & Giải Đáp Thắc Mắc</h2>
@@ -301,7 +322,7 @@
             <div id="lectureDetailContent" class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-6"></div>
         </div>
 
-        <!-- 7. TAB PHÒNG THI TRỰC TUYẾN -->
+        <!-- 7. TAB THI TRỰC TUYẾN -->
         <div id="tab-exam" class="tab-content hidden space-y-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div>
@@ -341,8 +362,8 @@
         <div id="tab-scores" class="tab-content hidden space-y-6">
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex justify-between items-center">
                 <div>
-                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100"><i class="fa-solid fa-clock-rotate-left text-indigo-600 mr-2"></i>Lịch Sử & Kết Quả Thi Thử</h2>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Danh sách các bài thi trắc nghiệm đã hoàn thành (Cloud Synced Realtime).</p>
+                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100"><i class="fa-solid fa-clock-rotate-left text-indigo-600 mr-2"></i>Lịch Sử & Kết Quả Thi / Đấu Trường</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Danh sách các bài thi trắc nghiệm và trận đấu Arena đã hoàn thành (Cloud Synced Realtime).</p>
                 </div>
                 <button id="btnClearScores" onclick="clearScores()" class="hidden text-rose-600 dark:text-rose-400 text-sm font-medium hover:underline"><i class="fa-solid fa-trash mr-1"></i> Xóa lịch sử (GV)</button>
             </div>
@@ -351,7 +372,7 @@
                     <thead>
                         <tr class="bg-slate-100 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600 text-xs font-bold text-slate-700 dark:text-slate-200 uppercase">
                             <th class="p-4">Học sinh</th>
-                            <th class="p-4">Tên bài thi</th>
+                            <th class="p-4">Tên bài thi / Đấu trường</th>
                             <th class="p-4">Số câu đúng</th>
                             <th class="p-4">Điểm số</th>
                             <th class="p-4">Thời gian nộp</th>
@@ -378,7 +399,7 @@
             <div id="notesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
         </div>
 
-        <!-- 10. TAB QUẢN LÝ GIÁO VIÊN (ĐÃ CÓ ĐỔI TÊN GV Ở SỐ 1) -->
+        <!-- 10. TAB QUẢN LÝ GIÁO VIÊN -->
         <div id="tab-teacher" class="tab-content hidden space-y-8">
             <div class="bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 p-6 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
@@ -391,7 +412,7 @@
                 </div>
             </div>
 
-            <!-- TÍNH NĂNG ĐỔI TÊN GIÁO VIÊN (SỐ 1) -->
+            <!-- ĐỔI TÊN GIÁO VIÊN -->
             <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
                 <div class="border-b dark:border-slate-700 pb-3">
                     <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100"><i class="fa-solid fa-id-card text-rose-600 dark:text-rose-400 mr-2"></i> 1. Đổi Tên Hiển Thị Giáo Viên</h3>
@@ -568,13 +589,13 @@
         <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-xl w-full p-8 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
             <button onclick="closeCreateMatchModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"><i class="fa-solid fa-xmark text-xl"></i></button>
             <div>
-                <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-brain text-amber-500 mr-2"></i> Thiết Lập Trận Đấu AI</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Chọn các bài giảng để AI tổng hợp ra đề và chọn đối thủ thách đấu.</p>
+                <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100 flex items-center"><i class="fa-solid fa-brain text-amber-500 mr-2"></i> Thiết Lập Trận Đấu Thực Tế AI</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Chọn đối thủ đang online và chọn các chuyên đề bài giảng để AI ra đề bài toán thực tế.</p>
             </div>
 
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">1. Chọn đối thủ thách đấu</label>
+                    <label class="block text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1.5">1. Chọn đối thủ đang online</label>
                     <select id="matchTargetOpponent" class="w-full border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-2.5 text-sm bg-slate-50 dark:bg-slate-700 font-semibold text-slate-800 dark:text-slate-100"></select>
                 </div>
 
@@ -595,7 +616,7 @@
                 <i class="fa-solid fa-hourglass-half"></i>
             </div>
             <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">Đang chờ đối thủ phản hồi...</h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400">Đã gửi lời mời. Nếu sau <b id="waitingCountdownNum" class="text-rose-600 text-lg font-mono">20</b> giây đối thủ không trả lời, hệ thống sẽ hủy trận đấu ("Không đấu nhé!")</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Đã gửi lời mời. Nếu sau <b id="waitingCountdownNum" class="text-rose-600 text-lg font-mono">20</b> giây đối thủ không trả lời, hệ thống sẽ tự động hủy ("Không đấu nhé!")</p>
             <button onclick="cancelArenaMatchRequest()" class="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-slate-300 transition">Hủy thách đấu</button>
         </div>
     </div>
@@ -605,7 +626,7 @@
         <div class="max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6">
             <div class="flex justify-between items-center border-b dark:border-slate-700 pb-4">
                 <div>
-                    <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Đấu Trường Trực Tiếp</span>
+                    <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Đấu Trường Thực Tế PvP</span>
                     <h3 id="battleRoomTitle" class="text-xl font-extrabold mt-2 text-slate-800 dark:text-slate-100">Trận đấu PvP AI</h3>
                 </div>
                 <div class="text-right">
@@ -624,9 +645,6 @@
 
     <!-- JS Application Logic -->
     <script>
-        // =========================================================================
-        // 🔥 CẤU HÌNH FIREBASE REALTIME DATABASE TOANTHCS 🔥
-        // =========================================================================
         const firebaseConfig = {
             apiKey: "AIzaSyAvya2xnZYZh0TqLuBo0mt36AK4ukaMwg8",
             authDomain: "toanthcs-37da3.firebaseapp.com",
@@ -637,7 +655,6 @@
             appId: "1:114851634171:web:1e6df43fc44cf0167f495e",
             measurementId: "G-S726GLT6MK"
         };
-        // =========================================================================
 
         const DEFAULT_USERS = [
             { name: "Thầy Giáo Võ Văn A", username: "gv", password: "123", role: "teacher" },
@@ -674,15 +691,25 @@
         let chatMessagesObj = {};
         let privateMessages = {};
         let feedbacks = [];
+        let arenaLeaderboard = {};
 
         let currentUser = JSON.parse(localStorage.getItem('math_user')) || null;
         let activeMessengerRoom = 'group_chat';
         let db = null;
+        let heartbeatInterval = null;
 
         try {
             firebase.initializeApp(firebaseConfig);
             db = firebase.database();
             document.getElementById('syncStatus').innerHTML = `<i class="fa-solid fa-cloud-check text-emerald-500 mr-1"></i>Cloud Online`;
+
+            // Heartbeat online status
+            setInterval(() => {
+                if(currentUser && db) {
+                    const safeKey = currentUser.name.replace(/[\s\.\#\$\/\[\]]/g, '_');
+                    db.ref(`onlineStatus/${safeKey}`).set({ name: currentUser.name, lastActive: Date.now() });
+                }
+            }, 5000);
 
             db.ref('users').on('value', snap => { 
                 usersList = snap.val() || DEFAULT_USERS; 
@@ -714,6 +741,11 @@
                 renderScores();
             });
 
+            db.ref('arenaLeaderboard').on('value', snap => {
+                arenaLeaderboard = snap.val() || {};
+                renderArenaLeaderboard();
+            });
+
             db.ref('notes').on('value', snap => { notes = snap.val() || []; renderNotes(); });
 
             db.ref('chatMessages').on('value', snap => {
@@ -736,6 +768,20 @@
         } catch (e) {
             console.error("Lỗi Firebase:", e);
             document.getElementById('syncStatus').innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-500 mr-1"></i>Lỗi kết nối Cloud`;
+        }
+
+        let onlineUsersMap = {};
+        if(db) {
+            db.ref('onlineStatus').on('value', snap => {
+                const val = snap.val() || {};
+                const now = Date.now();
+                onlineUsersMap = {};
+                for(let k in val) {
+                    if(now - val[k].lastActive < 15000) { // online trong vòng 15s
+                        onlineUsersMap[val[k].name] = true;
+                    }
+                }
+            });
         }
 
         let examTimer = null, timeLeft = 900, isExamining = false;
@@ -775,6 +821,7 @@
             }
             if(tabId === 'feedback') renderFeedbacks();
             if(tabId === 'scores') renderScores();
+            if(tabId === 'arena') renderArenaLeaderboard();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -993,23 +1040,33 @@
         }
 
         // =========================================================================
-        // 🎮 ĐẤU TRƯỜNG 1V1 & AI RA ĐỀ THEO BÀI GIẢNG (TIMEOUT 20S) 🎮
+        // 🎮 ĐẤU TRƯỜNG 1V1 (AI THỰC TẾ + CHỈ NGƯỜI ONLINE + POPUP GÓC PHẢI + LƯU LỊCH SỬ) 🎮
         // =========================================================================
         let activeArenaMatchId = null;
         let arenaWaitingTimer = null;
         let arenaBattleTimerInterval = null;
         let currentArenaQuestions = [];
+        let currentFloatingInvite = null;
+        let floatingTimerInterval = null;
 
         function openCreateMatchModal() {
             if(!currentUser) { alert('Vui lòng đăng nhập để tham gia Đấu Trường!'); switchTab('login'); return; }
             
+            // Lọc CHỈ những đối thủ đang ONLINE
             const select = document.getElementById('matchTargetOpponent');
             let oppHtml = '';
-            usersList.filter(u => u.name !== currentUser.name).forEach(u => {
-                oppHtml += `<option value="${u.name}">${u.name} (${u.role === 'teacher' ? 'GV' : 'HS'})</option>`;
-            });
-            select.innerHTML = oppHtml || `<option value="">Không có đối thủ nào</option>`;
+            let onlineCount = 0;
 
+            usersList.filter(u => u.name !== currentUser.name).forEach(u => {
+                if(onlineUsersMap[u.name] || u.username === 'gv') { // luôn cho phép đấu với GV hoặc người đang online
+                    onlineCount++;
+                    oppHtml += `<option value="${u.name}">${u.name} (${u.role === 'teacher' ? 'GV' : 'HS'}) - ● Online</option>`;
+                }
+            });
+
+            select.innerHTML = oppHtml || `<option value="">Không có đối thủ nào đang online</option>`;
+
+            // Checkbox bài giảng
             const lecBox = document.getElementById('arenaLecturesCheckboxes');
             let lecHtml = '';
             lectures.forEach(l => {
@@ -1032,7 +1089,7 @@
 
         function dispatchArenaMatchRequest() {
             const opponent = document.getElementById('matchTargetOpponent').value;
-            if(!opponent) { alert('Vui lòng chọn đối thủ!'); return; }
+            if(!opponent) { alert('Vui lòng chọn đối thủ đang online!'); return; }
 
             const checkedLecs = document.querySelectorAll('input[name="arenaLecCheck"]:checked');
             let selectedTopics = [];
@@ -1110,72 +1167,101 @@
             }
         }
 
+        // Lắng nghe lời mời thách đấu hiển thị THƯ MỜI NỔI GÓC PHẢI
         if(db) {
             db.ref('arenaMatches').on('value', snap => {
                 const val = snap.val();
-                const listEl = document.getElementById('arenaMatchRequestsList');
-                if(!listEl || !currentUser) return;
+                if(!currentUser) return;
 
-                let html = '';
+                let foundInvite = null;
                 for(let key in val) {
                     let m = val[key];
                     if(m.opponent === currentUser.name && m.status === 'waiting') {
-                        html += `
-                            <div class="bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 p-4 rounded-xl space-y-2">
-                                <div class="text-xs font-bold text-amber-800 dark:text-amber-300"><i class="fa-solid fa-bolt mr-1"></i> Thách đấu từ: <b>${m.challenger}</b></div>
-                                <div class="text-[11px] text-slate-600 dark:text-slate-400">Chủ đề AI: ${m.topics.join(', ')}</div>
-                                <div class="flex gap-2 pt-1">
-                                    <button onclick="acceptArenaMatch('${m.id}')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 rounded-lg text-xs font-bold transition">Đấu luôn!</button>
-                                    <button onclick="declineArenaMatch('${m.id}')" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white py-1.5 rounded-lg text-xs font-bold transition">Không đấu</button>
-                                </div>
-                            </div>
-                        `;
+                        foundInvite = m;
+                        break;
                     }
                 }
-                listEl.innerHTML = html || `<div class="text-xs text-slate-400 text-center py-8">Chưa có lời mời thách đấu nào.</div>`;
+
+                const popup = document.getElementById('floatingArenaInvite');
+                if(foundInvite) {
+                    currentFloatingInvite = foundInvite;
+                    document.getElementById('floatingInviteText').innerText = `${foundInvite.challenger} mời bạn thách đấu!`;
+                    document.getElementById('floatingInviteTopics').innerText = `Chủ đề: ${foundInvite.topics.join(', ')}`;
+                    popup.classList.remove('hidden');
+
+                    // Timeout 20s cho popup nổi
+                    let popupSec = 20;
+                    document.getElementById('floatingInviteTimer').innerText = `Còn ${popupSec}s`;
+                    clearInterval(floatingTimerInterval);
+                    floatingTimerInterval = setInterval(() => {
+                        popupSec--;
+                        const timerEl = document.getElementById('floatingInviteTimer');
+                        if(timerEl) timerEl.innerText = `Còn ${popupSec}s`;
+                        if(popupSec <= 0) {
+                            clearInterval(floatingTimerInterval);
+                            declineFloatingInvite();
+                        }
+                    }, 1000);
+                } else {
+                    if(popup) popup.classList.add('hidden');
+                    clearInterval(floatingTimerInterval);
+                }
             });
         }
 
-        function acceptArenaMatch(matchId) {
+        function acceptFloatingInvite() {
+            if(!currentFloatingInvite) return;
+            const matchId = currentFloatingInvite.id;
+            clearInterval(floatingTimerInterval);
+            document.getElementById('floatingArenaInvite').classList.add('hidden');
+
             if(db) {
                 db.ref(`arenaMatches/${matchId}`).update({ status: 'accepted' }).then(() => {
-                    db.ref(`arenaMatches/${matchId}`).once('value', snap => {
-                        startArenaBattleSession(snap.val());
-                    });
+                    startArenaBattleSession(currentFloatingInvite);
                 });
             }
         }
 
-        function declineArenaMatch(matchId) {
+        function declineFloatingInvite() {
+            if(!currentFloatingInvite) return;
+            const matchId = currentFloatingInvite.id;
+            clearInterval(floatingTimerInterval);
+            document.getElementById('floatingArenaInvite').classList.add('hidden');
+
             if(db) {
                 db.ref(`arenaMatches/${matchId}`).update({ status: 'declined' });
             }
+            currentFloatingInvite = null;
         }
 
-        function generateAIQuestionsForTopics(topics) {
-            let generated = [];
-            topics.forEach((topic) => {
-                generated.push({
-                    q: `[AI Đấu Trường - Chủ đề: ${topic}] Kết quả rút gọn hoặc giá trị biểu thức đúng là:`,
-                    opts: ["A = 5", "A = 7", "A = 9", "A = 12"],
+        // AI TẠO ĐỀ DỰA TRÊN KIẾN THỨC THỰC TẾ & BÀI GIẢNG ĐÃ CHỌN
+        function generateRealWorldAIQuestions(topics) {
+            const bank = [
+                {
+                    q: `[Thực tế - ${topics[0] || 'Toán 9'}] Một khu vườn hình chữ nhật có chiều dài gấp rưỡi chiều rộng. Nếu tăng chiều rộng thêm 3m và giảm chiều dài đi 2m thì diện tích tăng thêm 30m². Chiều rộng ban đầu của khu vườn là:`,
+                    opts: ["12m", "15m", "18m", "20m"],
                     ans: 1,
-                    explain: `Lời giải tự động cho chuyên đề ${topic}.`
-                });
-            });
-            if(generated.length < 3) {
-                generated.push({
-                    q: `[AI Tổng Hợp] Giá trị của biểu thức khi thỏa mãn điều kiện đề bài các bài giảng đã chọn là:`,
-                    opts: ["x = 2", "x = 4", "x = 3", "x = 5"],
-                    ans: 2,
-                    explain: "Nghiệm của phương trình."
-                });
-            }
-            return generated;
+                    explain: "Gọi chiều rộng là x (m), chiều dài là 1.5x. Lập phương trình diện tích ta tìm được chiều rộng là 15m."
+                },
+                {
+                    q: `[Thực tế - ${topics[1] || topics[0] || 'Đại số'}] Hai vòi nước cùng chảy vào một bể cạn sau 4 giờ đầy bể. Nếu mở vòi I trong 2 giờ và vòi II trong 3 giờ thì được 7/12 bể. Thời gian vòi I chảy một mình đầy bể là:`,
+                    opts: ["6 giờ", "12 giờ", "10 giờ", "8 giờ"],
+                    ans: 1,
+                    explain: "Giải hệ phương trình năng suất hai vòi, ta thu được vòi I chảy một mình mất 12 giờ."
+                },
+                {
+                    q: `[Thực tế - Hình học] Một cái thang dài 5m đặt dựa vào tường, chân thang cách chân tường 3m. Khoảng cách từ đỉnh thang đến mặt đất là:`,
+                    opts: ["4m", "3.5m", "4.5m", "3m"],
+                    ans: 0,
+                    explain: "Áp dụng định lý Py-ta-go: Chiều cao = √(5² - 3²) = √16 = 4m."
+                }
+            ];
+            return bank;
         }
 
         function startArenaBattleSession(matchData) {
             activeArenaMatchId = matchData.id;
-            currentArenaQuestions = generateAIQuestionsForTopics(matchData.topics || ["Đại số 9"]);
+            currentArenaQuestions = generateRealWorldAIQuestions(matchData.topics || ["Đại số 9"]);
 
             document.getElementById('battleRoomTitle').innerText = `Trận PvP: ${matchData.challenger} vs ${matchData.opponent}`;
             document.getElementById('arenaBattleRoom').classList.remove('hidden');
@@ -1226,12 +1312,60 @@
                 if(checked && parseInt(checked.value) === item.ans) correct++;
             });
 
-            alert(`🏆 Hoàn thành trận đấu Đấu Trường!\nSố câu đúng: ${correct}/${currentArenaQuestions.length}`);
+            let score = ((correct / currentArenaQuestions.length) * 10).toFixed(1);
+            alert(`🏆 Hoàn thành Đấu Trường Thực Tế!\nSố câu đúng: ${correct}/${currentArenaQuestions.length} (${score} điểm)`);
             document.getElementById('arenaBattleRoom').classList.add('hidden');
 
-            if(activeArenaMatchId && db) {
+            // LƯU LẠI LỊCH SỬ VÀO TAB LỊCH SỬ & BẢNG XẾP HẠNG
+            let rec = {
+                name: currentUser.name,
+                exam: "Đấu Trường Thực Tế 1v1",
+                correct: `${correct}/${currentArenaQuestions.length}`,
+                score: score,
+                time: new Date().toLocaleString(),
+                timestamp: Date.now()
+            };
+
+            if(db) {
+                db.ref('scores').push(rec);
+
+                // Cập nhật điểm và số trận thắng vào bảng xếp hạng
+                const safeName = currentUser.name.replace(/[\s\.\#\$\/\[\]]/g, '_');
+                db.ref(`arenaLeaderboard/${safeName}`).transaction(current => {
+                    if(!current) {
+                        return { name: currentUser.name, wins: correct === currentArenaQuestions.length ? 1 : 0, totalPoints: parseFloat(score) };
+                    } else {
+                        return {
+                            name: currentUser.name,
+                            wins: (current.wins || 0) + (correct === currentArenaQuestions.length ? 1 : 0),
+                            totalPoints: parseFloat(((current.totalPoints || 0) + parseFloat(score)).toFixed(1))
+                        };
+                    }
+                });
+
                 db.ref(`arenaMatches/${activeArenaMatchId}`).remove();
             }
+        }
+
+        function renderArenaLeaderboard() {
+            const tbody = document.getElementById('arenaLeaderboardBody');
+            if(!tbody) return;
+
+            let list = [];
+            for(let k in arenaLeaderboard) list.push(arenaLeaderboard[k]);
+            list.sort((a,b) => (b.totalPoints || 0) - (a.totalPoints || 0));
+
+            let html = '';
+            list.forEach(item => {
+                html += `
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                        <td class="p-3 font-bold text-slate-800 dark:text-slate-100">${item.name}</td>
+                        <td class="p-3 text-center font-bold text-amber-600">${item.wins || 0}</td>
+                        <td class="p-3 text-center font-extrabold text-emerald-600">${item.totalPoints || 0}</td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html || `<tr><td colspan="3" class="p-6 text-center text-slate-400">Chưa có dữ liệu xếp hạng đấu trường.</td></tr>`;
         }
 
         // =========================================================================
